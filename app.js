@@ -550,6 +550,24 @@ function renderCurrentQuestion() {
     showInstantFeedback(q, selectedIndex === q.respostaCorrecta);
   }
 
+  // Sincronització del toggle "Veure resposta" i neteja del panel
+  const hintContainer = document.getElementById("hint-btn-container");
+  if (hintContainer) {
+    hintContainer.style.display = state.hintMode ? "block" : "none";
+  }
+
+  const panel = document.getElementById("hint-reveal-panel");
+  const btn = document.getElementById("btn-hint-reveal");
+  if (panel) {
+    // Neteja el panel a cada nova pregunta per evitar fons de preguntes anteriors
+    panel.classList.remove("visible");
+    panel.style.display = "none";
+    panel.innerHTML = "";
+  }
+  if (btn) {
+    btn.style.display = state.hintMode ? "block" : "none";
+  }
+
   document.getElementById("btn-prev").disabled = state.currentIndex === 0;
   const isLast = state.currentIndex === total - 1;
   const nextBtn = document.getElementById("btn-next");
@@ -615,6 +633,59 @@ function showInstantFeedback(q, isCorrect) {
   feedbackExpl.innerHTML = `<strong>Raonament didàctic:</strong> ${escapeHtml(q.explicacio)}`;
   feedbackCard.style.display = "block";
 }
+/* ============================================================
+   Toggle "Veure resposta" i panel d'explicacions
+   ============================================================ */
+
+function toggleHintMode() {
+  const toggleSwitch = document.getElementById("toggle-hint");
+  if (toggleSwitch) {
+    state.hintMode = !state.hintMode;
+    toggleSwitch.setAttribute("aria-checked", state.hintMode ? "true" : "false");
+    toggleSwitch.classList.toggle("is-checked", state.hintMode);
+  }
+
+  const hintContainer = document.getElementById("hint-btn-container");
+  if (hintContainer) {
+    hintContainer.style.display = state.hintMode ? "block" : "none";
+  }
+
+  if (!state.hintMode) {
+    const panel = document.getElementById("hint-reveal-panel");
+    const btn = document.getElementById("btn-hint-reveal");
+    if (panel) {
+      panel.classList.remove("visible");
+      panel.style.display = "none";
+      panel.innerHTML = "";
+    }
+    if (btn) {
+      btn.style.display = "block";
+    }
+  }
+}
+
+function revealHint() {
+  const q = state.filteredQuestions[state.currentIndex];
+  if (!q) return;
+
+  const btn = document.getElementById("btn-hint-reveal");
+  const panel = document.getElementById("hint-reveal-panel");
+
+  if (btn) {
+    btn.style.display = "none";
+  }
+  if (panel) {
+    panel.innerHTML = `<strong>Raonament didàctic:</strong> ${escapeHtml(q.explicacio)}`;
+    panel.classList.add("visible");
+    panel.style.display = "block";
+  }
+
+  const panelEl = document.getElementById("hint-reveal-panel");
+  if (panelEl) {
+    panelEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+}
+
 
 function clearCurrentChoice() {
   const q = state.filteredQuestions[state.currentIndex];
