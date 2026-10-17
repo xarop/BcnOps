@@ -1130,3 +1130,28 @@ body {
 .hint-reveal-panel.visible {
   display: block;
 }
+
+/* Estat del toggle al menú hamburger */
+.toggle-status {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Línia de resposta correcta al panel d'explicació */
+.hint-reveal-panel .correct-answer {
+  margin-bottom: 10px;
+  color: var(--success);
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hint-reveal-panel .correct-answer span {
+  color: var(--text-main);
+  font-weight: 700;
+}

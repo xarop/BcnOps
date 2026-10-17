@@ -643,11 +643,22 @@ function toggleHintMode() {
     state.hintMode = !state.hintMode;
     toggleSwitch.setAttribute("aria-checked", state.hintMode ? "true" : "false");
     toggleSwitch.classList.toggle("is-checked", state.hintMode);
+  } else {
+    // Si no hi ha el switch visible (mòdit menú hamburger), invertim l'estat manualment
+    state.hintMode = !state.hintMode;
   }
 
   const hintContainer = document.getElementById("hint-btn-container");
   if (hintContainer) {
     hintContainer.style.display = state.hintMode ? "block" : "none";
+  }
+
+  // Sincronitzar estat visual al menú hamburger
+  const statusEl = document.getElementById("drawer-hint-status");
+  if (statusEl) {
+    statusEl.textContent = state.hintMode ? "Activat" : "Desactivat";
+    statusEl.style.color = state.hintMode ? "var(--success)" : "var(--text-muted)";
+    statusEl.style.fontWeight = "700";
   }
 
   if (!state.hintMode) {
@@ -675,7 +686,12 @@ function revealHint() {
     btn.style.display = "none";
   }
   if (panel) {
-    panel.innerHTML = `<strong>Raonament didàctic:</strong> ${escapeHtml(q.explicacio)}`;
+    panel.innerHTML = `
+      <div class="correct-answer">
+        Resposta correcta: <span>${escapeHtml(q.opcions[q.respostaCorrecta])}</span>
+      </div>
+      <strong>Raonament didàctic:</strong> ${escapeHtml(q.explicacio)}
+    `;
     panel.classList.add("visible");
     panel.style.display = "block";
   }
