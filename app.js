@@ -638,14 +638,20 @@ function showInstantFeedback(q, isCorrect) {
    ============================================================ */
 
 function toggleHintMode() {
+  state.hintMode = !state.hintMode;
+
+  // Actualitzar switch visible si existeix (vista simulador)
   const toggleSwitch = document.getElementById("toggle-hint");
   if (toggleSwitch) {
-    state.hintMode = !state.hintMode;
     toggleSwitch.setAttribute("aria-checked", state.hintMode ? "true" : "false");
     toggleSwitch.classList.toggle("is-checked", state.hintMode);
-  } else {
-    // Si no hi ha el switch visible (mòdit menú hamburger), invertim l'estat manualment
-    state.hintMode = !state.hintMode;
+  }
+
+  // Actualitzar switch del drawer (menú hamburger)
+  const drawerSwitch = document.getElementById("drawer-hint-switch");
+  if (drawerSwitch) {
+    drawerSwitch.setAttribute("aria-checked", state.hintMode ? "true" : "false");
+    drawerSwitch.classList.toggle("is-checked", state.hintMode);
   }
 
   const hintContainer = document.getElementById("hint-btn-container");
@@ -653,7 +659,7 @@ function toggleHintMode() {
     hintContainer.style.display = state.hintMode ? "block" : "none";
   }
 
-  // Sincronitzar estat visual al menú hamburger
+  // Sincronitzar estat textual al menú hamburger
   const statusEl = document.getElementById("drawer-hint-status");
   if (statusEl) {
     statusEl.textContent = state.hintMode ? "Activat" : "Desactivat";

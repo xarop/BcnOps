@@ -1140,6 +1140,12 @@ body {
   white-space: nowrap;
 }
 
+/* Toggle switch al drawer (alineat a la dreta) */
+.drawer-toggle-switch {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 /* Línia de resposta correcta al panel d'explicació */
 .hint-reveal-panel .correct-answer {
   margin-bottom: 10px;
