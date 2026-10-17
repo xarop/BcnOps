@@ -1,9 +1,10 @@
 /**
- * BcnOps 2026 — Aplicació Web de Preparació
- * Convocatòria d'ampliació de borses — Ajuntament de Barcelona (Exp. 31/2026)
+ * BcnOps 2026 — Aplicació Web Mobile-First
+ * Dissenyada per a la màxima usabilitat en mòbil sense distraccions
+ * Convocatòria Borses Ajuntament de Barcelona (Exp. 31/2026)
  */
 
-// Seus oficials amb adreces i coordenades de Google Maps
+// Seus oficials amb adreces i Google Maps
 const SEUS_DADES = [
   {
     id: "upf-ciutadella",
@@ -14,14 +15,14 @@ const SEUS_DADES = [
   },
   {
     id: "ub-economiques",
-    nom: "UB Facultat d'Economia i Empresa (Edifici 690)",
+    nom: "UB Facultat d'Economia i Empresa (690)",
     adreca: "Avinguda Diagonal, 690, 08034 Barcelona",
-    desc: "Campus Diagonal — Aules principals d'exàmens de l'antiga Facultat d'Econòmiques.",
+    desc: "Campus Diagonal — Aules principals d'exàmens d'Econòmiques.",
     mapsUrl: "https://maps.google.com/?q=Facultat+d'Economia+i+Empresa+UB+Av+Diagonal+690+Barcelona"
   },
   {
     id: "ub-empresarials",
-    nom: "UB Facultat d'Economia i Empresa (Edifici 696)",
+    nom: "UB Facultat d'Economia i Empresa (696)",
     adreca: "Avinguda Diagonal, 696, 08034 Barcelona",
     desc: "Campus Diagonal — Edifici annex d'Empresarials.",
     mapsUrl: "https://maps.google.com/?q=Edifici+696+Facultat+d'Economia+i+Empresa+UB+Av+Diagonal+696+Barcelona"
@@ -46,72 +47,65 @@ const SEUS_DADES = [
 const TASQUES_PLAN = [
   {
     dia: "Dissabte, 17 d'octubre",
-    dataId: "2026-10-17",
     titol: "Diagnòstic inicial i logística",
     tasques: [
-      { id: "t1_1", text: "Revisar les bases oficials i llistats a la Seu Electrònica (Expedient 31/2026)." },
-      { id: "t1_2", text: "Comprovar la seu d'examen assignada i el temps de trajecte en transport públic." },
+      { id: "t1_1", text: "Revisar les bases i llistats a la Seu Electrònica (Exp. 31/2026)." },
+      { id: "t1_2", text: "Comprovar la seu assignada i el temps de trajecte en metro/bus." },
       { id: "t1_3", text: "Realitzar un test inicial complet de diagnòstic al simulador." }
     ]
   },
   {
     dia: "Diumenge, 18 d'octubre",
-    dataId: "2026-10-18",
     titol: "Ofimàtica I — Fulls de càlcul bàsics",
     tasques: [
-      { id: "t2_1", text: "Dominar les funcions =SUMAR.SI, =PROMEDIO, =CONTAR i =CONTARA a Excel/Calc." },
-      { id: "t2_2", text: "Comprendre les referències absolutes i mixtes ($A$1, $A1, A$1)." },
-      { id: "t2_3", text: "Resoldre 15 exercicis pràctics de càlcul de percentatges i fórmules." }
+      { id: "t2_1", text: "Dominar =SUMAR.SI, =PROMEDIO, =CONTAR i =CONTARA a Excel/Calc." },
+      { id: "t2_2", text: "Comprendre referències absolutes i mixtes ($A$1, $A1, A$1)." },
+      { id: "t2_3", text: "Resoldre exercicis pràctics de càlcul de percentatges i fórmules." }
     ]
   },
   {
     dia: "Dilluns, 19 d'octubre",
-    dataId: "2026-10-19",
     titol: "Ofimàtica II — Dreceres, fitxers i correu",
     tasques: [
-      { id: "t3_1", text: "Repassar les dreceres de teclat de Windows (Win+L, F2, Ctrl+G, Ctrl+E/Ctrl+A)." },
+      { id: "t3_1", text: "Repassar dreceres de teclat de Windows (Win+L, F2, Ctrl+G, Ctrl+Shift+Esc)." },
       { id: "t3_2", text: "Recordar la diferència entre camps CC i CCO (protecció de dades RGPD)." },
       { id: "t3_3", text: "Pràctica al simulador: Fer test exclusiu del bloc d'Ofimàtica." }
     ]
   },
   {
     dia: "Dimarts, 20 d'octubre",
-    dataId: "2026-10-20",
     titol: "Aptitudinal I — Sèries i analogies",
     tasques: [
       { id: "t4_1", text: "Entrenar sèries numèriques geomètriques i combinades." },
-      { id: "t4_2", text: "Treballar les sèries de lletres i alfanumèriques de l'alfabet oficial." },
+      { id: "t4_2", text: "Treballar sèries de lletres i alfanumèriques de l'alfabet oficial." },
       { id: "t4_3", text: "Practicar analogies verbals i relacions d'oposició/sinonímia." }
     ]
   },
   {
     dia: "Dimecres, 21 d'octubre",
-    dataId: "2026-10-21",
     titol: "Aptitudinal II — Raonament abstracte i càlcul",
     tasques: [
       { id: "t5_1", text: "Practicar matrius de figures i raonament lògic deductiu." },
-      { id: "t5_2", text: "Accelerar el càlcul mental de percentatges aplicats a pressupostos públics." },
+      { id: "t5_2", text: "Accelerar el càlcul mental de percentatges sobre pressupostos públics." },
       { id: "t5_3", text: "Test al simulador: Fer bloc Aptitudinal cronometrat." }
     ]
   },
   {
     dia: "Dijous, 22 d'octubre",
-    dataId: "2026-10-22",
     titol: "Llengua Estrangera — Anglès administratiu",
     tasques: [
-      { id: "t6_1", text: "Vocabulari administratiu clau: applicant, deadline, requirement, notice board." },
-      { id: "t6_2", text: "Preposicions de temps i lloc (on Monday, at 10:00 h, at the campus)." },
+      { id: "t6_1", text: "Vocabulari clau: applicant, deadline, civil servant, bylaw, fee waiver." },
+      { id: "t6_2", text: "Preposicions de temps i lloc (on Saturday, at 09:30 h, within 10 days)." },
       { id: "t6_3", text: "Fórmules corteses d'atenció al ciutadà i oracions condicionals." }
     ]
   },
   {
     dia: "Divendres, 23 d'octubre",
-    dataId: "2026-10-23",
     titol: "Simulacre final i preparació de material",
     tasques: [
-      { id: "t7_1", text: "Simulacre general de 27 preguntes amb cronòmetre estricte." },
-      { id: "t7_2", text: "Revisar el mòdul d'errors de les preguntes fallades amb les seves explicacions." },
-      { id: "t7_3", text: "Preparar el material obligatori: DNI original vigent, llapis 2 (HB), goma i maquineta." },
+      { id: "t7_1", text: "Simulacre general de 75 preguntes amb cronòmetre estricte." },
+      { id: "t7_2", text: "Revisar el mòdul d'errors de les preguntes fallades amb les explicacions." },
+      { id: "t7_3", text: "Preparar material: DNI original vigent, llapis 2 (HB), goma i maquineta." },
       { id: "t7_4", text: "Descansar i recordar: Obertura d'aules a les 09:30 h; tancament a les 10:00 h." }
     ]
   }
@@ -123,57 +117,130 @@ const state = {
   filteredQuestions: [],
   currentCategory: "tots",
   currentIndex: 0,
-  userAnswers: {}, // idPregunta -> índex d'opció seleccionada (o undefined)
+  userAnswers: {},
   timerSeconds: 0,
   timerInterval: null,
   isTimerRunning: false,
   isFinished: false,
-  reviewFilter: "all"
+  currentView: "view-simulador"
 };
 
 // ============================================================
-// Inicialització de l'aplicació
+// Inicialització
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", async () => {
-  initTabs();
+  initDrawer();
+  initBottomSheet();
   initVenues();
   initStudyPlan();
   loadBestScores();
   await loadQuestions();
   initSimulator();
   initShareButton();
+
+  // Engeguem directament a la vista del Simulador
+  navigateTo("view-simulador");
 });
 
 // ============================================================
-// Gestió de Pestanyes (Tabs)
+// Navegació per Vistes i Menú Hamburguesa
 // ============================================================
 
-function initTabs() {
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  tabButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-tab");
-      switchTab(targetId);
-    });
-  });
+function initDrawer() {
+  const btnOpen = document.getElementById("btn-open-menu");
+  const btnClose = document.getElementById("btn-close-menu");
+  const overlay = document.getElementById("drawer-overlay");
+  const panel = document.getElementById("drawer-panel");
+
+  function openDrawer() {
+    if (overlay && panel) {
+      overlay.classList.add("open");
+      panel.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeDrawer() {
+    if (overlay && panel) {
+      overlay.classList.remove("open");
+      panel.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  }
+
+  if (btnOpen) btnOpen.addEventListener("click", openDrawer);
+  if (btnClose) btnClose.addEventListener("click", closeDrawer);
+  if (overlay) overlay.addEventListener("click", closeDrawer);
+
+  window.closeDrawer = closeDrawer;
 }
 
-function switchTab(targetId) {
-  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-  document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+window.navigateTo = function(viewId) {
+  state.currentView = viewId;
 
-  const targetBtn = document.querySelector(`.tab-btn[data-tab="${targetId}"]`);
-  const targetPane = document.getElementById(targetId);
+  // Actualitzar vistes
+  document.querySelectorAll(".app-view").forEach(v => v.classList.remove("active"));
+  const targetView = document.getElementById(viewId);
+  if (targetView) targetView.classList.add("active");
 
-  if (targetBtn) targetBtn.classList.add("active");
-  if (targetPane) targetPane.classList.add("active");
+  // Barra d'accions inferior: només és visible al Simulador actiu
+  const bottomBar = document.getElementById("bottom-bar");
+  if (bottomBar) {
+    bottomBar.style.display = (viewId === "view-simulador" && !state.isFinished) ? "block" : "none";
+  }
+
+  // Actualitzar botons actius al drawer
+  document.querySelectorAll(".drawer-nav-item").forEach(item => {
+    const fnStr = item.getAttribute("onclick") || "";
+    if (fnStr.includes(viewId)) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+
+  // Tancar el drawer si era obert
+  if (window.closeDrawer) window.closeDrawer();
 
   window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// ============================================================
+// Bottom Sheet per a la Graella de Salts de Preguntes
+// ============================================================
+
+function initBottomSheet() {
+  const btnOpen = document.getElementById("btn-open-sheet");
+  const btnClose = document.getElementById("btn-close-sheet");
+  const overlay = document.getElementById("sheet-overlay");
+  const panel = document.getElementById("sheet-panel");
+
+  function openSheet() {
+    if (overlay && panel) {
+      overlay.classList.add("open");
+      panel.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeSheet() {
+    if (overlay && panel) {
+      overlay.classList.remove("open");
+      panel.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  }
+
+  if (btnOpen) btnOpen.addEventListener("click", openSheet);
+  if (btnClose) btnClose.addEventListener("click", closeSheet);
+  if (overlay) overlay.addEventListener("click", closeSheet);
+
+  window.closeBottomSheet = closeSheet;
 }
 
 // ============================================================
-// Càrrega del Banc de Preguntes (questions.json)
+// Càrrega de Preguntes
 // ============================================================
 
 async function loadQuestions() {
@@ -182,8 +249,7 @@ async function loadQuestions() {
     if (!response.ok) throw new Error("Error carregant questions.json");
     state.questions = await response.json();
   } catch (error) {
-    console.warn("Avís: Carregant banc de dades de seguretat...", error);
-    // Fallback integrat de dades per garantir funcionament local offline
+    console.warn("Avís: Carregant banc integrat de seguretat...", error);
     state.questions = getFallbackQuestions();
   }
 }
@@ -207,23 +273,19 @@ function initVenues() {
 
     if (filtered.length === 0) {
       container.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 24px; color: var(--text-muted);">
+        <div style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem;">
           No s'ha trobat cap seu que coincideixi amb "<strong>${escapeHtml(filterText)}</strong>".
         </div>`;
       return;
     }
 
     container.innerHTML = filtered.map((s, index) => `
-      <div class="venue-card">
-        <div>
-          <span class="venue-badge">Seu Oficial #${index + 1}</span>
-          <h4 class="venue-name">${escapeHtml(s.nom)}</h4>
-          <p class="venue-address">📍 ${escapeHtml(s.adreca)}</p>
-          <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 14px;">${escapeHtml(s.desc)}</p>
-        </div>
-        <a href="${s.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Obrir a Google Maps
+      <div class="venue-item-box">
+        <div class="venue-item-title">#${index + 1} ${escapeHtml(s.nom)}</div>
+        <div class="venue-item-addr">📍 ${escapeHtml(s.adreca)}</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">${escapeHtml(s.desc)}</div>
+        <a href="${s.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-action btn-action-primary" style="text-decoration: none; padding: 6px 12px; font-size: 0.82rem; min-height: 36px; align-self: flex-start; margin-top: 4px;">
+          🗺️ Obrir ruta a Google Maps ↗
         </a>
       </div>
     `).join("");
@@ -239,8 +301,34 @@ function initVenues() {
 }
 
 // ============================================================
-// Secció 2: Simulador de Test
+// Secció 2: Simulador de Test (Mobile-First)
 // ============================================================
+
+function initSimulator() {
+  updateFilterCounts();
+
+  const segmentButtons = document.querySelectorAll(".segment-btn[data-cat]");
+  segmentButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      segmentButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      setCategoryFilter(btn.getAttribute("data-cat"));
+    });
+  });
+
+  document.getElementById("btn-prev").addEventListener("click", () => navigateQuestion(-1));
+  document.getElementById("btn-next").addEventListener("click", () => navigateQuestion(1));
+  document.getElementById("btn-clear-choice").addEventListener("click", clearCurrentChoice);
+  document.getElementById("btn-finish-quiz").addEventListener("click", confirmFinishQuiz);
+  document.getElementById("btn-restart-quiz").addEventListener("click", restartQuiz);
+
+  const timerBtn = document.getElementById("btn-header-timer");
+  if (timerBtn) {
+    timerBtn.addEventListener("click", toggleTimer);
+  }
+
+  setCategoryFilter("tots");
+}
 
 function updateFilterCounts() {
   const counts = {
@@ -250,37 +338,15 @@ function updateFilterCounts() {
     angles: state.questions.filter(q => q.categoria === "angles").length
   };
 
-  const pTots = document.querySelector('.filter-pill[data-cat="tots"]');
-  const pApt = document.querySelector('.filter-pill[data-cat="aptitudinal"]');
-  const pOfi = document.querySelector('.filter-pill[data-cat="ofimatica"]');
-  const pAng = document.querySelector('.filter-pill[data-cat="angles"]');
+  const pTots = document.querySelector('.segment-btn[data-cat="tots"]');
+  const pApt = document.querySelector('.segment-btn[data-cat="aptitudinal"]');
+  const pOfi = document.querySelector('.segment-btn[data-cat="ofimatica"]');
+  const pAng = document.querySelector('.segment-btn[data-cat="angles"]');
 
-  if (pTots) pTots.textContent = `Tots els blocs (${counts.tots})`;
-  if (pApt) pApt.textContent = `Aptitudinal (${counts.aptitudinal})`;
+  if (pTots) pTots.textContent = `Tots (${counts.tots})`;
+  if (pApt) pApt.textContent = `Aptitud (${counts.aptitudinal})`;
   if (pOfi) pOfi.textContent = `Ofimàtica (${counts.ofimatica})`;
   if (pAng) pAng.textContent = `Anglès (${counts.angles})`;
-}
-
-function initSimulator() {
-  updateFilterCounts();
-  const filterPills = document.querySelectorAll(".filter-pill");
-  filterPills.forEach(pill => {
-    pill.addEventListener("click", () => {
-      filterPills.forEach(p => p.classList.remove("active"));
-      pill.classList.add("active");
-      const cat = pill.getAttribute("data-cat");
-      setCategoryFilter(cat);
-    });
-  });
-
-  document.getElementById("btn-prev").addEventListener("click", () => navigateQuestion(-1));
-  document.getElementById("btn-next").addEventListener("click", () => navigateQuestion(1));
-  document.getElementById("btn-clear-choice").addEventListener("click", clearCurrentChoice);
-  document.getElementById("btn-finish-quiz").addEventListener("click", confirmFinishQuiz);
-  document.getElementById("btn-restart-quiz").addEventListener("click", restartQuiz);
-  document.getElementById("btn-toggle-timer").addEventListener("click", toggleTimer);
-
-  setCategoryFilter("tots");
 }
 
 function setCategoryFilter(cat) {
@@ -291,16 +357,15 @@ function setCategoryFilter(cat) {
     state.filteredQuestions = state.questions.filter(q => q.categoria === cat);
   }
 
-  // Reiniciem l'estat del test
   state.currentIndex = 0;
   state.userAnswers = {};
   state.isFinished = false;
   resetTimer();
   startTimer();
 
-  // Amagar pantalla de resultats i mostrar qüestionari
-  document.getElementById("quiz-results-container").style.display = "none";
-  document.getElementById("quiz-active-container").style.display = "block";
+  // Tornar a mostrar el simulador i la Bottom Bar
+  document.getElementById("bottom-bar").style.display = "block";
+  navigateTo("view-simulador");
 
   renderQuestionNav();
   renderCurrentQuestion();
@@ -314,7 +379,7 @@ function renderQuestionNav() {
     const isCurrent = idx === state.currentIndex ? "current" : "";
     const isAnswered = state.userAnswers[q.id] !== undefined ? "answered" : "";
     return `
-      <button class="q-nav-item ${isCurrent} ${isAnswered}" onclick="jumpToQuestion(${idx})" title="Pregunta ${idx + 1}">
+      <button class="sheet-q-btn ${isCurrent} ${isAnswered}" onclick="jumpToQuestion(${idx})">
         ${idx + 1}
       </button>
     `;
@@ -326,6 +391,7 @@ window.jumpToQuestion = function(idx) {
     state.currentIndex = idx;
     renderQuestionNav();
     renderCurrentQuestion();
+    if (window.closeBottomSheet) window.closeBottomSheet();
   }
 };
 
@@ -335,7 +401,13 @@ function renderCurrentQuestion() {
   const q = state.filteredQuestions[state.currentIndex];
   const total = state.filteredQuestions.length;
 
-  document.getElementById("q-current-number").textContent = `Pregunta ${state.currentIndex + 1} de ${total}`;
+  // Actualitzar botó indicador
+  document.getElementById("q-counter-label").textContent = `${state.currentIndex + 1} / ${total}`;
+
+  // Barra de progrés prima
+  const progressPercent = Math.round(((state.currentIndex + 1) / total) * 100);
+  const progressBar = document.getElementById("quiz-progress-bar");
+  if (progressBar) progressBar.style.width = `${progressPercent}%`;
 
   // Tag de Categoria
   const catTag = document.getElementById("q-category-tag");
@@ -348,21 +420,21 @@ function renderCurrentQuestion() {
     catClass = "cat-angles";
     catNom = "Llengua Estrangera";
   }
-  catTag.className = `category-tag ${catClass}`;
+  catTag.className = `category-pill ${catClass}`;
   catTag.textContent = `${catNom} • ${q.subcategoria}`;
 
-  // Enunciat
+  // Enunciat de la pregunta
   document.getElementById("q-prompt-text").textContent = q.pregunta;
 
-  // Opcions
+  // Opcions de resposta
   const optionsContainer = document.getElementById("q-options-container");
   const selectedIndex = state.userAnswers[q.id];
 
   optionsContainer.innerHTML = q.opcions.map((opt, optIdx) => {
     const isSelected = selectedIndex === optIdx ? "selected" : "";
     return `
-      <button class="option-btn ${isSelected}" onclick="selectAnswer(${q.id}, ${optIdx})">
-        ${escapeHtml(opt)}
+      <button class="option-item ${isSelected}" onclick="selectAnswer(${q.id}, ${optIdx})">
+        <span>${escapeHtml(opt)}</span>
       </button>
     `;
   }).join("");
@@ -416,26 +488,22 @@ function startTimer() {
 function stopTimer() {
   if (state.timerInterval) clearInterval(state.timerInterval);
   state.isTimerRunning = false;
-  const toggleBtn = document.getElementById("btn-toggle-timer");
-  if (toggleBtn) toggleBtn.textContent = "▶ Reprendre";
 }
 
 function resetTimer() {
   if (state.timerInterval) clearInterval(state.timerInterval);
   state.timerSeconds = 0;
   state.isTimerRunning = false;
-  const toggleBtn = document.getElementById("btn-toggle-timer");
-  if (toggleBtn) toggleBtn.textContent = "⏸ Pausar";
   updateTimerDisplay();
 }
 
 function toggleTimer() {
-  const toggleBtn = document.getElementById("btn-toggle-timer");
   if (state.isTimerRunning) {
     stopTimer();
+    const el = document.getElementById("quiz-timer-text");
+    if (el) el.textContent += " (Pausa)";
   } else {
     startTimer();
-    if (toggleBtn) toggleBtn.textContent = "⏸ Pausar";
   }
 }
 
@@ -457,7 +525,7 @@ function confirmFinishQuiz() {
 
   if (answeredCount < total) {
     const unAnswered = total - answeredCount;
-    const confirmMsg = `Has contestat ${answeredCount} de ${total} preguntes (${unAnswered} en blanc).\nRecorda que a les proves oficials els errors penalitzen (-0,33), però les respostes en blanc no penalitzen.\n\nVols finalitzar l'examen ara?`;
+    const confirmMsg = `Has contestat ${answeredCount} de ${total} preguntes (${unAnswered} en blanc).\nRecorda: a les proves oficials els errors resten (-0,33) però les respostes en blanc no resten.\n\nVols finalitzar el test ara?`;
     if (!confirm(confirmMsg)) return;
   }
 
@@ -493,8 +561,11 @@ function finishQuiz() {
   const notaSobre10 = (puntuacioNeta / total) * 10;
   const isPass = notaSobre10 >= 5.0;
 
-  // Desar millor puntuació a localStorage
+  // Desar millor nota
   saveBestScore(state.currentCategory, notaSobre10, puntuacioNeta, total);
+
+  // Amagar Bottom Bar del test
+  document.getElementById("bottom-bar").style.display = "none";
 
   // Mostrar resultats
   displayResults({
@@ -510,13 +581,11 @@ function finishQuiz() {
 }
 
 function displayResults(data) {
-  document.getElementById("quiz-active-container").style.display = "none";
-  const resultsContainer = document.getElementById("quiz-results-container");
-  resultsContainer.style.display = "block";
+  navigateTo("view-results");
 
   document.getElementById("res-score-number").textContent = `${data.notaSobre10.toFixed(2)} / 10`;
   const badgeEl = document.getElementById("res-status-badge");
-  badgeEl.className = `score-badge ${data.isPass ? "pass" : "fail"}`;
+  badgeEl.className = `result-badge ${data.isPass ? "pass" : "fail"}`;
   badgeEl.textContent = data.isPass ? "🎉 APTE / SUPERAT" : "⚠️ NO APTE / MILLORABLE";
 
   document.getElementById("stat-encerts").textContent = data.encerts;
@@ -527,11 +596,8 @@ function displayResults(data) {
   document.getElementById("res-formula-detail").textContent =
     `Càlcul oficial: ${data.encerts} encerts - (${data.errors} errors / 3) = ${data.puntuacioNeta.toFixed(2)} punts nets sobre ${data.total}`;
 
-  // Inicialitzar filtres del mòdul de revisió
   initReviewFilters();
   renderReviewList("all");
-
-  resultsContainer.scrollIntoView({ behavior: "smooth" });
 }
 
 function initReviewFilters() {
@@ -557,12 +623,12 @@ function renderReviewList(filter = "all") {
     if (filter === "wrong") return !isCorrect && !isBlank;
     if (filter === "correct") return isCorrect;
     if (filter === "blank") return isBlank;
-    return true; // all
+    return true;
   });
 
   if (items.length === 0) {
     container.innerHTML = `
-      <div style="text-align: center; padding: 24px; color: var(--text-muted); background: #f8fafc; border-radius: var(--radius-sm);">
+      <div style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.88rem;">
         Cap pregunta en aquest filtre.
       </div>`;
     return;
@@ -574,32 +640,35 @@ function renderReviewList(filter = "all") {
     const isBlank = userChoice === undefined;
 
     let statusClass = "is-wrong";
-    let badgeHtml = `<span class="review-badge ko">❌ Incorrecta (-0,33)</span>`;
+    let badgeText = "❌ Incorrecta (-0,33)";
+    let badgeColor = "var(--danger)";
 
     if (isCorrect) {
       statusClass = "is-correct";
-      badgeHtml = `<span class="review-badge ok">✅ Encert (+1,00)</span>`;
+      badgeText = "✅ Encert (+1,00)";
+      badgeColor = "var(--success)";
     } else if (isBlank) {
       statusClass = "is-blank";
-      badgeHtml = `<span class="review-badge empty">⚪ En blanc (0,00)</span>`;
+      badgeText = "⚪ En blanc (0,00)";
+      badgeColor = "var(--warning)";
     }
 
-    const userChoiceText = isBlank ? "<em>No contestada (en blanc)</em>" : escapeHtml(q.opcions[userChoice]);
+    const userChoiceText = isBlank ? "<em>No contestada</em>" : escapeHtml(q.opcions[userChoice]);
     const correctChoiceText = escapeHtml(q.opcions[q.respostaCorrecta]);
 
     return `
-      <div class="review-item ${statusClass}">
-        <div class="review-header">
-          <span style="font-weight: 700; color: var(--primary);">#${q.id} • ${escapeHtml(q.subcategoria)}</span>
-          ${badgeHtml}
+      <div class="review-card-item ${statusClass}">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-weight: 800; font-size: 0.85rem; color: var(--primary);">#${q.id} • ${escapeHtml(q.subcategoria)}</span>
+          <span style="font-size: 0.75rem; font-weight: 800; color: ${badgeColor};">${badgeText}</span>
         </div>
-        <p style="font-weight: 600; margin-bottom: 12px; font-size: 0.98rem;">${escapeHtml(q.pregunta)}</p>
-        <div style="font-size: 0.88rem; display: flex; flex-direction: column; gap: 4px;">
-          <div><strong>La teva resposta:</strong> <span style="${isCorrect ? 'color: var(--success); font-weight: 600;' : 'color: var(--danger); font-weight: 600;'}">${userChoiceText}</span></div>
-          <div><strong>Resposta correcta oficial:</strong> <span style="color: var(--success); font-weight: 600;">${correctChoiceText}</span></div>
+        <p style="font-weight: 700; margin-bottom: 8px; font-size: 0.95rem;">${escapeHtml(q.pregunta)}</p>
+        <div style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 3px;">
+          <div><strong>La teva resposta:</strong> <span style="color: ${isCorrect ? 'var(--success)' : 'var(--danger)'}; font-weight: 600;">${userChoiceText}</span></div>
+          <div><strong>Resposta correcta:</strong> <span style="color: var(--success); font-weight: 600;">${correctChoiceText}</span></div>
         </div>
-        <div class="review-explanation">
-          <strong>💡 Raonament i explicació:</strong> ${escapeHtml(q.explicacio)}
+        <div class="review-expl-box">
+          <strong>💡 Raonament:</strong> ${escapeHtml(q.explicacio)}
         </div>
       </div>
     `;
@@ -607,12 +676,11 @@ function renderReviewList(filter = "all") {
 }
 
 function restartQuiz() {
-  document.getElementById("quiz-results-container").style.display = "none";
   setCategoryFilter(state.currentCategory);
 }
 
 // ============================================================
-// Persistència a localStorage (Millors Notes i Pla d'Estudis)
+// Persistència a localStorage
 // ============================================================
 
 const STORAGE_KEYS = {
@@ -630,52 +698,30 @@ function saveBestScore(category, score10, rawScore, total) {
         score10: Number(score10.toFixed(2)),
         rawScore: Number(rawScore.toFixed(2)),
         total,
-        date: new Date().toLocaleDateString("ca-ES", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" })
+        date: new Date().toLocaleDateString("ca-ES", { day: "2-digit", month: "2-digit" })
       };
       localStorage.setItem(STORAGE_KEYS.BEST_SCORES, JSON.stringify(data));
       loadBestScores();
     }
   } catch (e) {
-    console.error("Error guardant millor puntuació a localStorage:", e);
+    console.error("Error guardant a localStorage:", e);
   }
 }
 
 function loadBestScores() {
   try {
     const data = JSON.parse(localStorage.getItem(STORAGE_KEYS.BEST_SCORES) || "{}");
-    const container = document.getElementById("best-scores-badge");
-    const headerBtn = document.getElementById("header-best-score");
-
-    if (data.tots && headerBtn) {
-      headerBtn.textContent = `⭐ Millor Nota: ${data.tots.score10}/10`;
-    }
-
-    if (container) {
-      const cats = [
-        { id: "tots", label: "Global (Tots els blocs)" },
-        { id: "aptitudinal", label: "Aptitudinal" },
-        { id: "ofimatica", label: "Ofimàtica" },
-        { id: "angles", label: "Anglès" }
-      ];
-
-      container.innerHTML = cats.map(c => {
-        const item = data[c.id];
-        return `
-          <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 10px 14px; border-radius: var(--radius-sm);">
-            <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">${c.label}</div>
-            <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">${item ? item.score10 + "/10" : "Sense dades"}</div>
-            <div style="font-size: 0.75rem; color: var(--text-light);">${item ? "Registrat: " + item.date : "Fes un test per enregistrar"}</div>
-          </div>
-        `;
-      }).join("");
+    const drawerScore = document.getElementById("drawer-best-score");
+    if (drawerScore && data.tots) {
+      drawerScore.textContent = `${data.tots.score10} / 10`;
     }
   } catch (e) {
-    console.error("Error carregant millors notes:", e);
+    console.error("Error carregant de localStorage:", e);
   }
 }
 
 // ============================================================
-// Secció 3: Pla d'Estudis Interactiu
+// Pla d'Estudis Interactiu
 // ============================================================
 
 function initStudyPlan() {
@@ -686,19 +732,13 @@ function initStudyPlan() {
   const savedChecks = getSavedStudyPlan();
 
   container.innerHTML = TASQUES_PLAN.map(dia => `
-    <div class="day-card">
-      <div class="day-header">
-        <span class="day-date">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 4h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
-          ${escapeHtml(dia.dia)}
-        </span>
-        <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted);">${escapeHtml(dia.titol)}</span>
-      </div>
-      <div class="day-tasks">
+    <div class="plan-day-box">
+      <div class="plan-day-header">${escapeHtml(dia.dia)}: ${escapeHtml(dia.titol)}</div>
+      <div>
         ${dia.tasques.map(t => {
           const isDone = !!savedChecks[t.id];
           return `
-            <label class="task-item ${isDone ? 'completed' : ''}" id="label_${t.id}">
+            <label class="plan-task-row ${isDone ? 'done' : ''}" id="label_${t.id}">
               <input type="checkbox" id="${t.id}" ${isDone ? 'checked' : ''} onchange="toggleTaskCheck('${t.id}')">
               <span>${escapeHtml(t.text)}</span>
             </label>
@@ -712,7 +752,7 @@ function initStudyPlan() {
 
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
-      if (confirm("Segur que vols reiniciar el seguiment del teu pla d'estudis? Es desmarcaran totes les caselles.")) {
+      if (confirm("Vols reiniciar totes les caselles del pla d'estudis?")) {
         localStorage.removeItem(STORAGE_KEYS.STUDY_PLAN);
         initStudyPlan();
       }
@@ -735,10 +775,10 @@ window.toggleTaskCheck = function(taskId) {
 
   if (checkbox && checkbox.checked) {
     saved[taskId] = true;
-    if (label) label.classList.add("completed");
+    if (label) label.classList.add("done");
   } else {
     delete saved[taskId];
-    if (label) label.classList.remove("completed");
+    if (label) label.classList.remove("done");
   }
 
   localStorage.setItem(STORAGE_KEYS.STUDY_PLAN, JSON.stringify(saved));
@@ -761,7 +801,7 @@ function updateStudyProgress() {
 }
 
 // ============================================================
-// Botó de Compartir (Web Share API i Portapapers)
+// Compartir
 // ============================================================
 
 function initShareButton() {
@@ -770,31 +810,25 @@ function initShareButton() {
 
   shareBtn.addEventListener("click", async () => {
     const shareData = {
-      title: "BcnOps 2026 — Simulador d'Exàmens Ajuntament de Barcelona",
-      text: "Prepara les proves d'ampliació de borses 2026 de l'Ajuntament de Barcelona amb aquest simulador gratuït i banc de preguntes!",
+      title: "BcnOps 2026 — Simulador de Test Mòbil (Ajuntament de Barcelona)",
+      text: "Prepara les borses de treball 2026 de l'Ajuntament de Barcelona amb aquest simulador mòbil de 75 preguntes!",
       url: window.location.href
     };
 
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-      } catch (err) {
-        // L'usuari ha cancel·lat o no és permès
-      }
+      } catch (err) {}
     } else {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        alert("Enllaç copiat al porta-retalls! Ja el pots compartir amb altres aspirants.");
+        alert("Enllaç copiat al porta-retalls! Ja el pots compartir.");
       } catch (e) {
-        prompt("Copia aquest enllaç per compartir l'eina:", window.location.href);
+        prompt("Copia aquest enllaç:", window.location.href);
       }
     }
   });
 }
-
-// ============================================================
-// Utilitats Auxiliars
-// ============================================================
 
 function escapeHtml(str) {
   if (typeof str !== "string") return str;
@@ -806,9 +840,6 @@ function escapeHtml(str) {
     .replace(/'/g, "&#039;");
 }
 
-/**
- * Banc de seguretat integrat per a execució directa offline/file://
- */
 function getFallbackQuestions() {
   return [
   {

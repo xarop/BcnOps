@@ -1,16 +1,17 @@
 /* ============================================================
-   BcnOps 2026 — Estils Moderns Mobile-First
-   Ajuntament de Barcelona (Expedient 31/2026)
+   BcnOps 2026 — UI/UX Mobile-First Sense Distraccions
+   Enfocat a la pràctica de testos en mòbil (Ajuntament de BCN 31/2026)
    ============================================================ */
 
 :root {
   --primary: #1a56db;
   --primary-hover: #1e429f;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
   --primary-dark: #0f2d7a;
   --bcn-red: #d90429;
-  --bcn-red-hover: #b80320;
+  --bcn-red-light: #fef2f2;
   --accent: #0284c7;
-  --accent-light: #e0f2fe;
   --success: #10b981;
   --success-bg: #ecfdf5;
   --success-border: #a7f3d0;
@@ -19,10 +20,6 @@
   --danger-border: #fecaca;
   --warning: #f59e0b;
   --warning-bg: #fffbeb;
-  --warning-border: #fde68a;
-  --cat-aptitudinal: #8b5cf6;
-  --cat-ofimatica: #059669;
-  --cat-angles: #d97706;
 
   --bg: #f8fafc;
   --card-bg: #ffffff;
@@ -30,16 +27,16 @@
   --text-muted: #64748b;
   --text-light: #94a3b8;
   --border-color: #e2e8f0;
-  --border-hover: #cbd5e1;
 
+  --header-height: 54px;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -48,194 +45,284 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html {
+html, body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font-family);
   font-size: 16px;
-  scroll-behavior: smooth;
+  line-height: 1.5;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-family);
-  background-color: var(--bg);
-  color: var(--text-main);
-  line-height: 1.6;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 /* ============================================================
-   Capçalera i Banner Oficial Destacat
+   Header Minimalista Mobile (App Bar Neta)
    ============================================================ */
 
-.official-banner {
-  background: linear-gradient(90deg, #b80320 0%, #d90429 100%);
-  color: #ffffff;
-  padding: 10px 16px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
-
-.official-banner-content {
-  max-width: 1080px;
-  margin: 0 auto;
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  height: var(--header-height);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding: 0 16px;
 }
 
-.official-banner a {
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.brand-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--primary-dark);
+}
+
+.brand-tag {
+  background: var(--bcn-red-light);
+  color: var(--bcn-red);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+/* Cronòmetre de la capçalera */
+.header-timer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #ffffff;
-  color: #b80320;
-  padding: 5px 12px;
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
   border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  font-family: monospace, ui-monospace, sans-serif;
+  font-size: 0.92rem;
   font-weight: 700;
-  text-decoration: none;
+  color: var(--text-main);
+  cursor: pointer;
   transition: all 0.2s ease;
-  white-space: nowrap;
 }
 
-.official-banner a:hover {
-  background: #fef2f2;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+.header-timer:hover {
+  background: #e2e8f0;
 }
 
-header.app-header {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-  color: #ffffff;
-  padding: 24px 16px 20px;
-}
-
-.header-container {
-  max-width: 1080px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.header-brand {
+/* Botó Menú Hamburguesa */
+.btn-hamburger {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease;
 }
 
-.header-titles h1 {
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.btn-hamburger:hover {
+  background: #f1f5f9;
 }
 
-.badge-official {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  font-size: 0.72rem;
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.header-titles p {
-  font-size: 0.95rem;
-  opacity: 0.9;
-  margin-top: 4px;
-}
-
-.header-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.btn-hamburger svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* ============================================================
-   Layout Principal i Pestanyes (Mobile-First)
+   Menú Hamburguesa Lliscant (Side Drawer)
    ============================================================ */
 
-.main-container {
-  max-width: 1080px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 16px;
-  flex: 1;
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
 }
 
-.nav-tabs-wrapper {
-  margin-bottom: 20px;
-  position: sticky;
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  position: fixed;
   top: 0;
-  z-index: 50;
-  background-color: var(--bg);
-  padding: 6px 0;
-}
-
-.nav-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  background: #e2e8f0;
-  padding: 5px;
-  border-radius: var(--radius-md);
-}
-
-.tab-btn {
-  background: transparent;
-  border: none;
-  padding: 10px 8px;
-  font-family: inherit;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
+  right: 0;
+  width: 86%;
+  max-width: 340px;
+  height: 100%;
+  background: #ffffff;
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+}
+
+.drawer-panel.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.btn-drawer-close {
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  transition: all 0.2s ease;
-  min-height: 44px;
+  cursor: pointer;
+  color: var(--text-muted);
 }
 
-.tab-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
-.tab-btn:hover {
+.btn-drawer-close:hover {
+  background: #f1f5f9;
   color: var(--text-main);
-  background: rgba(255,255,255,0.6);
 }
 
-.tab-btn.active {
-  background: var(--card-bg);
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.drawer-official-box {
+  background: linear-gradient(135deg, #b80320 0%, #d90429 100%);
+  color: #ffffff;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+}
+
+.drawer-official-box p {
+  opacity: 0.95;
+  margin-bottom: 10px;
+}
+
+.drawer-official-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #ffffff;
+  color: #b80320;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.drawer-nav-item svg {
+  width: 20px;
+  height: 20px;
   color: var(--primary);
-  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
-/* Contingut de les seccions */
-.tab-pane {
+.drawer-nav-item:hover, .drawer-nav-item.active {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.drawer-footer {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border-color);
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ============================================================
+   Contenidor Principal & Vistes
+   ============================================================ */
+
+.main-content {
+  flex: 1;
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 14px 14px 90px; /* marge inferior per a la Bottom Bar */
+}
+
+.app-view {
   display: none;
-  animation: fadeIn 0.25s ease-out;
+  animation: fadeIn 0.2s ease-out;
 }
 
-.tab-pane.active {
+.app-view.active {
   display: block;
 }
 
@@ -245,840 +332,491 @@ header.app-header {
 }
 
 /* ============================================================
-   Targetes i Components visuals
+   VISTA 1: EL SIMULADOR DE TEST (PROTAGONISTA ABSOLUT)
    ============================================================ */
 
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: var(--shadow-sm);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
-}
-
-.card-title {
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.grid-2 {
+/* Segmented Control de Blocs (Compacte Mòbil) */
+.category-segmented {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-@media (min-width: 720px) {
-  .grid-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-@media (min-width: 640px) {
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 900px) {
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Botons Generals */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: inherit;
-  font-size: 0.92rem;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 44px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #ffffff;
-}
-.btn-primary:hover {
-  background: var(--primary-hover);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-danger {
-  background: var(--bcn-red);
-  color: #ffffff;
-}
-.btn-danger:hover {
-  background: var(--bcn-red-hover);
-}
-
-.btn-secondary {
-  background: #f1f5f9;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-}
-.btn-secondary:hover {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
   background: #e2e8f0;
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.4);
-  color: #ffffff;
-}
-.btn-outline:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-.btn-sm {
-  font-size: 0.82rem;
-  padding: 6px 12px;
-  min-height: 34px;
-}
-
-/* ============================================================
-   Secció 1: Logística i Convocatòria
-   ============================================================ */
-
-.hero-box {
-  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-  border: 1px solid #bfdbfe;
+  padding: 4px;
   border-radius: var(--radius-md);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.hero-title {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--primary-dark);
-  margin-bottom: 8px;
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.88rem;
-  color: var(--text-main);
-  background: #ffffff;
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border-color);
-  font-weight: 500;
-}
-
-.schedule-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.schedule-step {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.step-time {
-  background: var(--accent-light);
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-}
-
-.checklist-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.checklist-items li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.92rem;
-  background: #f8fafc;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--success);
-}
-
-/* Filtre de seus i mapes */
-.search-input-wrapper {
-  position: relative;
-  margin-bottom: 16px;
-}
-
-.search-input {
-  width: 100%;
-  padding: 12px 16px 12px 42px;
-  font-size: 0.95rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  transition: all 0.2s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-light);
-  pointer-events: none;
-}
-
-.venue-card {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
-  transition: all 0.2s ease;
-}
-
-.venue-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-md);
-}
-
-.venue-badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--primary);
-  background: var(--accent-light);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  margin-bottom: 8px;
-  width: fit-content;
-}
-
-.venue-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 4px;
-}
-
-.venue-address {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-}
-
-/* ============================================================
-   Secció 2: Simulador de Test
-   ============================================================ */
-
-.quiz-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.filter-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.filter-pill {
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  background: #f1f5f9;
-  border: 1px solid var(--border-color);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.filter-pill:hover {
-  background: #e2e8f0;
-}
-
-.filter-pill.active {
-  background: var(--primary);
-  color: #ffffff;
-  border-color: var(--primary);
-}
-
-.quiz-timer-box {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #1e293b;
-  color: #f8fafc;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  font-family: monospace, ui-monospace, sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.question-status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 12px;
-  font-size: 0.88rem;
-  color: var(--text-muted);
 }
 
-.category-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
+.segment-btn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
   font-size: 0.78rem;
   font-weight: 700;
-  text-transform: uppercase;
-}
-
-.cat-aptitudinal {
-  background: #ede9fe;
-  color: #6d28d9;
-}
-.cat-ofimatica {
-  background: #d1fae5;
-  color: #065f46;
-}
-.cat-angles {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-/* Graella de salts ràpids de preguntes */
-.question-nav-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 18px;
-  padding: 10px;
-  background: #f8fafc;
+  color: var(--text-muted);
+  padding: 8px 4px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
-}
-
-.q-nav-item {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-color);
-  background: #ffffff;
-  color: var(--text-main);
   cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: all 0.15s ease;
 }
 
-.q-nav-item:hover {
-  border-color: var(--primary);
+.segment-btn.active {
+  background: #ffffff;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
 }
 
-.q-nav-item.current {
+/* Fila de control de pregunta: Número + Selector ràpid + Tag */
+.quiz-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.btn-jump-sheet {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.btn-jump-sheet:hover {
+  background: #f1f5f9;
+}
+
+.category-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.cat-aptitudinal { background: #ede9fe; color: #6d28d9; }
+.cat-ofimatica { background: #d1fae5; color: #065f46; }
+.cat-angles { background: #fef3c7; color: #92400e; }
+
+/* Barra de progrés prima (Duolingo-style) */
+.quiz-progress-track {
+  width: 100%;
+  height: 5px;
+  background: #e2e8f0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.quiz-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
+/* Targeta de la Pregunta */
+.question-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.question-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+/* Opcions de Resposta Tàctils */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-item {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 0.96rem;
+  line-height: 1.4;
+  text-align: left;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+  background: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.option-item:hover {
+  border-color: var(--primary-border);
+  background: #f8fafc;
+}
+
+.option-item.selected {
   border-color: var(--primary);
-  background: var(--accent-light);
+  background: var(--primary-light);
   color: var(--primary-dark);
-  font-weight: 800;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px var(--primary);
 }
 
-.q-nav-item.answered {
+/* ============================================================
+   Barra d'Accions Inferior Fixa (Bottom Thumb Bar)
+   ============================================================ */
+
+.bottom-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-color);
+  padding: 10px 16px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+.bottom-action-container {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.btn-action {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  transition: all 0.15s ease;
+}
+
+.btn-action-primary {
+  background: var(--primary);
+  color: #ffffff;
+  flex: 1;
+}
+
+.btn-action-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-action-secondary {
+  background: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-action-secondary:hover {
+  background: #e2e8f0;
+}
+
+.btn-action-danger {
+  background: var(--bcn-red);
+  color: #ffffff;
+}
+
+.btn-action-danger:hover {
+  background: #b80320;
+}
+
+.btn-action-icon {
+  width: 44px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Bottom Sheet de salts de preguntes (Modal Graella Mòbil)
+   ============================================================ */
+
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.sheet-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sheet-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 75vh;
+  background: #ffffff;
+  z-index: 151;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  transform: translateY(100%);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-panel.open {
+  transform: translateY(0);
+}
+
+.sheet-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sheet-grid {
+  padding: 16px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+  gap: 8px;
+}
+
+.sheet-q-btn {
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.sheet-q-btn.current {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.sheet-q-btn.answered {
   background: #dbeafe;
   border-color: #93c5fd;
   color: var(--primary-dark);
 }
 
-/* Targeta de la pregunta */
-.quiz-card {
-  background: #ffffff;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.quiz-prompt {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 18px;
-  line-height: 1.5;
-}
-
-.quiz-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.option-btn {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 14px 16px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  text-align: left;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--border-color);
-  background: #ffffff;
-  color: var(--text-main);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 48px;
-}
-
-.option-btn:hover {
-  border-color: var(--accent);
-  background: #f8fafc;
-}
-
-.option-btn.selected {
-  border-color: var(--primary);
-  background: #eff6ff;
-  color: var(--primary-dark);
-  font-weight: 600;
-  box-shadow: 0 0 0 1px var(--primary);
-}
-
-.quiz-footer-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
 /* ============================================================
-   Resultats i Mòdul de Revisió d'Errors
+   Resultats & Revisió d'Errors
    ============================================================ */
 
-.results-banner {
+.results-card {
   background: #ffffff;
-  border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  padding: 24px;
-  margin-bottom: 24px;
+  border-radius: var(--radius-lg);
+  padding: 24px 18px;
   text-align: center;
+  margin-bottom: 18px;
 }
 
-.score-display {
-  font-size: 3rem;
-  font-weight: 800;
+.score-huge {
+  font-size: 3.2rem;
+  font-weight: 900;
   color: var(--primary);
   line-height: 1;
-  margin: 12px 0 6px;
+  margin: 10px 0;
 }
 
-.score-badge {
+.result-badge {
   display: inline-block;
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
-.score-badge.pass {
-  background: var(--success-bg);
-  color: var(--success);
-  border: 1px solid var(--success-border);
-}
+.result-badge.pass { background: var(--success-bg); color: var(--success); }
+.result-badge.fail { background: var(--danger-bg); color: var(--danger); }
 
-.score-badge.fail {
-  background: var(--danger-bg);
-  color: var(--danger);
-  border: 1px solid var(--danger-border);
-}
-
-.stats-grid {
+.stats-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin: 20px 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 18px 0;
 }
 
-@media (min-width: 600px) {
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.stat-card {
+.stat-cell {
   background: #f8fafc;
-  padding: 14px;
+  padding: 10px 4px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
 }
 
-.stat-val {
-  font-size: 1.4rem;
-  font-weight: 800;
+.stat-num { font-size: 1.25rem; font-weight: 800; }
+.stat-sub { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+
+.review-card-item {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
 }
 
-.stat-lbl {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-top: 2px;
-}
+.review-card-item.is-correct { border-left: 5px solid var(--success); }
+.review-card-item.is-wrong { border-left: 5px solid var(--danger); }
+.review-card-item.is-blank { border-left: 5px solid var(--warning); }
 
-.formula-expl {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  background: #f1f5f9;
-  padding: 8px 12px;
+.review-expl-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 10px 12px;
   border-radius: var(--radius-sm);
-  display: inline-block;
+  font-size: 0.88rem;
   margin-top: 10px;
 }
 
-/* Llistat de revisió detallada */
-.review-item {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 18px;
-  margin-bottom: 14px;
-  background: #ffffff;
-}
-
-.review-item.is-correct {
-  border-left: 5px solid var(--success);
-}
-
-.review-item.is-wrong {
-  border-left: 5px solid var(--danger);
-}
-
-.review-item.is-blank {
-  border-left: 5px solid var(--warning);
-}
-
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.review-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-}
-
-.review-badge.ok {
-  background: var(--success-bg);
-  color: var(--success);
-}
-.review-badge.ko {
-  background: var(--danger-bg);
-  color: var(--danger);
-}
-.review-badge.empty {
-  background: var(--warning-bg);
-  color: var(--warning);
-}
-
-.review-explanation {
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: var(--radius-sm);
-  background: #f8fafc;
-  border: 1px solid var(--border-color);
-  font-size: 0.88rem;
-}
-
-.review-explanation strong {
-  color: var(--primary-dark);
-}
-
 /* ============================================================
-   Secció 3: Pla d'Estudis Interactiu
+   Targetes Generals (Pla, Seus, Recursos)
    ============================================================ */
 
-.progress-banner {
+.section-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 12px;
 }
 
-.progress-bar-bg {
+/* Input de cerca de seus */
+.search-input-field {
   width: 100%;
-  height: 12px;
-  background: #e2e8f0;
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--success) 100%);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-
-.day-card {
-  background: #ffffff;
+  padding: 12px 14px;
+  font-size: 0.92rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  margin-bottom: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  font-family: inherit;
+  margin-bottom: 12px;
 }
 
-.day-header {
+.venue-item-box {
   background: #f8fafc;
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--border-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 12px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 700;
-  font-size: 0.98rem;
-}
-
-.day-date {
-  color: var(--primary);
-  display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 8px;
 }
 
-.day-tasks {
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.venue-item-title {
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--text-main);
 }
 
-.task-item {
+.venue-item-addr {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* Tasques del Pla d'estudis */
+.plan-day-box {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.plan-day-header {
+  background: #f8fafc;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.plan-task-row {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  font-size: 0.92rem;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.task-item input[type="checkbox"] {
+.plan-task-row:last-child {
+  border-bottom: none;
+}
+
+.plan-task-row input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  margin-top: 3px;
-  cursor: pointer;
+  margin-top: 2px;
   accent-color: var(--primary);
 }
 
-.task-item.completed span {
+.plan-task-row.done span {
   text-decoration: line-through;
-  color: var(--text-muted);
+  color: var(--text-light);
 }
 
-/* ============================================================
-   Secció 4: Enllaços i Fonts d'Exàmens Antics
-   ============================================================ */
-
-.repo-card {
-  background: #ffffff;
+/* Recursos */
+.resource-box {
+  background: #f8fafc;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.2s ease;
-  height: 100%;
-}
-
-.repo-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent);
-}
-
-.repo-tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  margin-bottom: 8px;
-  width: fit-content;
-}
-
-.tag-official {
-  background: #fef2f2;
-  color: #b80320;
-}
-.tag-psico {
-  background: #ede9fe;
-  color: #6d28d9;
-}
-.tag-ofim {
-  background: #d1fae5;
-  color: #065f46;
-}
-.tag-lang {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.repo-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-
-.repo-desc {
-  font-size: 0.86rem;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-/* ============================================================
-   Peu de pàgina
-   ============================================================ */
-
-footer.app-footer {
-  background: #0f172a;
-  color: #94a3b8;
-  padding: 28px 16px;
-  margin-top: 40px;
-  font-size: 0.85rem;
-  border-top: 1px solid #1e293b;
-}
-
-.footer-content {
-  max-width: 1080px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  text-align: center;
-}
-
-.footer-links {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer-links a {
-  color: #cbd5e1;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-/* ============================================================
-   Millores Responsives (Mòbil & Escriptori)
-   ============================================================ */
-
-@media (max-width: 600px) {
-  .header-titles h1 {
-    font-size: 1.35rem;
-  }
-  .nav-tabs {
-    gap: 4px;
-    padding: 3px;
-  }
-  .tab-btn {
-    font-size: 0.78rem;
-    padding: 8px 4px;
-  }
-  .tab-btn span {
-    font-size: 0.75rem;
-  }
-  .quiz-footer-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-  .quiz-footer-actions .btn {
-    width: 100%;
-  }
+  gap: 6px;
 }
