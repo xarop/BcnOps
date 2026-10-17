@@ -51,7 +51,7 @@
    - Filtres interactius: Totes, Només fallades, Només encertades, En blanc.
    - Mostra la resposta marcada per l'aspirant, la resposta oficial correcta i l'**explicació raonada i didàctica**.
 3. **Filtre per Blocs:**
-   - Test complet (27 preguntes) o test específic per àrea: *Aptitudinal*, *Ofimàtica* o *Anglès*.
+   - Test complet (75 preguntes, 25 per bloc) o test específic per àrea: *Aptitudinal*, *Ofimàtica* o *Anglès*.
 4. **Pla d'Estudis Interactiu (17 al 23 d'octubre):**
    - Calendarització diària amb caselles de verificació (*checkboxes*).
    - Barra de progrés percentual dinàmica.
@@ -97,7 +97,7 @@ El fitxer `questions.json` és un *array* d'objectes JSON. Per afegir una nova p
 
 ```json
 {
-  "id": 28,
+  "id": 76,
   "categoria": "ofimatica",
   "subcategoria": "Fulls de càlcul",
   "pregunta": "Quina funció permet comptar les cel·les que contenen números dins del rang A1:A10?",
