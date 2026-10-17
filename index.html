@@ -6,11 +6,11 @@
     <title>BcnOps 2026 — Simulador d'Exàmens</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .filter-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
-        .filter-row .btn { font-size:0.85rem; padding:6px 12px; }
-        .note { font-size:0.85rem; color:#64748B; font-style:italic; }
-        .quiz-header { display:flex; flex-wrap:wrap; align-items:center; gap:10px; justify-content:space-between; }
-        .quiz-header .q-count { font-weight:700; color:var(--primary); }
+        .filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+        .filter-row .btn{font-size:0.85rem;padding:6px 12px;}
+        .note{font-size:0.85rem;color:#64748B;font-style:italic;}
+        .quiz-header{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;}
+        .quiz-header .q-count{font-weight:700;color:var(--primary);}
     </style>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <p>Simulador d'exàmens d'ampliació de borses — Ajuntament de Barcelona</p>
             <div class="header-actions">
                 <button class="btn" id="btn-best-score">Millor puntuació: —</button>
-                <button class="btn s               tn-reset-plan">Neteja plan d'estudis</button>
+                <button class="btn secondary" id="btn-reset-plan">Neteja plan d'estudis</button>
             </div>
         </div>
     </header>
@@ -35,21 +35,30 @@
         </nav>
 
         <main id="content">
-            <section id="tab-inici" class="active"            <section id="tab-inici" class="active"         2>Benvingut a            </h2>
-                    <p>Prepara't per a l'ampliació de borses de l'Aj                    <p>Prepara'ci                    <p>Prepara't per a l'ampliació de borses de l'Aj                    /strong> d'exàmens amb 18 qüestions (aptitudinal, ofimàtica i llengua estrangera).</li>
-                        <li>Càlcul de puntuació segons <em>Encerts − Errors/3</em>.</li>
-                        <li>Un <strong>plan d'estudis</strong>              tr    l i seguiment.</li>
-                        <li>Un repàs de <stro                        <li>Un repàs de <stro                        <li                              <li>Un repàs de <stro                        <li>Un                            <li>Un repàs de <stro                        <li>Un rMillor puntuació</h3>
-                    <div id="best-score" class="score-banner">—</div>
+            <section id="tab-inici" class="active">
+                                                                     a            </                        <p>Prepara't per a l'ampliació de borses de l'Ajuntament de Barcelona. L'aplicaci                                                                     a            </     /s                                      ptitudinal, ofimàtica i llengua estrangera).</li>
+                        <li>Càlcul de p                        <li>Càlcul de p                        <li>Càlcul de p           >plan                  >         s de treball i seguiment.</li>
+                        <li>Un repàs de <strong>recursos</strong> i fitxers d'ajuda.</li>
+                    </ul>
+                                                                                                                                                                      Millor puntuació</h3>
+                    <div id="best-score" class="score-ban     —</div>
                 </div>
             </section>
 
             <section id="tab-simulador">
-                <div id="banner" class="score-banner" style="display:none;"></div                <div id="banner" class="score-banner" style="display:none;"></div                <div id="banner" class="score-banner" style="display:none;"></div                <div id="banner" class="score-banner" style="display:none;"></div                <div id="banner" clasur                <div id="banner" class="score-banner" style="display:none;"></div         /div>
-                    <div id="options-area"></div>
-                    <button class="btn-submit" id                    <button class="btn-submit" id                    <button class="btn-submit" id                    <button class="btn-submit" id                    <button class="btn-submit" id                    <button class="btn-submit" id                    <button class="btn-submit" id          re                    <button class="btnades</h3>
-                    <div id="review-list"></div                    < <d                    <div id="revi                  <button class="btn" id="btn-retry" onclick="resetQuiz()">Tornar a fer</button>
-                        <button class="btn secondary" id="btn-next-tab">Ir al plan d'estudis</button>
+                <div id="banner" class="score-banner" style="display:none;"></div>
+                <div id="quiz-view">
+                    <div class="quiz-header">
+                        <span class="q-count" id="q-counter">Pregunta 1 de 18</span>
+                        <span class="timer" id="timer">Temps: 00:00</span>
+                        <span id="current-cat"></span>
                     </div>
+                    <div id="question-area"></div>
+                    <div id="options-area"></div>
+                    <button class="btn-submit" id="btn-submit" onclick="submitQuiz()">Enviar qüestió</button>
                 </div>
-            </section>
+                             lts-area" style="display:none;">
+                    <h3 id="results-title">Resultat</h3>
+                    <div class="results-grid" id="results-grid"></div>
+                    <h3 id="re                    <h3 id="re                    <h3 id="re          iv            list"></div                      <d                    <h3 id="re                               <h3 id="re                    <h3 id="re                    <button>
+                        <button                        <button             al                        <button                        <button             al          </section>
