@@ -1140,9 +1140,8 @@ body {
   white-space: nowrap;
 }
 
-/* Toggle switch al drawer (alineat a la dreta) */
+/* Toggle switch al drawer */
 .drawer-toggle-switch {
-  margin-left: auto;
   flex-shrink: 0;
 }
 
