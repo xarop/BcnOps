@@ -565,6 +565,89 @@ body {
   font-weight: 700;
 }
 
+/* Estils Mode Exprés (Feedback Immediat) */
+.option-item.correct {
+  border-color: var(--success) !important;
+  background: var(--success-bg) !important;
+  color: #14532d !important;
+  font-weight: 800;
+  box-shadow: 0 0 0 1px var(--success);
+}
+
+.option-item.wrong {
+  border-color: var(--danger) !important;
+  background: var(--danger-bg) !important;
+  color: #7f1d1d !important;
+  font-weight: 800;
+  box-shadow: 0 0 0 1px var(--danger);
+}
+
+.option-item.disabled {
+  pointer-events: none;
+}
+
+.instant-feedback-card {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.22s ease-out;
+}
+
+.instant-feedback-card.correct {
+  background: var(--success-bg);
+  border-color: #86efac;
+}
+
+.instant-feedback-card.wrong {
+  background: var(--danger-bg);
+  border-color: #fca5a5;
+}
+
+.feedback-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.instant-feedback-card.correct .feedback-badge {
+  color: var(--success);
+}
+
+.instant-feedback-card.wrong .feedback-badge {
+  color: var(--danger);
+}
+
+.feedback-explanation {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-main);
+  background: #ffffff;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Comptador exprés en viu */
+.express-stats-live {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.express-hit {
+  color: var(--success);
+}
+
+.express-miss {
+  color: var(--danger);
+}
+
 /* ============================================================
    Barra d'Accions Inferior Fixa (Thumb Action Bar)
    ============================================================ */

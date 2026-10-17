@@ -73,6 +73,11 @@
           <span>Simulador de Test</span>
         </button>
 
+        <button class="drawer-nav-item" onclick="startExpressMode()">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+          <span>Entrenament Exprés (Immediat)</span>
+        </button>
+
         <button class="drawer-nav-item" onclick="navigateTo('view-plan')">
           <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
           <span>Pla d'Estudis (17 - 23 Oct)</span>
@@ -137,7 +142,8 @@
         <div class="mode-selector">
           <span>Mode:</span>
           <select id="exam-mode-select" class="mode-select-input" aria-label="Mode de simulacre">
-            <option value="simulacre30">Simulacre Oficial (30 preg. aleatòries)</option>
+            <option value="simulacre30" selected>Simulacre Oficial (30 preg. aleatòries)</option>
+            <option value="express">Mode Exprés (Feedback Immediat)</option>
             <option value="rapida15">Pràctica Ràpida (15 preg. aleatòries)</option>
             <option value="bancComplet">Banc Complet (Totes)</option>
           </select>
@@ -148,9 +154,12 @@
         </button>
       </div>
 
-      <!-- Fila superior de la pregunta: Tag + Selector Ràpid Bottom Sheet -->
+      <!-- Fila superior de la pregunta: Tag + Selector Ràpid Bottom Sheet + Stats Exprés -->
       <div class="quiz-top-bar">
         <span id="q-category-tag" class="category-pill cat-aptitudinal">Aptitudinal</span>
+        <div class="express-stats-live" id="express-stats-live" style="display: none;">
+          <span class="express-hit" id="exp-hits">0 correctes</span> • <span class="express-miss" id="exp-misses">0 errors</span>
+        </div>
         <button class="btn-jump-sheet" id="btn-open-sheet" aria-label="Obrir graella de preguntes">
           <span id="q-counter-label">1 / 30</span>
           <svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
@@ -168,6 +177,18 @@
         
         <div class="options-list" id="q-options-container" role="radiogroup" aria-label="Opcions de resposta">
           <!-- Es generen dinàmicament a app.js -->
+        </div>
+
+        <!-- Caixa de Feedback Didàctic Immediat (Mode Exprés) -->
+        <div id="instant-feedback-card" class="instant-feedback-card" style="display: none;" aria-live="polite">
+          <div class="feedback-badge" id="feedback-badge">
+            <span id="feedback-title">Resposta correcta</span>
+          </div>
+          <div class="feedback-explanation" id="feedback-explanation"></div>
+          <button class="btn-action btn-action-primary" id="btn-next-express" style="margin-top: 12px; width: 100%;">
+            <span>Següent pregunta</span>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+          </button>
         </div>
       </div>
 

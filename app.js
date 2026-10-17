@@ -116,14 +116,16 @@ const state = {
   questions: [],
   filteredQuestions: [],
   currentCategory: "tots",
-  examMode: "simulacre30", // 'simulacre30', 'rapida15', 'bancComplet'
+  examMode: "simulacre30", // 'simulacre30', 'express', 'rapida15', 'bancComplet'
   currentIndex: 0,
   userAnswers: {},
   timerSeconds: 0,
   timerInterval: null,
   isTimerRunning: false,
   isFinished: false,
-  currentView: "view-simulador"
+  currentView: "view-simulador",
+  expressHits: 0,
+  expressMisses: 0
 };
 
 // ============================================================
@@ -199,6 +201,18 @@ window.navigateTo = function(viewId) {
 
   if (window.closeDrawer) window.closeDrawer();
   window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+window.startExpressMode = function() {
+  state.examMode = "express";
+  state.expressHits = 0;
+  state.expressMisses = 0;
+
+  const modeSelect = document.getElementById("exam-mode-select");
+  if (modeSelect) modeSelect.value = "express";
+
+  generateExamQuestions();
+  navigateTo("view-simulador");
 };
 
 // ============================================================
@@ -319,6 +333,10 @@ function initSimulator() {
   if (modeSelect) {
     modeSelect.addEventListener("change", (e) => {
       state.examMode = e.target.value;
+      if (state.examMode === "express") {
+        state.expressHits = 0;
+        state.expressMisses = 0;
+      }
       generateExamQuestions();
     });
   }
@@ -327,7 +345,19 @@ function initSimulator() {
   const btnShuffle = document.getElementById("btn-shuffle-exam");
   if (btnShuffle) {
     btnShuffle.addEventListener("click", () => {
+      if (state.examMode === "express") {
+        state.expressHits = 0;
+        state.expressMisses = 0;
+      }
       generateExamQuestions();
+    });
+  }
+
+  // Botó següent de la caixa de feedback exprés
+  const btnNextExp = document.getElementById("btn-next-express");
+  if (btnNextExp) {
+    btnNextExp.addEventListener("click", () => {
+      navigateQuestion(1);
     });
   }
 
@@ -365,9 +395,6 @@ function updateFilterCounts() {
   if (pAng) pAng.textContent = `Anglès (${counts.angles})`;
 }
 
-/**
- * Algorisme de barreja de Fisher-Yates
- */
 function shuffleArray(array) {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -377,27 +404,29 @@ function shuffleArray(array) {
   return arr;
 }
 
-/**
- * Generador d'Exàmens Aleatoris segons el mode
- */
 function generateExamQuestions() {
   let pool = [];
 
+  const isExpress = state.examMode === "express";
+  const expressStatsBar = document.getElementById("express-stats-live");
+  if (expressStatsBar) {
+    expressStatsBar.style.display = isExpress ? "flex" : "none";
+    updateExpressScoreDisplay();
+  }
+
   if (state.currentCategory === "tots") {
     if (state.examMode === "simulacre30") {
-      // 10 preguntes aleatòries de cada bloc (30 en total)
       const apt = shuffleArray(state.questions.filter(q => q.categoria === "aptitudinal")).slice(0, 10);
       const ofi = shuffleArray(state.questions.filter(q => q.categoria === "ofimatica")).slice(0, 10);
       const ang = shuffleArray(state.questions.filter(q => q.categoria === "angles")).slice(0, 10);
       pool = shuffleArray([...apt, ...ofi, ...ang]);
     } else if (state.examMode === "rapida15") {
-      // 5 preguntes aleatòries de cada bloc (15 en total)
       const apt = shuffleArray(state.questions.filter(q => q.categoria === "aptitudinal")).slice(0, 5);
       const ofi = shuffleArray(state.questions.filter(q => q.categoria === "ofimatica")).slice(0, 5);
       const ang = shuffleArray(state.questions.filter(q => q.categoria === "angles")).slice(0, 5);
       pool = shuffleArray([...apt, ...ofi, ...ang]);
     } else {
-      // Banc complet barrejat
+      // 'express' o 'bancComplet'
       pool = shuffleArray(state.questions);
     }
   } else {
@@ -424,6 +453,13 @@ function generateExamQuestions() {
 
   renderQuestionNav();
   renderCurrentQuestion();
+}
+
+function updateExpressScoreDisplay() {
+  const expHits = document.getElementById("exp-hits");
+  const expMisses = document.getElementById("exp-misses");
+  if (expHits) expHits.textContent = `${state.expressHits} correctes`;
+  if (expMisses) expMisses.textContent = `${state.expressMisses} errors`;
 }
 
 function renderQuestionNav() {
@@ -477,17 +513,41 @@ function renderCurrentQuestion() {
 
   document.getElementById("q-prompt-text").textContent = q.pregunta;
 
+  // Amagar caixa de feedback didàctic
+  const feedbackCard = document.getElementById("instant-feedback-card");
+  if (feedbackCard) feedbackCard.style.display = "none";
+
   const optionsContainer = document.getElementById("q-options-container");
   const selectedIndex = state.userAnswers[q.id];
+  const isAnswered = selectedIndex !== undefined;
 
   optionsContainer.innerHTML = q.opcions.map((opt, optIdx) => {
-    const isSelected = selectedIndex === optIdx ? "selected" : "";
+    let classes = ["option-item"];
+
+    if (state.examMode === "express" && isAnswered) {
+      classes.push("disabled");
+      if (optIdx === q.respostaCorrecta) {
+        classes.push("correct");
+      } else if (optIdx === selectedIndex) {
+        classes.push("wrong");
+      }
+    } else {
+      if (selectedIndex === optIdx) {
+        classes.push("selected");
+      }
+    }
+
     return `
-      <button class="option-item ${isSelected}" onclick="selectAnswer(${q.id}, ${optIdx})">
+      <button class="${classes.join(" ")}" onclick="selectAnswer(${q.id}, ${optIdx})">
         <span>${escapeHtml(opt)}</span>
       </button>
     `;
   }).join("");
+
+  // Si en mode exprés ja estava contestada, mostrar l'explicació
+  if (state.examMode === "express" && isAnswered) {
+    showInstantFeedback(q, selectedIndex === q.respostaCorrecta);
+  }
 
   document.getElementById("btn-prev").disabled = state.currentIndex === 0;
   const isLast = state.currentIndex === total - 1;
@@ -496,10 +556,64 @@ function renderCurrentQuestion() {
 }
 
 window.selectAnswer = function(questionId, optionIndex) {
+  const q = state.filteredQuestions[state.currentIndex];
+  if (!q) return;
+
+  const isExpress = state.examMode === "express";
+
+  // Si és mode exprés i ja s'ha contestat, evitar múltiples tocs
+  if (isExpress && state.userAnswers[questionId] !== undefined) {
+    return;
+  }
+
+  const isFirstAttempt = state.userAnswers[questionId] === undefined;
   state.userAnswers[questionId] = optionIndex;
-  renderQuestionNav();
-  renderCurrentQuestion();
+
+  if (isExpress) {
+    const isCorrect = optionIndex === q.respostaCorrecta;
+    if (isFirstAttempt) {
+      if (isCorrect) state.expressHits++;
+      else state.expressMisses++;
+      updateExpressScoreDisplay();
+    }
+
+    // Actualitzar classes de les opcions en viu
+    const buttons = document.querySelectorAll(".option-item");
+    buttons.forEach((btn, idx) => {
+      btn.classList.add("disabled");
+      if (idx === q.respostaCorrecta) {
+        btn.classList.add("correct");
+      } else if (idx === optionIndex && !isCorrect) {
+        btn.classList.add("wrong");
+      }
+    });
+
+    showInstantFeedback(q, isCorrect);
+    renderQuestionNav();
+  } else {
+    renderQuestionNav();
+    renderCurrentQuestion();
+  }
 };
+
+function showInstantFeedback(q, isCorrect) {
+  const feedbackCard = document.getElementById("instant-feedback-card");
+  const feedbackTitle = document.getElementById("feedback-title");
+  const feedbackExpl = document.getElementById("feedback-explanation");
+  if (!feedbackCard || !feedbackTitle || !feedbackExpl) return;
+
+  feedbackCard.className = `instant-feedback-card ${isCorrect ? "correct" : "wrong"}`;
+  
+  if (isCorrect) {
+    feedbackTitle.textContent = "Molt bé! Resposta correcta (+1,00)";
+  } else {
+    const letter = ["A", "B", "C", "D"][q.respostaCorrecta];
+    feedbackTitle.textContent = `Incorrecta (-0,33) — La resposta correcta és la ${letter}`;
+  }
+
+  feedbackExpl.innerHTML = `<strong>Raonament didàctic:</strong> ${escapeHtml(q.explicacio)}`;
+  feedbackCard.style.display = "block";
+}
 
 function clearCurrentChoice() {
   const q = state.filteredQuestions[state.currentIndex];
@@ -516,6 +630,13 @@ function navigateQuestion(direction) {
     state.currentIndex = newIndex;
     renderQuestionNav();
     renderCurrentQuestion();
+  } else if (newIndex >= state.filteredQuestions.length && state.examMode === "express") {
+    // Al mode exprés, si arriba al final, fem un loop infinit aleatori o mostrem resum
+    if (confirm("Has completat totes les preguntes d'aquesta sessió exprés! Vols continuar amb una nova tanda de preguntes barrejades?")) {
+      generateExamQuestions();
+    } else {
+      finishQuiz();
+    }
   }
 }
 
