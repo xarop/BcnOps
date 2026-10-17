@@ -1,64 +1,506 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BcnOps 2026 — Simulador d'Exàmens</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-        .filter-row .btn{font-size:0.85rem;padding:6px 12px;}
-        .note{font-size:0.85rem;color:#64748B;font-style:italic;}
-        .quiz-header{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;}
-        .quiz-header .q-count{font-weight:700;color:var(--primary);}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BcnOps 2026 — Simulador i Preparació Borses Ajuntament de Barcelona</title>
+  <meta name="description" content="Eina d'entrenament interactiva i adaptativa per a les proves d'ampliació de les Borses de Treball de l'Ajuntament de Barcelona 2026 (Expedient 31/2026).">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
 </head>
 <body>
 
-    <header class="top">
-        <div class="container">
-            <h1>BcnOps 2026</h1>
-            <p>Simulador d'exàmens d'ampliació de borses — Ajuntament de Barcelona</p>
-            <div class="header-actions">
-                <button class="btn" id="btn-best-score">Millor puntuació: —</button>
-                <button class="btn secondary" id="btn-reset-plan">Neteja plan d'estudis</button>
-            </div>
+  <!-- 1. Enllaç Oficial Destacat de la Convocatòria a la Capçalera -->
+  <aside class="official-banner" role="complementary" aria-label="Avís oficial de convocatòria">
+    <div class="official-banner-content">
+      <div>
+        <strong>🏛️ CONVOCATÒRIA OFICIAL AJUNTAMENT DE BARCELONA:</strong>
+        <span>Expedient 31/2026 (Proves: 24 d'octubre de 2026)</span>
+      </div>
+      <a href="https://seuelectronica.ajuntament.barcelona.cat/processosselectius/ca/convocatories/borses-2026-bs2026" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         id="top-official-link"
+         title="Obrir Seu Electrònica de l'Ajuntament de Barcelona">
+        <span>🔗 Portal Oficial de la Convocatòria</span>
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Capçalera Principal -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="header-brand">
+        <div class="header-titles">
+          <h1>
+            BcnOps 2026
+            <span class="badge-official">Exp. 31/2026</span>
+          </h1>
+          <p>Preparació intensiva per a l'ampliació de borses municipals — Ajuntament de Barcelona</p>
         </div>
-    </header>
+        <div class="header-actions">
+          <button class="btn btn-outline btn-sm" id="header-best-score" title="Puntuació màxima registrada">
+            ⭐ Millor Nota: —
+          </button>
+          <button class="btn btn-outline btn-sm" id="btn-share-app" title="Comparteix amb altres aspirants">
+            📤 Comparteix l'eina
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <div class="container">
-        <nav class="tabs">
-            <button class="tab-btn active" data-tab="tab-inici">Inici</button>
-            <button class="tab-btn" data-tab="tab-simulador">Simulador</button>
-            <button class="tab-btn" data-tab="tab-plan">Plan d'estudis</button>
-            <button class="tab-btn" data-tab="tab-recursos">Recursos</button>
-        </nav>
+  <!-- Contingut i Navegació Mobile-First -->
+  <main class="main-container">
 
-        <main id="content">
-            <section id="tab-inici" class="active">
-                                                                     a            </                        <p>Prepara't per a l'ampliació de borses de l'Ajuntament de Barcelona. L'aplicaci                                                                     a            </     /s                                      ptitudinal, ofimàtica i llengua estrangera).</li>
-                        <li>Càlcul de p                        <li>Càlcul de p                        <li>Càlcul de p           >plan                  >         s de treball i seguiment.</li>
-                        <li>Un repàs de <strong>recursos</strong> i fitxers d'ajuda.</li>
-                    </ul>
-                                                                                                                                                                      Millor puntuació</h3>
-                    <div id="best-score" class="score-ban     —</div>
-                </div>
-            </section>
+    <!-- Barra de Navegació per Pestanyes -->
+    <div class="nav-tabs-wrapper">
+      <nav class="nav-tabs" role="tablist" aria-label="Navegació de l'aplicació">
+        <button class="tab-btn active" data-tab="tab-logistica" role="tab" aria-selected="true" aria-controls="tab-logistica">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span>Convocatòria &amp; Seus</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-simulador" role="tab" aria-selected="false" aria-controls="tab-simulador">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          <span>Simulador</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-plan" role="tab" aria-selected="false" aria-controls="tab-plan">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          <span>Pla d'Estudis</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-fonts" role="tab" aria-selected="false" aria-controls="tab-fonts">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+          <span>Fonts &amp; Recursos</span>
+        </button>
+      </nav>
+    </div>
 
-            <section id="tab-simulador">
-                <div id="banner" class="score-banner" style="display:none;"></div>
-                <div id="quiz-view">
-                    <div class="quiz-header">
-                        <span class="q-count" id="q-counter">Pregunta 1 de 18</span>
-                        <span class="timer" id="timer">Temps: 00:00</span>
-                        <span id="current-cat"></span>
-                    </div>
-                    <div id="question-area"></div>
-                    <div id="options-area"></div>
-                    <button class="btn-submit" id="btn-submit" onclick="submitQuiz()">Enviar qüestió</button>
-                </div>
-                             lts-area" style="display:none;">
-                    <h3 id="results-title">Resultat</h3>
-                    <div class="results-grid" id="results-grid"></div>
-                    <h3 id="re                    <h3 id="re                    <h3 id="re          iv            list"></div                      <d                    <h3 id="re                               <h3 id="re                    <h3 id="re                    <button>
-                        <button                        <button             al                        <button                        <button             al          </section>
+    <!-- ============================================================
+         PESTANYA 1: CONVOCATÒRIA & SEUS OFICIALS
+         ============================================================ -->
+    <section id="tab-logistica" class="tab-pane active" role="tabpanel">
+
+      <!-- Targeta d'Enllaç Oficial Destacat -->
+      <div class="hero-box">
+        <h2 class="hero-title">Borses de Treball Ajuntament de Barcelona (Exp. 31/2026)</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Tota la informació oficial, resolucions, llistes d'admesos i anuncis es publiquen i actualitzen al portal de la Seu Electrònica:
+        </p>
+        <div class="hero-meta">
+          <span class="meta-item">📅 <strong>Data de la prova:</strong> Dissabte, 24 d'octubre de 2026</span>
+          <span class="meta-item">⏰ <strong>Obertura d'aules:</strong> 09:30 h</span>
+          <span class="meta-item">🔒 <strong>Inici / tancament de portes:</strong> 10:00 h</span>
+          <span class="meta-item">🏁 <strong>Finalització prevista:</strong> 13:00 h</span>
+        </div>
+        <div style="margin-top: 16px;">
+          <a href="https://seuelectronica.ajuntament.barcelona.cat/processosselectius/ca/convocatories/borses-2026-bs2026" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn btn-danger">
+            🏛️ Accedir a la Seu Electrònica Oficial de la Convocatòria
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Graella: Horaris i Proves + Material Obligatori -->
+      <div class="grid-2">
+
+        <!-- Proves i Horaris -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              Proves a Realitzar (Consecutives)
+            </h3>
+          </div>
+          <div class="schedule-card">
+            <div class="schedule-step">
+              <span class="step-time">09:30 h</span>
+              <div>
+                <strong>Crida i obertura d'aules:</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">Comprovació d'identitat dels aspirants i assignació de taula.</p>
+              </div>
+            </div>
+            <div class="schedule-step">
+              <span class="step-time">10:00 h</span>
+              <div>
+                <strong>Tancament de portes i Prova 1 (Aptitudinal):</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">Test psicotècnic: sèries, lògica, analogies i càlcul mental.</p>
+              </div>
+            </div>
+            <div class="schedule-step">
+              <span class="step-time">11:00 h</span>
+              <div>
+                <strong>Prova 2 (Ofimàtica):</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">Fulls de càlcul (Excel/Calc: fórmules, funcions, referències), gestió de fitxers i dreceres.</p>
+              </div>
+            </div>
+            <div class="schedule-step">
+              <span class="step-time">12:00 h</span>
+              <div>
+                <strong>Prova 3 (Llengua Estrangera - Anglès):</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">Vocabulari administratiu, gramàtica, atenció al ciutadà i connectors.</p>
+              </div>
+            </div>
+            <div class="schedule-step">
+              <span class="step-time">13:00 h</span>
+              <div>
+                <strong>Recollida i finalització estimada de la sessió.</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Material Obligatori -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+              Material Obligatori per a l'Examen
+            </h3>
+          </div>
+          <ul class="checklist-items">
+            <li>
+              <span style="font-size: 1.2rem;">🪪</span>
+              <div>
+                <strong>Document d'identitat ORIGINAL i vigent:</strong>
+                <p style="font-size: 0.82rem; color: var(--text-muted);">DNI, NIE, Passaport o Permís de conduir (no s'accepten fotocòpies no compulsades).</p>
+              </div>
+            </li>
+            <li>
+              <span style="font-size: 1.2rem;">✏️</span>
+              <div>
+                <strong>Llapis núm. 2 (grafit HB):</strong>
+                <p style="font-size: 0.82rem; color: var(--text-muted);">Obligatori per a la lectura òptica correcta de la fulla de respostes.</p>
+              </div>
+            </li>
+            <li>
+              <span style="font-size: 1.2rem;">🧼</span>
+              <div>
+                <strong>Goma d'esborrar:</strong>
+                <p style="font-size: 0.82rem; color: var(--text-muted);">Per corregir sense fer taques ni perforar la plantilla de respostes.</p>
+              </div>
+            </li>
+            <li>
+              <span style="font-size: 1.2rem;">🔩</span>
+              <div>
+                <strong>Maquineta de fer punta amb dipòsit:</strong>
+                <p style="font-size: 0.82rem; color: var(--text-muted);">Per mantenir la precisió de la marca durant les tres proves.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Seus d'Examen i Mapes Directes -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Seus Oficials d'Examen i Localització (Mapes)
+          </h3>
+        </div>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 14px;">
+          Troba la seu assignada a la teva convocatòria i obre directament la ruta al navegador o mòbil:
+        </p>
+
+        <!-- Cercador de Seus -->
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" id="venue-search-input" class="search-input" placeholder="Cerca la teva seu (ex: Ciutadella, Diagonal, Dret, Campus Nord...)" aria-label="Cercar seu d'examen">
+        </div>
+
+        <!-- Llistat de les 5 Seus en graella -->
+        <div class="grid-3" id="venues-grid">
+          <!-- Es genera dinàmicament a app.js -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         PESTANYA 2: SIMULADOR DE TEST AMB ANÀLISI D'ERRORS
+         ============================================================ -->
+    <section id="tab-simulador" class="tab-pane" role="tabpanel">
+
+      <!-- Contenidor del Test Actiu -->
+      <div id="quiz-active-container">
+        <!-- Controls superiors: Filtres de blocs i Cronòmetre -->
+        <div class="quiz-controls">
+          <div class="filter-pills" role="group" aria-label="Filtre per blocs d'examen">
+            <button class="filter-pill active" data-cat="tots">Tots els blocs (27)</button>
+            <button class="filter-pill" data-cat="aptitudinal">Aptitudinal (9)</button>
+            <button class="filter-pill" data-cat="ofimatica">Ofimàtica (9)</button>
+            <button class="filter-pill" data-cat="angles">Anglès (9)</button>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="quiz-timer-box" aria-label="Temps transcorregut">
+              <span>⏱️</span>
+              <span id="quiz-timer-text">00:00</span>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btn-toggle-timer" title="Pausar o reprendre el cronòmetre">⏸ Pausar</button>
+          </div>
+        </div>
+
+        <!-- Barra d'estat de la pregunta -->
+        <div class="question-status-bar">
+          <span id="q-current-number" style="font-weight: 700; color: var(--text-main);">Pregunta 1 de 27</span>
+          <span id="q-category-tag" class="category-tag cat-aptitudinal">Aptitudinal</span>
+        </div>
+
+        <!-- Graella de navegació ràpida de preguntes -->
+        <div class="question-nav-grid" id="question-nav-grid" aria-label="Graella de salts de preguntes">
+          <!-- Es genera dinàmicament a app.js -->
+        </div>
+
+        <!-- Targeta de la pregunta -->
+        <div class="quiz-card">
+          <p class="quiz-prompt" id="q-prompt-text">Carregant preguntes...</p>
+          <div class="quiz-options" id="q-options-container" role="radiogroup" aria-label="Opcions de resposta">
+            <!-- Es genera dinàmicament a app.js -->
+          </div>
+
+          <div class="quiz-footer-actions">
+            <button class="btn btn-secondary btn-sm" id="btn-clear-choice">⚪ Deixar en blanc / Desmarcar</button>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn btn-secondary" id="btn-prev">← Anterior</button>
+              <button class="btn btn-primary" id="btn-next">Següent →</button>
+              <button class="btn btn-danger" id="btn-finish-quiz">🏁 Finalitzar Examen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenidor de Resultats i Revisió d'Errors (Inicialment ocult) -->
+      <div id="quiz-results-container" style="display: none;">
+        
+        <div class="results-banner">
+          <h2>Resultats del Simulacre d'Examen</h2>
+          <div class="score-display" id="res-score-number">0.00 / 10</div>
+          <div><span class="score-badge pass" id="res-status-badge">APTE</span></div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-val" id="stat-encerts" style="color: var(--success);">0</div>
+              <div class="stat-lbl">Encerts (+1,00)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val" id="stat-errors" style="color: var(--danger);">0</div>
+              <div class="stat-lbl">Errors (-0,33)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val" id="stat-blancs" style="color: var(--warning);">0</div>
+              <div class="stat-lbl">En Blanc (0,00)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val" id="stat-temps" style="color: var(--primary);">00:00</div>
+              <div class="stat-lbl">Temps Total</div>
+            </div>
+          </div>
+
+          <div class="formula-expl" id="res-formula-detail">
+            Fórmula oficial: Encerts - (Errors / 3) = Puntuació neta
+          </div>
+
+          <div style="margin-top: 18px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button class="btn btn-primary" id="btn-restart-quiz">🔄 Repetir o Fer un Altre Test</button>
+            <button class="btn btn-secondary" onclick="switchTab('tab-plan')">📅 Anar al Pla d'Estudis</button>
+          </div>
+        </div>
+
+        <!-- Mòdul de Revisió d'Errors -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              Mòdul de Revisió d'Errors i Anàlisi Detallat
+            </h3>
+            <div class="filter-pills" role="group" aria-label="Filtre de revisió">
+              <button class="filter-pill active review-filter-btn" data-filter="all">Totes</button>
+              <button class="filter-pill review-filter-btn" data-filter="wrong">❌ Només fallades</button>
+              <button class="filter-pill review-filter-btn" data-filter="correct">✅ Només correctes</button>
+              <button class="filter-pill review-filter-btn" data-filter="blank">⚪ En blanc</button>
+            </div>
+          </div>
+
+          <div id="review-questions-list">
+            <!-- Es renderitza dinàmicament a app.js -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         PESTANYA 3: PLA D'ESTUDIS INTERACTIU (17 AL 23 D'OCTUBRE)
+         ============================================================ -->
+    <section id="tab-plan" class="tab-pane" role="tabpanel">
+
+      <!-- Barra de Progrés General -->
+      <div class="progress-banner">
+        <div class="progress-header">
+          <span>Progrés del Pla de Repàs Intensiu (17 - 23 Octubre)</span>
+          <span id="plan-progress-text" style="color: var(--primary);">0 de 21 tasques (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="plan-progress-fill"></div>
+        </div>
+        <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <small style="color: var(--text-muted);">El teu progrés es desa automàticament a aquest dispositiu (localStorage).</small>
+          <button class="btn btn-secondary btn-sm" id="btn-reset-plan">Netejar Progrés</button>
+        </div>
+      </div>
+
+      <!-- Historial de millors notes -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">🏆 Millors Puntuacions Registrades al Simulador</h3>
+        </div>
+        <div class="grid-2" id="best-scores-badge" style="gap: 10px;">
+          <!-- Es genera dinàmicament a app.js -->
+        </div>
+      </div>
+
+      <!-- Llistat de Dies i Tasques amb Checkbox -->
+      <div id="study-plan-container">
+        <!-- Es genera dinàmicament a app.js -->
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         PESTANYA 4: FONTS & EXÀMENS ANFICS I RECURSOS REALS
+         ============================================================ -->
+    <section id="tab-fonts" class="tab-pane" role="tabpanel">
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            Repositoris Oficials i Fonts d'Exàmens Antics
+          </h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+          Recull d'enllaços reals i verificats per descarregar models d'exàmens previs de l'administració pública catalana, qüestionaris psicotècnics i cursos gratuïts:
+        </p>
+
+        <div class="grid-2">
+
+          <!-- 1. Seu Convocatòria 31/2026 -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-official">Oficial Ajuntament</span>
+              <h4 class="repo-title">Seu Electrònica Ajuntament de Barcelona (Exp. 31/2026)</h4>
+              <p class="repo-desc">Pàgina oficial de la convocatòria d'ampliació de borses: anuncis, llistes provisionals i definitives, resolucions i criteris d'avaluació.</p>
+            </div>
+            <a href="https://seuelectronica.ajuntament.barcelona.cat/processosselectius/ca/convocatories/borses-2026-bs2026" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              Visitar Seu Oficial ↗
+            </a>
+          </div>
+
+          <!-- 2. Convocatòries 28 categories anteriors BCN -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-official">Exàmens Reals BCN</span>
+              <h4 class="repo-title">Exàmens i Qüestionaris Anteriors de l'Ajuntament de Barcelona</h4>
+              <p class="repo-desc">Model de qüestionaris i fulls de respostes reals d'anys anteriors per a 28 categories professionals dels subgrups A1, A2 i C1 de l'Ajuntament.</p>
+            </div>
+            <a href="https://seuelectronica.ajuntament.barcelona.cat/processosselectius/es/convocatories/convocatories-de-28-categories-dels-subgrups-a1-a2-i-c1" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              Consultar Exàmens Reals ↗
+            </a>
+          </div>
+
+          <!-- 3. OpositaTest Psicotècnics -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-psico">Psicotècnic</span>
+              <h4 class="repo-title">OpositaTest — Psicotècnics Generals</h4>
+              <p class="repo-desc">Testos gratuïts de psicotècnics per a oposicions: sèries numèriques, de lletres, figures, comprensió verbal i memòria.</p>
+            </div>
+            <a href="https://www.opositatest.com/oposiciones/psicotecnicos-generales/test" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              Practicar a OpositaTest ↗
+            </a>
+          </div>
+
+          <!-- 4. TestPolicia.cat -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-psico">Àmbit Catalunya</span>
+              <h4 class="repo-title">TestPolicia.cat — Psicotècnics Gratuïts</h4>
+              <p class="repo-desc">Banc d'exercicis psicotècnics en català basats en proves selectives d'administracions catalanes: sèries lògiques, càlcul i raonament abstracte.</p>
+            </div>
+            <a href="https://testpolicia.cat/psicotecnics/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              Accedir a TestPolicia ↗
+            </a>
+          </div>
+
+          <!-- 5. Desafío Psicotécnicos -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-psico">Raonament &amp; Càlcul</span>
+              <h4 class="repo-title">Desafío Psicotécnicos — Exercicis Gratuïts</h4>
+              <p class="repo-desc">Qüestionaris de pràctica de càlcul mental ràpid, problemes matemàtics administratius, percentatges i aptitud perceptiva.</p>
+            </div>
+            <a href="https://desafiopsicotecnicos.com/test-psicotecnicos-gratis/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              Practicar Exercicis ↗
+            </a>
+          </div>
+
+          <!-- 6. AulaClic Ofimàtica & Excel -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-ofim">Ofimàtica &amp; Fulls de càlcul</span>
+              <h4 class="repo-title">AulaClic — Cursos d'Excel i Ofimàtica</h4>
+              <p class="repo-desc">Tutorials complets gratuïts sobre fórmules d'Excel/Calc (SUMAR.SI, PROMEDIO, CONTAR.SI, referències absolutes $), Windows i eines d'oficina.</p>
+            </div>
+            <a href="https://www.aulaclic.es" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              Formació a AulaClic ↗
+            </a>
+          </div>
+
+          <!-- 7. Cambridge English Test Your English -->
+          <div class="repo-card">
+            <div>
+              <span class="repo-tag tag-lang">Anglès Administratiu</span>
+              <h4 class="repo-title">Cambridge English — Test Your English</h4>
+              <p class="repo-desc">Prova oficial ràpida de diagnòstic de nivell d'anglès (General &amp; Business English) per consolidar vocabulari, preposicions i gramàtica.</p>
+            </div>
+            <a href="https://www.cambridgeenglish.org/test-your-english/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              Test de Cambridge ↗
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Peu de Pàgina -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div>
+        <strong>BcnOps 2026</strong> — Eina ciutadana col·laborativa de preparació de proves (Expedient 31/2026).
+      </div>
+      <div class="footer-links">
+        <a href="https://seuelectronica.ajuntament.barcelona.cat/processosselectius/ca/convocatories/borses-2026-bs2026" target="_blank" rel="noopener noreferrer">Seu Oficial de la Convocatòria</a>
+        <span>•</span>
+        <a href="https://github.com/xarop/BcnOps" target="_blank" rel="noopener noreferrer">Repositori a GitHub</a>
+        <span>•</span>
+        <a href="#" onclick="switchTab('tab-simulador'); return false;">Simulador de Test</a>
+      </div>
+      <div style="font-size: 0.78rem; color: #64748b;">
+        Tots els anuncis oficials i llistats han de ser consultats directament a la Seu Electrònica de l'Ajuntament de Barcelona.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

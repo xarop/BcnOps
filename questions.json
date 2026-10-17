@@ -1,10 +1,1052 @@
-[{"id":1,"categoria":"aptitudinal","subcategoria":"Sèrie numèrica","pregunta":"Quin és el número següent a la sèrie? 3, 7, 15, 31, 63, ...","opcions":["A) 125","B) 127","C) 126","D) 128"],"respostaCorrecta":1,"explicacio":"Cada terme es calcula multiplicant l'anterior per 2 i sumant 1: 3x2+1=7, 7x2+1=15, 15x2+1=31, 31x2+1=63, 63x2+1=127."},{"id":2,"categoria":"aptitudinal","subcategoria":"Sèrie de lletres","pregunta":"Quin és el terme següent a la sèrie de lletres? A, C, E, G, ...","opcions":["A) I","B) H","C) J","D) K"],"respostaCorrecta":0,"explicacio":"Les lletres avansen de 2 en 2: A-C-E-G-I."}
-,{"id":3,"categoria":"aptitudinal","subcategoria":"Analogia verbal","pregunta":"Tria la parella analoga correcta: Lletra és a Pàgina com Síl·laba és a ?","opcions":["A) Paraula","B) Ora","C) Text","D) Diccionari"],"respostaCorrecta":0,"explicacio":"Una lletra è la unitat mínima de que està composta una pàgina; al mateix mode, una síl·laba è la unitat mínima de que està composta una paraula."},{"id":4,"categoria":"aptitudinal","subcategoria":"Sinònims","pregunta":"Quin és el sinònim més proper de la paraula AMONESTAR?","opcions":["A) Castigar","B) Adverteny","C) Permetre","D) Ignorar"],"respostaCorrecta":1,"explicacio":"Amonestà è sinònim de advertir, suggerir amb fermesa. Adverteny è el sinònim més proper."}
-,{"id":5,"categoria":"aptitudinal","subcategoria":"Antònims","pregunta":"Quin és l'antònim de la paraula TEMPESTAT?","opcions":["A) Pluja","B) Pau","C) Vent","D) Nublit"],"respostaCorrecta":1,"explicacio":"Tempesta fa referència a una condició de conflit, soroll o moviment violent; el seu antònim és la pau (o calma)."},{"id":6,"categoria":"aptitudinal","subcategoria":"Càlcul mental / percentatges","pregunta":"Quin és el 20% de 150?","opcions":["A) 20","B) 25","C) 30","D) 45"],"respostaCorrecta":2,"explicacio":"20% de 150 = 0,20 x 150 = 30."}
-,{"id":7,"categoria":"aptitudinal","subcategoria":"Càlcul mental","pregunta":"Calcula: 15 x 16 = ?","opcions":["A) 220","B) 240","C) 250","D) 230"],"respostaCorrecta":1,"explicacio":"15 x 16 = 15 x (10 + 6) = 150 + 90 = 240."},{"id":8,"categoria":"ofimatica","subcategoria":"Fulls de càlcul (Excel/Calc)","pregunta":"Què significa la referència de cel·la absoluta $A$1 si l'arrassem cap una altra cel·la?","opcions":["A) Canvia de fila i columna","B) No canvia mai la referència","C) S'incrementa en 1","D) Es converteix en un text"],"respostaCorrecta":1,"explicacio":"Les referències absolutes (amb $) no s'ajusten quan s'arrasa una fórmula a altres cel·les; sempre fan referència a la mateixa cel·la A1."}
-,{"id":9,"categoria":"ofimatica","subcategoria":"Fulls de càlcul (Excel/Calc)","pregunta":"Quina és la sintaxi correcta per a la funció SUMAR.SI?","opcions":["A) SUMAR.SI(rang; criteri; [rango_suma])","B) SUMAR.SI(criteris; rang; rango_suma)","C) SUMAR.SI(rang; rango_suma; criteri)","D) SUMAR.SI(criteris; rango_suma; rang)"],"respostaCorrecta":0,"explicacio":"La sintaxi de SUMAR.SI és: SUMAR.SI(rang; criteri; [rango_suma]). Si el tercer argument és obert, es sumen els valors del rang que compleixen el criteri."},{"id":10,"categoria":"ofimatica","subcategoria":"Fulls de càlcul (Excel/Calc)","pregunta":"Quina funció cal utilitzar per calcular la mitjana aritmètica dels valors compres entre les cel·les A1 i A10?","opcions":["A) SUM(A1:A10)","B) PROMEDIO(A1:A10)","C) CONTAR(A1:A10)","D) MITJ(EUCLIDIANA)"],"respostaCorrecta":1,"explicacio":"PROMEDIO calcula la mitjana aritmètica. SUM dona la suma, CONTAR compta només valors numèrics i MITJ(EUCLIDIANA) no és una funció vàlida."}
-,{"id":11,"categoria":"ofimatica","subcategoria":"Fulls de càlcul (Excel/Calc)","pregunta":"Quina funció es fa servir per comptar els valors (o cel·les) que compleixen una condició determinada?","opcions":["A) CONTAR","B) CONTAR.SI","C) SUMAR.SI","D) MAX"],"respostaCorrecta":1,"explicacio":"CONTAR.SI compta les cel·les d'un rang que compleixen una condició. CONTAR només compta valors numèrics."},{"id":12,"categoria":"ofimatica","subcategoria":"Dreceres de teclat (Windows/Office)","pregunta":"Quines dreceres de teclat s'utilitzen per copiar i enganyar un text al bloc d'edició dels sistemes ofimàtics?","opcions":["A) Ctrl + C i Ctrl + V","B) Ctrl + X i Ctrl + Y","C) Ctrl + Z i Ctrl + C","D) Ctrl + A i Ctrl + S"],"respostaCorrecta":0,"explicacio":"Ctrl+C copia i Ctrl+V enganya. Ctrl+X talla, Ctrl+Z desfà l'última acció, Ctrl+A selecciona tot i Ctrl+S desa."}
-,{"id":13,"categoria":"ofimatica","subcategoria":"Correu electrònic (CC vs CCO)","pregunta":"Quina és la diferència entre CC i CCO en enviar un correu?","opcions":["A) CC envia text en lletra gran; CCO potenya el color","B) Les adreces dels destinataris del CC són visibles per a tots els destinataris; les del CCO no","C) CCO impliquen missatges privats; CC permeten adjuntar fitxers","D) Cap de les dues és certa"],"respostaCorrecta":1,"explicacio":"A CC (còpia càrrec) tots els receptors veuen les altres adreces; a CCO (còpia oculta) les adreces dels participants no són visibles als altres."},{"id":14,"categoria":"ofimatica","subcategoria":"Gestió de fitxers","pregunta":"Quin tipus de document es desa amb l'expansió .xlsx?","opcions":["A) Document de text","B) Full de càlcul","C) Presentació en diapositives","D) Arxiu d'àudio"],"respostaCorrecta":1,"explicacio":"L'extensió .xlsx és l'estàndard de Microsoft Excel per a fulls de càlcul (format OOXML)."}
-,{"id":15,"categoria":"llengua_estrangera","subcategoria":"Gramàtica anglèsa","pregunta":"Tria la frase gramaticalment correcta:","opcions":["A) The citizens has submitted all the documents.","B) The citizen submitted all the documents yesterday.","C) The citizens submitted all the document yesterday.","D) The citizen submit all the documents yesterday."],"respostaCorrecta":1,"explicacio":"The citizen és singular i el past simple es marca amb el verb a la forma positiva: submitted. Tampoc, all the documents és plural correcte."},{"id":16,"categoria":"llengua_estrangera","subcategoria":"Vocabulari administratiu","pregunta":"Quina és la traducció correcta de Termini de presentació?","opcions":["A) Presentation deadline","B) Application limit","C) Delivery timetable","D) Submission terminal"],"respostaCorrecta":0,"explicacio":"Termini de presentació = deadline. 'Presentation deadline' és la traducció més còmode a l'àmbit administratiu."}
-,{"id":17,"categoria":"llengua_estrangera","subcategoria":"Comprensió lectora","pregunta":"Dins el context d'un procés d'admissió administrativa, què s'ha de presentar per a accedir a una convocatòria?","opcions":["A) Un sol document d'identitat","B) La sol·licitud i els justificants indicats","C) Només la carta de presentació","D) Una fotografia recent"],"respostaCorrecta":1,"explicacio":"L'accés a una convocatòria exigeix la sol·licitud i els justificants especificats dins del procés administratiu."},{"id":18,"categoria":"llengua_estrangera","subcategoria":"Redacció administrativa","pregunta":"Quin d'aquests títols de correu respeita més el registre formal i l'expressió clara?","opcions":["A) Hola, m'encantaria parlar amb tu. Què en penses?","B) Espereu, hi ha un canvi. No he sabut, cap i no hi ha res.","C) Us delicatement, li transmetre els documents demanats al llistat adjunt. Salut.","D) Sóc el teu amigu, espero que em donis un brut resò."],"respostaCorrecta":2,"explicacio":"El cos i el títol de correu formal requereixen un to respectuós, senyalació dels documents i tancament adequat (com 'Us delicatement... Salut')."}
+[
+  {
+    "id": 1,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques",
+    "pregunta": "Quin és el número següent a la sèrie? 3, 7, 15, 31, 63, ...",
+    "opcions": [
+      "A) 125",
+      "B) 127",
+      "C) 126",
+      "D) 128"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Cada terme s'obté multiplicant l'anterior per 2 i sumant-hi 1: (3×2)+1=7; (7×2)+1=15; (15×2)+1=31; (31×2)+1=63; (63×2)+1=127. També respon a la diferència entre termes doblant-se: +4, +8, +16, +32, +64."
+  },
+  {
+    "id": 2,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques",
+    "pregunta": "Quin número completa la successió? 2, 6, 12, 20, 30, ...",
+    "opcions": [
+      "A) 40",
+      "B) 42",
+      "C) 44",
+      "D) 46"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Les diferències consecutives són nombres parells creixents: 6-2=+4; 12-6=+6; 20-12=+8; 30-20=+10; per tant el següent increment és +12: 30+12=42. Alternativament correspon a n×(n+1): 1×2=2, 2×3=6, 3×4=12, 4×5=20, 5×6=30, 6×7=42."
+  },
+  {
+    "id": 3,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries de lletres",
+    "pregunta": "Quina és la lletra següent a la sèrie segons l'alfabet habitual? B, E, H, K, N, ...",
+    "opcions": [
+      "A) P",
+      "B) Q",
+      "C) R",
+      "D) S"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El patró avança de 3 en 3 posicions a l'alfabet: B (posició 2) + 3 = E (5); E (5) + 3 = H (8); H (8) + 3 = K (11); K (11) + 3 = N (14); N (14) + 3 = Q (posició 17: N -> O -> P -> Q)."
+  },
+  {
+    "id": 4,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries alfanumèriques",
+    "pregunta": "Indica el terme que continua la sèrie combinada: 1A, 3C, 6F, 10J, ...",
+    "opcions": [
+      "A) 14N",
+      "B) 15O",
+      "C) 15N",
+      "D) 16P"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Els números augmenten en increments creixents: +2 (1->3), +3 (3->6), +4 (6->10), +5 (10->15). Les lletres salten: A a C (+2), C a F (+3), F a J (+4), J a O (+5: J, K, L, M, N, O). Per tant, el terme és 15O."
+  },
+  {
+    "id": 5,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogies verbals",
+    "pregunta": "Completa l'analogia: METGE és a HOSPITAL com MESTRE és a...",
+    "opcions": [
+      "A) LLIBRE",
+      "B) ESCOLA",
+      "C) ALUMNE",
+      "D) MAGISTERI"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La relació és de professional respecte al seu espai habitual de treball físic o institució on exerceix (metge a hospital, mestre a escola)."
+  },
+  {
+    "id": 6,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sinònims i antònims",
+    "pregunta": "Quin és el sinònim més precís del terme administratiu 'DEROGAR'?",
+    "opcions": [
+      "A) Promulgar",
+      "B) Ratificar",
+      "C) Anul·lar",
+      "D) Prorrogar"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "'Derogar' significa deixar sense efecte una norma jurídica o disposició legal mitjançant una altra de posterior, equivalent a anul·lar o revocar."
+  },
+  {
+    "id": 7,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sinònims i antònims",
+    "pregunta": "Quin és l'antònim de 'PRECEPTIU' en l'àmbit dels procediments administratius?",
+    "opcions": [
+      "A) Obligatori",
+      "B) Facultatiu",
+      "C) Vinculant",
+      "D) Executiu"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Un tràmit o informe preceptiu és d'obligada sol·licitud o realització per mandat legal. El seu antònim és facultatiu (o potestatiu), és a dir, opcional o voluntari."
+  },
+  {
+    "id": 8,
+    "categoria": "aptitudinal",
+    "subcategoria": "Matrius i raonament abstracte",
+    "pregunta": "En una matriu numèrica 3x3: Fila 1 = [4, 9, 2], Fila 2 = [3, 5, 7], Fila 3 = [8, 1, ?]. Quin nombre falta perquè totes les files i columnes sumin 15?",
+    "opcions": [
+      "A) 5",
+      "B) 6",
+      "C) 7",
+      "D) 9"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Es tracta d'un quadrat màgic de suma constant 15. A la tercera fila: 8 + 1 + x = 15 => x = 15 - 9 = 6. Comprovació per columna: 2 + 7 + 6 = 15."
+  },
+  {
+    "id": 9,
+    "categoria": "aptitudinal",
+    "subcategoria": "Percentatges i càlcul mental",
+    "pregunta": "Un servei municipal rep una partida pressupostària de 120.000 €. Se'n destina el 25% a equipament tecnològic i, d'aquesta quantitat, el 40% a renovació d'ordinadors. Quina quantitat s'inverteix en ordinadors?",
+    "opcions": [
+      "A) 12.000 €",
+      "B) 15.000 €",
+      "C) 30.000 €",
+      "D) 10.000 €"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "El 25% de 120.000 € és 30.000 € (120.000 / 4). El 40% de 30.000 € és: 30.000 × 0,40 = 12.000 €."
+  },
+  {
+    "id": 10,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques alternades",
+    "pregunta": "Quin nombre continua la sèrie alternada? 5, 25, 9, 21, 13, 17, 17, ...",
+    "opcions": [
+      "A) 12",
+      "B) 13",
+      "C) 14",
+      "D) 15"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Són dues successions entrellaçades: Posicions senars: 5, 9, 13, 17 (+4 a cada pas). Posicions parells: 25, 21, 17, ... (-4 a cada pas). El terme següent és parell: 17 - 4 = 13."
+  },
+  {
+    "id": 11,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries de Fibonacci",
+    "pregunta": "Identifica el terme que segueix a la successió: 1, 2, 3, 5, 8, 13, 21, ...",
+    "opcions": [
+      "A) 29",
+      "B) 34",
+      "C) 36",
+      "D) 42"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "És la successió de Fibonacci, on cada terme a partir del tercer és la suma dels dos immediatament anteriors: 13 + 21 = 34."
+  },
+  {
+    "id": 12,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries de lletres",
+    "pregunta": "Quina lletra segueix a la sèrie en sentit descendent? Z, X, V, T, R, ...",
+    "opcions": [
+      "A) Q",
+      "B) P",
+      "C) O",
+      "D) N"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La sèrie retrocedeix de 2 en 2 lletres de l'alfabet en sentit invers: Z (-2) -> X (-2) -> V (-2) -> T (-2) -> R (-2) -> P."
+  },
+  {
+    "id": 13,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogies verbals",
+    "pregunta": "Completa la relació de part a tot: PÀGINA és a LLIBRE com TECLA és a...",
+    "opcions": [
+      "A) PANTALLA",
+      "B) RATOLÍ",
+      "C) TECLAT",
+      "D) ORDINADOR"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Una pàgina és una unitat constituent directa d'un llibre, de la mateixa manera que una tecla és l'element constituent directe d'un teclat."
+  },
+  {
+    "id": 14,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sinònims administratius",
+    "pregunta": "En un requeriment administratiu de documentació, quin és el significat del verb 'ESMENAR' (o 'subsanar')?",
+    "opcions": [
+      "A) Desestimar definitivament la sol·licitud.",
+      "B) Corregir un defecte o aportar una informació o document que faltava.",
+      "C) Arxivar l'expedient per manca de crèdit.",
+      "D) Publicar la resolució al Butlletí Oficial."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Esmenar significa reparar, corregir o solucionar un error o omissió detectat en una sol·licitud dins del termini atorgat."
+  },
+  {
+    "id": 15,
+    "categoria": "aptitudinal",
+    "subcategoria": "Vocabulari jurídic-administratiu",
+    "pregunta": "Quan una notificació es considera 'FEFAENT'?",
+    "opcions": [
+      "A) Quan és gratuïta per a l'aspirant.",
+      "B) Quan deixa constància fefaent i indiscutible de la seva recepció, data i contingut (com un burofax o notificació electrònica certificada).",
+      "C) Quan es transmet verbalment en finestreta.",
+      "D) Quan no admet cap tipus de recurs."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Fefaent' vol dir que fa fe pública, donant plena certesa jurídica de l'enviament, recepció i contingut notificat."
+  },
+  {
+    "id": 16,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sinònims i antònims",
+    "pregunta": "Quin és l'antònim de la paraula 'PROVISIONAL' en una llista d'admesos a un procés selectiu?",
+    "opcions": [
+      "A) Temporal",
+      "B) Previ",
+      "C) Definitiu",
+      "D) Interí"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "La llista provisional permet al·legacions o esmenes; un cop resoltes, esdevé la llista definitiva (antònim de provisional)."
+  },
+  {
+    "id": 17,
+    "categoria": "aptitudinal",
+    "subcategoria": "Raonament lògic deductiu",
+    "pregunta": "Premissa 1: Tots els administratius del grup C1 tenen títol de batxillerat. Premissa 2: La Maria és administrativa del grup C1. Quina conclusió és necessàriament certa?",
+    "opcions": [
+      "A) La Maria té una titulació universitària.",
+      "B) La Maria té títol de batxillerat.",
+      "C) Tots els qui tenen batxillerat són administratius del grup C1.",
+      "D) La Maria no pot promocionar al grup A2."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Mitjançant sil·logisme deductiu directe (modus ponens): si tots els membres del grup C1 tenen batxillerat i la Maria pertany al grup C1, aleshores la Maria té títol de batxillerat."
+  },
+  {
+    "id": 18,
+    "categoria": "aptitudinal",
+    "subcategoria": "Càlcul i ràtio de places",
+    "pregunta": "Per a una convocatòria s'ofereixen 60 places a la borsa i s'hi han inscrit 1.500 persones. Quants aspirants competeixen per cadascuna de les places?",
+    "opcions": [
+      "A) 20 aspirants",
+      "B) 25 aspirants",
+      "C) 30 aspirants",
+      "D) 35 aspirants"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Es divideix el nombre total d'inscrits entre el total de places: 1.500 / 60 = 25 aspirants per plaça."
+  },
+  {
+    "id": 19,
+    "categoria": "aptitudinal",
+    "subcategoria": "Percentatges i descomptes",
+    "pregunta": "Una taxa municipal de 240 € compta amb una bonificació del 15% per domiciliació bancària. Quant pagarà finalment el ciutadà?",
+    "opcions": [
+      "A) 200 €",
+      "B) 204 €",
+      "C) 210 €",
+      "D) 216 €"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El 15% de 240 € és: 240 × 0,15 = 36 €. El preu final és: 240 - 36 = 204 € (o bé 240 × 0,85 = 204 €)."
+  },
+  {
+    "id": 20,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries alfanumèriques",
+    "pregunta": "Quin és el terme següent a la successió? 2B, 4D, 8F, 16H, ...",
+    "opcions": [
+      "A) 24I",
+      "B) 32I",
+      "C) 32J",
+      "D) 64J"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Els coeficients numèrics es doblen: 2, 4, 8, 16, 32. Les lletres salten d'una en una: B, D, F, H, J (+2). Per tant: 32J."
+  },
+  {
+    "id": 21,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogies d'oficis i eines",
+    "pregunta": "Completa l'analogia instrumental: ESTETOSCOPI és a METGE com FORMÓ és a...",
+    "opcions": [
+      "A) ELECTRICISTA",
+      "B) FUSTER",
+      "C) PALETA",
+      "D) FONTANER"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "L'estetoscopi és l'eina diagnòstica emblemàtica del metge, mentre que el formó és l'eina de tall essencial del fuster o ebenista."
+  },
+  {
+    "id": 22,
+    "categoria": "aptitudinal",
+    "subcategoria": "Terminis administratius hàbils",
+    "pregunta": "La notificació estableix un termini de 10 dies hàbils que comença a comptar el dilluns dia 1 d'un mes sense festius intermedis. Quin dia finalitza el termini (recordant que dissabtes i diumenges són inhàbils)?",
+    "opcions": [
+      "A) Dimecres dia 10",
+      "B) Divendres dia 12",
+      "C) Dilluns dia 15",
+      "D) Dimarts dia 16"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Setmana 1: de dilluns 1 a divendres 5 = 5 dies hàbils. Dissabte 6 i diumenge 7 són inhàbils. Setmana 2: de dilluns 8 a divendres 12 = 5 dies hàbils més (total 10 dies hàbils). El termini expira el divendres dia 12 a les 23:59 h."
+  },
+  {
+    "id": 23,
+    "categoria": "aptitudinal",
+    "subcategoria": "Mitjana ponderada de qualificacions",
+    "pregunta": "En una fase d'oposició, la prova psicotècnica té un pes del 40% i la prova d'ofimàtica té un pes del 60%. Si un aspirant obté un 6 al psicotècnic i un 8 a ofimàtica, quina és la seva qualificació final ponderada?",
+    "opcions": [
+      "A) 7,0",
+      "B) 7,2",
+      "C) 7,4",
+      "D) 7,5"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Mitjana ponderada = (6 × 0,40) + (8 × 0,60) = 2,4 + 4,8 = 7,2 punts."
+  },
+  {
+    "id": 24,
+    "categoria": "aptitudinal",
+    "subcategoria": "Matrius lògiques",
+    "pregunta": "En una matriu de dues files: Fila 1 = [3, 12]; Fila 2 = [5, ?]. Si ambdues files mantenen la mateixa relació de proporció interna, quin nombre correspon?",
+    "opcions": [
+      "A) 15",
+      "B) 18",
+      "C) 20",
+      "D) 25"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "La relació de la primera fila és multiplicar per 4: 3 × 4 = 12. Aplicant el mateix operador a la segona fila: 5 × 4 = 20."
+  },
+  {
+    "id": 25,
+    "categoria": "aptitudinal",
+    "subcategoria": "Vocabulari administratiu",
+    "pregunta": "Quin és el sinònim precís del verb 'DIRIMIR' en l'expressió 'dirimir una discrepància o empat en la puntuació'?",
+    "opcions": [
+      "A) Dilatar",
+      "B) Resoldre / Desfer",
+      "C) Suspendre",
+      "D) Impugnar"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Dirimir' significa resoldre, posar fi a una controvèrsia o desfer un empat en una votació o qualificació d'un tribunal mitjançant el vot de qualitat."
+  },
+  {
+    "id": 26,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul",
+    "pregunta": "En un full de càlcul (Excel o LibreOffice Calc en castellà), quina funció permet sumar els valors d'un rang que compleixen un criteri determinat?",
+    "opcions": [
+      "A) =SUMA(rang; criteri)",
+      "B) =SUMAR.SI(rang; criteri; [rang_suma])",
+      "C) =CONTAR.SI(rang; criteri)",
+      "D) =TOTAL.CONDICIONAL(criteri; rang)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La funció =SUMAR.SI (o =SUMIF en versió anglesa) avalua un criteri sobre un rang i suma les cel·les coincidents del rang_suma."
+  },
+  {
+    "id": 27,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul",
+    "pregunta": "Quina funció calcula la mitjana aritmètica dels valors numèrics d'un rang ometent cel·les buides o de text?",
+    "opcions": [
+      "A) =MEDIA(rang)",
+      "B) =PROMEDIO(rang)",
+      "C) =MITJANA(rang)",
+      "D) =VALOR.MEDIO(rang)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "En els fulls de càlcul configurats en llengua castellana (estàndard d'exàmens municipals), la funció estàndard per a la mitjana és =PROMEDIO (en anglès =AVERAGE)."
+  },
+  {
+    "id": 28,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul",
+    "pregunta": "Quina és la diferència principal entre les funcions =CONTAR i =CONTARA a Excel/Calc?",
+    "opcions": [
+      "A) CONTAR compta caràcters de text i CONTARA només nombres.",
+      "B) CONTAR només compta cel·les que contenen números, mentre que CONTARA compta totes les cel·les no buides (inclosos textos i errors).",
+      "C) Són funcions sinònimes i fan exactament el mateix recompte.",
+      "D) CONTAR suma valors i CONTARA fa la mitjana."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=CONTAR (COUNT) només té en compte cel·les amb dades numèriques o dates. =CONTARA (COUNTA) compta qualsevol cel·la que no estigui completament buida (text, dates, caràcters especials o fórmules)."
+  },
+  {
+    "id": 29,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul",
+    "pregunta": "Com s'expressa una referència absoluta completa a la cel·la B4 perquè no variï ni la fila ni la columna en arrossegar la fórmula?",
+    "opcions": [
+      "A) #B#4",
+      "B) $B4",
+      "C) B$4",
+      "D) $B$4"
+    ],
+    "respostaCorrecta": 3,
+    "explicacio": "El signe dòlar ($) davant de la columna i de la fila ($B$4) fixa ambdues coordenades. $B4 només fixaria la columna (mixta) i B$4 només fixaria la fila (mixta)."
+  },
+  {
+    "id": 30,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul",
+    "pregunta": "A la cel·la C10 tenim la fórmula =CONTAR.SI(A1:A20; \">50\"). Què fa exactament aquesta fórmula?",
+    "opcions": [
+      "A) Suma tots els números del rang A1:A20 que siguin superiors a 50.",
+      "B) Compta quantes cel·les del rang A1:A20 tenen un valor estrictament superior a 50.",
+      "C) Substitueix per 50 els valors superiors a 50.",
+      "D) Retorna VERDADER si totes les cel·les són majors que 50."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=CONTAR.SI compta el nombre de cel·les d'un rang que compleixen la condició indicada com a segon argument (en aquest cas, ser superiors a 50)."
+  },
+  {
+    "id": 31,
+    "categoria": "ofimatica",
+    "subcategoria": "Dreceres de teclat",
+    "pregunta": "A Microsoft Windows, quina drecera de teclat permet bloquejar immediatament la sessió de l'equip per seguretat al deixar el lloc de feina?",
+    "opcions": [
+      "A) Ctrl + Alt + B",
+      "B) Tecla Windows + L",
+      "C) Tecla Windows + D",
+      "D) Alt + F4"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Tecla Windows + L (Lock) bloqueja la sessió a l'instant requerint contrasenya o identificació per tornar-hi a accedir. Windows + D minimitza o mostra l'escriptori."
+  },
+  {
+    "id": 32,
+    "categoria": "ofimatica",
+    "subcategoria": "Dreceres de teclat",
+    "pregunta": "A les aplicacions ofimàtiques en català/castellà per a Windows, quina combinació de tecles s'utilitza habitualment per Desar (guardar) el document actual?",
+    "opcions": [
+      "A) Ctrl + S",
+      "B) Ctrl + G",
+      "C) Ctrl + D",
+      "D) Ctrl + P"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "En versions en castellà i català d'Office/Windows la comanda habitual és Ctrl + G (Guardar/Guardar com a). En versions angleses és Ctrl + S (Save). Ctrl + P s'usa per Imprimir."
+  },
+  {
+    "id": 33,
+    "categoria": "ofimatica",
+    "subcategoria": "Correu electrònic",
+    "pregunta": "En l'enviament d'un correu electrònic a múltiples persones externes a l'Ajuntament, per què és imprescindible utilitzar el camp 'CCO' (Còpia carbó oculta)?",
+    "opcions": [
+      "A) Perquè el missatge arribi més ràpid al servidor de destinació.",
+      "B) Perquè les adreces dels destinataris romanguin ocultes entre si, donant compliment a la normativa de protecció de dades (RGPD).",
+      "C) Perquè els fitxers adjunts es comprimeixin automàticament.",
+      "D) Perquè el correu es marqui com a 'Prioritat Alta'."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El camp CCO (BCC en anglès) oculta la llista de destinataris als altres receptors. En comunicacions oficials massives és obligatori per preservar la privacitat i no difondre dades de caràcter personal."
+  },
+  {
+    "id": 34,
+    "categoria": "ofimatica",
+    "subcategoria": "Gestió de fitxers",
+    "pregunta": "A Windows 10/11, quina tecla de funció permet reanomenar ràpidament un fitxer o carpeta seleccionada sense haver d'obrir el menú contextual?",
+    "opcions": [
+      "A) F1",
+      "B) F2",
+      "C) F4",
+      "D) F5"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "F2 posa en mode d'edició el nom del fitxer o carpeta seleccionada. F1 obre l'ajuda i F5 actualitza la finestra."
+  },
+  {
+    "id": 35,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Errors",
+    "pregunta": "Què indica l'error #¡DIV/0! en una cel·la d'Excel o Calc?",
+    "opcions": [
+      "A) Que el nom de la funció està mal escrit.",
+      "B) Que s'està intentant dividir un valor per zero o per una cel·la completament buida.",
+      "C) Que la fórmula conté una referència circular.",
+      "D) Que la cel·la és massa estreta per mostrar el contingut."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "L'error #¡DIV/0! apareix quan una fórmula intenta realitzar una operació de divisió per 0 o per una cel·la buida sense valor numèric."
+  },
+  {
+    "id": 36,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Format",
+    "pregunta": "Quan una cel·la d'un full de càlcul mostra una sèrie de coixinets seguits (######), a què és degut habitualment?",
+    "opcions": [
+      "A) La fórmula conté un error sintàctic greu.",
+      "B) El document està protegit amb contrasenya.",
+      "C) La columna no té prou amplada per mostrar el número o la data en el format seleccionat.",
+      "D) El fitxer s'ha corromput en desar-lo."
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "El símbol ###### indica que el contingut (normalment xifres o dates llargues) és més ample que l'amplada física de la columna. Es resol eixamplant la columna."
+  },
+  {
+    "id": 37,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Funció Lògica",
+    "pregunta": "Quina és l'estructura de paràmetres correcta de la funció condicional =SI en un full de càlcul en castellà?",
+    "opcions": [
+      "A) =SI(condició; llavors; sinó)",
+      "B) =SI(prova_lògica; valor_si_cert; [valor_si_fals])",
+      "C) =SI(rang; criteri; resultat)",
+      "D) =SI(criteri; valor_veritable)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La sintaxi oficial és =SI(prova_lògica; valor_si_cert; [valor_si_fals]). Avalua la prova lògica i retorna el segon argument si és certa o el tercer si és falsa."
+  },
+  {
+    "id": 38,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Cerca",
+    "pregunta": "A la funció =BUSCARV(valor_cercat; matriu_taula; indicador_columnes; [ordenat]), quin valor cal posar a l'últim argument per garantir que la cerca sigui exacta?",
+    "opcions": [
+      "A) VERDADER (o 1)",
+      "B) FALS (o 0)",
+      "C) BUIT (o \"\")",
+      "D) EXACTE"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Per obtenir una coincidència exacta a =BUSCARV cal indicar FALS o 0 com a quart argument. Si s'indica VERDADER o s'omet, fa una cerca aproximada sobre una taula que ha d'estar ordenada."
+  },
+  {
+    "id": 39,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Dates",
+    "pregunta": "Quina funció retorna automàticament la data actual del sistema sense incloure l'hora?",
+    "opcions": [
+      "A) =AHORA()",
+      "B) =HOY()",
+      "C) =FECHA.ACTUAL()",
+      "D) =DIA()"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=HOY() (en anglès =TODAY()) insereix la data actual actualitzable. =AHORA() (en anglès =NOW()) insereix la data i l'hora exacta."
+  },
+  {
+    "id": 40,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Referències mixtes",
+    "pregunta": "Volem que en arrossegar una fórmula cap a la dreta la columna avanci (B, C, D...), però que en arrossegar cap avall la fila romangui fixa a la fila 2. Com s'escriu la referència?",
+    "opcions": [
+      "A) $B$2",
+      "B) $B2",
+      "C) B$2",
+      "D) B2$"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "B$2 té la columna lliure (relativa) i la fila bloquejada amb el signe dòlar (absoluta). En arrossegar horitzontalment canviarà a C$2, D$2, però en baixar sempre serà fila 2."
+  },
+  {
+    "id": 41,
+    "categoria": "ofimatica",
+    "subcategoria": "Processador de textos",
+    "pregunta": "A Microsoft Word o LibreOffice Writer, quina combinació de tecles permet inserir un salt de pàgina ràpid?",
+    "opcions": [
+      "A) Shift + Enter",
+      "B) Ctrl + Enter",
+      "C) Alt + Enter",
+      "D) Ctrl + Espai"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Ctrl + Enter insereix un salt de pàgina immediat. Shift + Enter insereix un salt de línia simple dins del mateix paràgraf."
+  },
+  {
+    "id": 42,
+    "categoria": "ofimatica",
+    "subcategoria": "Processador de textos",
+    "pregunta": "Quina eina del processador de textos permet generar cartes, notificacions o certificats massius combinant un document model amb una base de dades d'aspirants?",
+    "opcions": [
+      "A) Macros de seguretat",
+      "B) Combinació de correspondència (Mail Merge)",
+      "C) Control de canvis",
+      "D) Taula d'il·lustracions"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La combinació de correspondència vincula un document principal amb un origen de dades (full de càlcul o taula) per generar documents individuals personalitzats."
+  },
+  {
+    "id": 43,
+    "categoria": "ofimatica",
+    "subcategoria": "Dreceres de sistema",
+    "pregunta": "Quina combinació de tecles obre directament l'Administrador de tasques a Windows sense passar per la pantalla intermèdia?",
+    "opcions": [
+      "A) Ctrl + Alt + Supr",
+      "B) Ctrl + Shift + Esc",
+      "C) Win + X",
+      "D) Alt + F4"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Ctrl + Shift + Esc obre directament la finestra de l'Administrador de tasques. Ctrl + Alt + Supr obre el menú de seguretat del sistema."
+  },
+  {
+    "id": 44,
+    "categoria": "ofimatica",
+    "subcategoria": "Dreceres de sistema",
+    "pregunta": "Com es pot alternar de manera ràpida entre les finestres de les aplicacions obertes a l'escriptori de Windows?",
+    "opcions": [
+      "A) Alt + Tab",
+      "B) Ctrl + Tab",
+      "C) Shift + Tab",
+      "D) Win + Espai"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Alt + Tab permet commutar entre finestres obertes. Ctrl + Tab sol commutar entre pestanyes dins de la mateixa aplicació o navegador."
+  },
+  {
+    "id": 45,
+    "categoria": "ofimatica",
+    "subcategoria": "Correu electrònic - Protocols",
+    "pregunta": "Quin protocol d'Internet és l'estàndard utilitzat per a l'ENVIAMENT de missatges de correu electrònic entre clients i servidors?",
+    "opcions": [
+      "A) HTTP",
+      "B) POP3",
+      "C) SMTP",
+      "D) FTP"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "SMTP (Simple Mail Transfer Protocol) és el protocol encarregat del transport i enviament del correu sortint. POP3 i IMAP s'usen per a la recepció."
+  },
+  {
+    "id": 46,
+    "categoria": "ofimatica",
+    "subcategoria": "Correu electrònic - Protocols",
+    "pregunta": "Quina és la diferència principal entre els protocols de recepció de correu POP3 i IMAP?",
+    "opcions": [
+      "A) POP3 és més ràpid i IMAP només funciona en mòbils.",
+      "B) IMAP manté els missatges sincronitzats al servidor per consultar-los des de múltiples dispositius, mentre que POP3 típicament els descarrega a l'equip local.",
+      "C) POP3 xifra sempre el correu i IMAP no.",
+      "D) No hi ha cap diferència tècnica."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "IMAP permet la gestió sincronitzada de carpetes i missatges en el servidor des de múltiples clients (PC, mòbil, webmail). POP3 per defecte descarrega els correus a un sol client local."
+  },
+  {
+    "id": 47,
+    "categoria": "ofimatica",
+    "subcategoria": "Formats de fitxer",
+    "pregunta": "Què caracteritza un fitxer amb format .CSV?",
+    "opcions": [
+      "A) És un document de text enriquit amb imatges vectorials.",
+      "B) És un fitxer de text pla on les dades estructurades en taules es troben separades per comes o punts i comes.",
+      "C) És una base de dades comprimida amb clau pública.",
+      "D) És una macro executable de full de càlcul."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "CSV (Comma-Separated Values) és un format universal de text pla per intercanviar dades en taula, compatible amb qualsevol full de càlcul i base de dades."
+  },
+  {
+    "id": 48,
+    "categoria": "ofimatica",
+    "subcategoria": "Formats de fitxer",
+    "pregunta": "Quina és l'extensió nativa per defecte d'un full de càlcul creat amb la suite ofimàtica lliure LibreOffice Calc?",
+    "opcions": [
+      "A) .odt",
+      "B) .ods",
+      "C) .odp",
+      "D) .xlsx"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": ".ods (OpenDocument Spreadsheet) és el format estàndard de LibreOffice Calc. .odt és per a documents de text i .odp per a presentacions."
+  },
+  {
+    "id": 49,
+    "categoria": "ofimatica",
+    "subcategoria": "Seguretat i ciberseguretat",
+    "pregunta": "En un lloc de treball de l'administració, com s'anomena la tècnica d'engany en què un atacant suplanta la identitat d'un organisme oficial mitjançant un correu fals per robar contrasenyes o dades bancàries?",
+    "opcions": [
+      "A) Firewall",
+      "B) Phishing",
+      "C) Spamming",
+      "D) Ransomware"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El 'phishing' és una tècnica d'enginyeria social en què es simula la imatge d'una entitat coneguda per enganyar l'usuari i obtenir les seves credencials d'accés."
+  },
+  {
+    "id": 50,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Funcions estadístiques",
+    "pregunta": "Quina funció s'ha d'utilitzar per trobar el valor numèric més baix d'un rang de cel·les a Excel o Calc?",
+    "opcions": [
+      "A) =MENOR(rang)",
+      "B) =MIN(rang)",
+      "C) =BAJO(rang)",
+      "D) =MINIMO(rang)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=MIN(rang) retorna el valor numèric mínim del rang indicat. Per al valor màxim s'utilitza =MAX(rang)."
+  },
+  {
+    "id": 51,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari administratiu",
+    "pregunta": "In a public job selection process, what does the term 'applicant' mean?",
+    "opcions": [
+      "A) El funcionari que avalua les sol·licituds.",
+      "B) La persona candidata o aspirant que presenta la sol·licitud per participar al procés.",
+      "C) El certificat administratiu que acredita el nivell d'idiomes.",
+      "D) La resolució final d'adjudicació de places."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Applicant' prové del verb 'to apply' (sol·licitar / presentar-se) i equival a aspirant, sol·licitant o persona candidata."
+  },
+  {
+    "id": 52,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari administratiu",
+    "pregunta": "The announcement states: 'The deadline for submitting applications is 10 business days.' What is the exact meaning of 'deadline'?",
+    "opcions": [
+      "A) El preu de la taxa d'inscripció.",
+      "B) La data o termini límit de presentació.",
+      "C) El tribunal qualificador de la prova.",
+      "D) El model oficial de formulari."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Deadline' es tradueix com a termini improrrogable o data límit de finalització per dur a terme una actuació o tràmit."
+  },
+  {
+    "id": 53,
+    "categoria": "angles",
+    "subcategoria": "Atenció al ciutadà",
+    "pregunta": "Which is the most appropriate and formal phrase to politely request a citizen to provide their identification at the counter?",
+    "opcions": [
+      "A) Give me your card now.",
+      "B) Show ID, please.",
+      "C) Could you please provide your identification document?",
+      "D) You must want to give me identity."
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "'Could you please provide your identification document?' fa servir el condicional de cortesia 'could', 'please' i vocabulari administratiu adequat en atenció ciutadana."
+  },
+  {
+    "id": 54,
+    "categoria": "angles",
+    "subcategoria": "Preposicions de temps",
+    "pregunta": "Complete the official notification: 'The assessment will take place _______ Saturday, October 24th, 2026.'",
+    "opcions": [
+      "A) in",
+      "B) on",
+      "C) at",
+      "D) by"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "En anglès, per a dies concrets de la setmana i dates completes s'utilitza la preposició 'on' (on Saturday, on October 24th). 'At' s'usa per a hores específiques (at 10:00 AM) i 'in' per a mesos o anys."
+  },
+  {
+    "id": 55,
+    "categoria": "angles",
+    "subcategoria": "Preposicions de temps i lloc",
+    "pregunta": "Choose the correct prepositions: 'Doors will open _______ 09:30 h _______ the designated university campus.'",
+    "opcions": [
+      "A) at / at",
+      "B) on / on",
+      "C) in / at",
+      "D) to / on"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Per a les hores s'utilitza sempre 'at' (at 09:30 h), i per indicar la ubicació institucional o punt de trobada també s'utilitza 'at' (at the designated university campus)."
+  },
+  {
+    "id": 56,
+    "categoria": "angles",
+    "subcategoria": "Gramàtica administrativa",
+    "pregunta": "Which form correctly completes the sentence: 'All candidates who _______ the minimum requirements will be admitted to the examination.'?",
+    "opcions": [
+      "A) meets",
+      "B) meet",
+      "C) meeting",
+      "D) has met"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El subjecte antecedent és 'All candidates' (plural). Per tant, el verb en present simple concorda en plural sense la -s de tercera persona: 'meet the minimum requirements'."
+  },
+  {
+    "id": 57,
+    "categoria": "angles",
+    "subcategoria": "Veu passiva formal",
+    "pregunta": "Complete the sentence with the correct passive construction: 'The provisional list of results _______ on the official electronic website next week.'",
+    "opcions": [
+      "A) will be published",
+      "B) will publish",
+      "C) is publish",
+      "D) has been publishing"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Com que l'acció es farà en el futur sobre la llista per un agent no mencionat, s'utilitza el futur passiu: 'will be' + participi passat ('published')."
+  },
+  {
+    "id": 58,
+    "categoria": "angles",
+    "subcategoria": "Connectors lògics",
+    "pregunta": "Choose the connector that expresses a conclusion or consequence: 'The candidate did not bring a valid ID; _______, access to the classroom was not permitted.'",
+    "opcions": [
+      "A) although",
+      "B) therefore",
+      "C) whereas",
+      "D) despite"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Therefore' (per tant / en conseqüència) és el connector de causa-efecte o conclusió adient. 'Although' i 'whereas' expressen contrast, i 'despite' concessió."
+  },
+  {
+    "id": 59,
+    "categoria": "angles",
+    "subcategoria": "Atenció al ciutadà i condicional",
+    "pregunta": "Select the correct sentence to communicate assistance options: 'If you _______ any special adaptation for the exam, please notify the committee in advance.'",
+    "opcions": [
+      "A) required",
+      "B) require",
+      "C) will require",
+      "D) are requiring"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "En la primera condicional (First Conditional) amb oració imperativa/cortesa a la clàusula principal, la condició amb 'if' es formula en present simple: 'If you require...'."
+  },
+  {
+    "id": 60,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari administratiu",
+    "pregunta": "What is the English term for a permanent public employee who works for the public administration?",
+    "opcions": [
+      "A) Private contractor",
+      "B) Civil servant",
+      "C) Volunteer officer",
+      "D) Freelancer"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Civil servant' és el terme oficial en anglès per a referir-se a un funcionari o empleat públic de carrera."
+  },
+  {
+    "id": 61,
+    "categoria": "angles",
+    "subcategoria": "Dret i administració local",
+    "pregunta": "Which term refers to a municipal regulation or local law enacted by the city council?",
+    "opcions": [
+      "A) Constitutional treaty",
+      "B) Municipal bylaw (or ordinance)",
+      "C) Private clause",
+      "D) Civil verdict"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Bylaw' (o 'ordinance') és el terme jurídic utilitzat per a designar una ordenança o reglament aprovat per un govern local o ajuntament."
+  },
+  {
+    "id": 62,
+    "categoria": "angles",
+    "subcategoria": "Taxes i pagaments",
+    "pregunta": "The document mentions: 'An administrative fee must be paid before registering.' What does 'fee' mean?",
+    "opcions": [
+      "A) Una multa coercitiva.",
+      "B) Una taxa o import econòmic fixat per un servei administratiu.",
+      "C) Un premi de productivitat.",
+      "D) El salari base de l'empleat."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Fee' és el terme estàndard per a referir-se a una taxa, dret aranzelari o tarifa pública associada a un tràmit o sol·licitud."
+  },
+  {
+    "id": 63,
+    "categoria": "angles",
+    "subcategoria": "Atenció telefònica formal",
+    "pregunta": "Which is the most polite formula to ask a caller to wait a moment on the line?",
+    "opcions": [
+      "A) Stop talking now.",
+      "B) Wait there, I am busy.",
+      "C) Could you please hold the line for a moment?",
+      "D) Don't hang up because I leave."
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "'Could you please hold the line for a moment?' és l'expressió formal i protocol·lària estàndard en atenció telefònica a l'administració."
+  },
+  {
+    "id": 64,
+    "categoria": "angles",
+    "subcategoria": "Falsos amics (False Friends)",
+    "pregunta": "In the sentence 'The clerk will assist you with the application form', what does 'to assist' mean?",
+    "opcions": [
+      "A) Assistir presencialment a un acte o conferència.",
+      "B) Ajudar o donar suport a una persona.",
+      "C) Rebutjar la sol·licitud.",
+      "D) Signar en representació d'altri."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'To assist' és un fals amic que significa ajudar o atendre (*to help/support*). Si es vol dir 'assistir a un acte', el verb correcte és 'to attend'."
+  },
+  {
+    "id": 65,
+    "categoria": "angles",
+    "subcategoria": "Falsos amics (False Friends)",
+    "pregunta": "What does the adverb 'currently' mean in 'The City Council is currently reviewing the employment list'?",
+    "opcions": [
+      "A) En realitat o de fet.",
+      "B) Actualment / En aquest període de temps.",
+      "C) Ràpidament.",
+      "D) Ocasionalment."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Currently' vol dir actualment o en aquest moment. 'Actually' és el fals amic que significa 'en realitat' o 'de fet'."
+  },
+  {
+    "id": 66,
+    "categoria": "angles",
+    "subcategoria": "Connectors de contrast",
+    "pregunta": "Choose the correct linking word: 'The candidate obtained a high score in the test; _______, they did not submit the required certificate.'",
+    "opcions": [
+      "A) moreover",
+      "B) however",
+      "C) so",
+      "D) because"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'However' (tanmateix / no obstant això) expressa contrast entre el bon resultat del test i la manca de presentació del certificat."
+  },
+  {
+    "id": 67,
+    "categoria": "angles",
+    "subcategoria": "Connectors de finalitat",
+    "pregunta": "Complete the notification: 'The registration office opened early _______ avoid long queues outside the building.'",
+    "opcions": [
+      "A) in order to",
+      "B) because of",
+      "C) despite",
+      "D) whereas"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'In order to' (+ infinitiu 'avoid') expressa finalitat o propòsit (per tal d'evitar cues)."
+  },
+  {
+    "id": 68,
+    "categoria": "angles",
+    "subcategoria": "Verbs modals d'obligació",
+    "pregunta": "Select the appropriate modal verb: 'All aspirants _______ present a valid original identity card before entering the room.'",
+    "opcions": [
+      "A) might",
+      "B) must",
+      "C) could",
+      "D) would"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Must' expressa obligació estricta i ineludible per mandat de les bases de la convocatòria."
+  },
+  {
+    "id": 69,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari administratiu",
+    "pregunta": "In a municipal procedure, what does a 'fee waiver' represent?",
+    "opcions": [
+      "A) Un augment extraordinari del cost de la taxa.",
+      "B) Una exempció o exoneració del pagament de la taxa (per exemple per atur o família nombrosa).",
+      "C) Un rebut de pagament en efectiu.",
+      "D) Una penalització per pagament fora de termini."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Waiver' significa renúncia o exempció legal (una exempció de taxes és un *fee waiver*)."
+  },
+  {
+    "id": 70,
+    "categoria": "angles",
+    "subcategoria": "Recursos Humans",
+    "pregunta": "What is the meaning of 'leave of absence' in the municipal staff regulations?",
+    "opcions": [
+      "A) Concessió d'una excedència o permís temporal d'absència laboral.",
+      "B) Acomiadament disciplinari immediat.",
+      "C) Augment de categoria professional.",
+      "D) Jubilació forçosa per edat."
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Leave of absence' és el terme oficial per a una excedència o permís d'absència autoritzat del lloc de treball."
+  },
+  {
+    "id": 71,
+    "categoria": "angles",
+    "subcategoria": "Preposicions de termini",
+    "pregunta": "Choose the correct preposition: 'Any complaint regarding the provisional list must be submitted _______ 10 calendar days.'",
+    "opcions": [
+      "A) between",
+      "B) within",
+      "C) through",
+      "D) along"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Within' significa dins del període o termini establert ('within 10 calendar days' = en el termini de 10 dies naturals)."
+  },
+  {
+    "id": 72,
+    "categoria": "angles",
+    "subcategoria": "Atenció al ciutadà",
+    "pregunta": "Complete the instruction: 'To access the citizen advice bureau without waiting, citizens are advised to _______ in advance.'",
+    "opcions": [
+      "A) book an appointment",
+      "B) pay a fine",
+      "C) cancel their passport",
+      "D) call the police"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'To book an appointment' significa demanar cita prèvia, requisit habitual a les oficines d'atenció ciutadana (OAC)."
+  },
+  {
+    "id": 73,
+    "categoria": "angles",
+    "subcategoria": "Temps verbals",
+    "pregunta": "Select the correct form: 'The Mayor _______ the official decree approving the exam venues yesterday.'",
+    "opcions": [
+      "A) has signed",
+      "B) signed",
+      "C) signs",
+      "D) will sign"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Amb un complement temporal de passat concret i finalitzat com 'yesterday', en anglès s'utilitza el Past Simple ('signed')."
+  },
+  {
+    "id": 74,
+    "categoria": "angles",
+    "subcategoria": "Contractació pública",
+    "pregunta": "What does 'public procurement' (or 'public tender') refer to in local government?",
+    "opcions": [
+      "A) La contractació i licitació pública de béns, serveis o obres per part de l'Ajuntament.",
+      "B) El cobrament d'impostos de béns immobles.",
+      "C) La neteja de la via pública.",
+      "D) La contractació d'assegurances personals."
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Public procurement' és la contractació pública mitjançant licitació per proveir de serveis, subministraments o obres a l'administració."
+  },
+  {
+    "id": 75,
+    "categoria": "angles",
+    "subcategoria": "Recursos administratius",
+    "pregunta": "Complete the legal statement: 'Any applicant who disagrees with the final scoring has the right to file an _______ with the appeals committee.'",
+    "opcions": [
+      "A) appointment",
+      "B) apology",
+      "C) appeal",
+      "D) announcement"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "'To file an appeal' significa interposar un recurs administratiu o d'alçada contra una resolució o acte del tribunal."
+  }
 ]
