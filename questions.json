@@ -1048,5 +1048,425 @@
     ],
     "respostaCorrecta": 2,
     "explicacio": "'To file an appeal' significa interposar un recurs administratiu o d'alçada contra una resolució o acte del tribunal."
+  },
+  {
+    "id": 76,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques",
+    "pregunta": "Quin és el número que continua la successió geomètrica? 4, 12, 36, 108, ...",
+    "opcions": [
+      "A) 216",
+      "B) 324",
+      "C) 432",
+      "D) 318"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Cada terme es multiplica per la raó constant 3: 4×3=12, 12×3=36, 36×3=108, 108×3=324."
+  },
+  {
+    "id": 77,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques decreixents",
+    "pregunta": "Identifica el terme que segueix a la sèrie decreixent: 100, 96, 87, 71, ...",
+    "opcions": [
+      "A) 46",
+      "B) 50",
+      "C) 52",
+      "D) 55"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Les restes corresponen als quadrats de nombres consecutius: 100 - 4 (2²) = 96; 96 - 9 (3²) = 87; 87 - 16 (4²) = 71; 71 - 25 (5²) = 46."
+  },
+  {
+    "id": 78,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries de lletres alternades",
+    "pregunta": "Quina lletra continua la sèrie alternada d'extrems de l'alfabet? A, Z, B, Y, C, X, ...",
+    "opcions": [
+      "A) W",
+      "B) D",
+      "C) V",
+      "D) E"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Hi ha dues successions alternades: les posicions senars avancen des del principi de l'alfabet (A, B, C, D...), mentre que les parells retrocedeixen des del final (Z, Y, X...). El terme següent és el quart de les senars: D."
+  },
+  {
+    "id": 79,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogies de matèria i producte",
+    "pregunta": "Completa l'analogia d'origen i elaboració: RAÏM és a VI com ORDI és a...",
+    "opcions": [
+      "A) PA",
+      "B) CERVESA",
+      "C) OLI",
+      "D) FARINA"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El raïm és la matèria primera essencial que es fermenta per obtenir vi, tal com l'ordi és el cereal principal per a l'elaboració de la cervesa."
+  },
+  {
+    "id": 80,
+    "categoria": "aptitudinal",
+    "subcategoria": "Vocabulari procedimental",
+    "pregunta": "En l'àmbit del procediment administratiu, què significa el terme 'INCOAR'?",
+    "opcions": [
+      "A) Dictar sentència ferma.",
+      "B) Iniciar oficialment un procediment o expedient administratiu mitjançant acord de l'òrgan competent.",
+      "C) Arxivar definitivament les actuacions.",
+      "D) Notificar la sanció a la persona infractora."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Incoar' és l'acte formal pel qual s'inicia la tramitació d'un expedient administratiu o disciplinari."
+  },
+  {
+    "id": 81,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sinònims i antònims administratius",
+    "pregunta": "Quin és l'antònim de 'DENEGACIÓ' d'una sol·licitud en una resolució administrativa?",
+    "opcions": [
+      "A) Desestimació",
+      "B) Caducitat",
+      "C) Estimació",
+      "D) Preclusió"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Denegar és rebutjar o no concedir allò demanat; el seu antònim en una resolució és l'estimació (estimar la sol·licitud o recurs)."
+  },
+  {
+    "id": 82,
+    "categoria": "aptitudinal",
+    "subcategoria": "Raonament lògic deductiu",
+    "pregunta": "Premissa major: Tots els documents vàlids tenen signatura digital. Premissa menor: Aquest justificant no té signatura digital. Quina conclusió és necessàriament vertadera?",
+    "opcions": [
+      "A) Aquest justificant és un esborrany.",
+      "B) Aquest justificant no és vàlid.",
+      "C) Tots els justificants són electrònics.",
+      "D) La persona signant no té certificat."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Per la regla de negació del conseqüent (Modus Tollens): si tot document vàlid té signatura i aquest no en té, aleshores aquest justificant no és vàlid."
+  },
+  {
+    "id": 83,
+    "categoria": "aptitudinal",
+    "subcategoria": "Problemes de rendiment i temps",
+    "pregunta": "Dues impressores idèntiques imprimeixen un lot d'expedients en 3 hores treballant simultàniament. Quant trigaria una sola impressora a imprimir exactament el mateix volum de feina?",
+    "opcions": [
+      "A) 1,5 hores",
+      "B) 4,5 hores",
+      "C) 6 hores",
+      "D) 8 hores"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "La relació és inversament proporcional: a la meitat de màquines (1 en lloc de 2), es requereix el doble de temps: 3 hores × 2 = 6 hores."
+  },
+  {
+    "id": 84,
+    "categoria": "aptitudinal",
+    "subcategoria": "Càlcul fiscal i percentatges",
+    "pregunta": "Una comanda de material municipal té una base imposable de 800 €. Si s'hi aplica el tipus general del 21% d'IVA, quin és l'import total de la factura?",
+    "opcions": [
+      "A) 948 €",
+      "B) 968 €",
+      "C) 980 €",
+      "D) 1.012 €"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "L'IVA correspon a: 800 × 0,21 = 168 €. L'import total és: 800 + 168 = 968 €."
+  },
+  {
+    "id": 85,
+    "categoria": "aptitudinal",
+    "subcategoria": "Matrius lògiques 3x3",
+    "pregunta": "En una matriu numèrica 3x3: Fila 1 = [7, 5, 8]; Fila 2 = [4, 9, 7]; Fila 3 = [6, 8, ?]. Quin nombre falta perquè totes les files sumin 20?",
+    "opcions": [
+      "A) 5",
+      "B) 6",
+      "C) 7",
+      "D) 8"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Totes les files sumen 20: 7+5+8=20; 4+9+7=20; a la tercera fila: 6 + 8 + x = 20 => x = 20 - 14 = 6."
+  },
+  {
+    "id": 86,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Recompte",
+    "pregunta": "A Excel o LibreOffice Calc en castellà, quina funció permet comptar exclusivament quantes cel·les d'un rang estan buides?",
+    "opcions": [
+      "A) =CONTAR.VACIAS(rang)",
+      "B) =CONTAR.BLANCO(rang)",
+      "C) =CONTAR.NULOS(rang)",
+      "D) =ESBLANCO(rang)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=CONTAR.BLANCO (en anglès =COUNTBLANK) compta el nombre de cel·les buides d'un rang determinat."
+  },
+  {
+    "id": 87,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Text",
+    "pregunta": "Quina funció o operador s'utilitza a Excel per combinar cadenes de text provinents de diverses cel·les en una sola cel·la?",
+    "opcions": [
+      "A) =SUMA(text1; text2)",
+      "B) =CONCATENAR(text1; text2) o operador &",
+      "C) =FUSIONAR(text1; text2)",
+      "D) =AGRUPAR(text1; text2)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La funció =CONCATENAR (o =CONCAT / =UNIRCADENAS en versions noves) i l'operador ampersand (&) permeten unir cadenes de text."
+  },
+  {
+    "id": 88,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Dreceres",
+    "pregunta": "Mentre edites una fórmula a la barra de fórmules d'Excel, quina tecla de funció commuta automàticament el tipus de referència (relativa -> absoluta -> mixta)?",
+    "opcions": [
+      "A) F2",
+      "B) F4",
+      "C) F8",
+      "D) F12"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "F4 alterna ciclicament entre A1 -> $A$1 -> A$1 -> $A1 mentre el cursor és sobre la coordenada de la cel·la."
+  },
+  {
+    "id": 89,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Control d'errors",
+    "pregunta": "Què permet fer la funció =SI.ERROR(fórmula; valor_si_error) a un full de càlcul?",
+    "opcions": [
+      "A) Esborrar les cel·les que contenen errors.",
+      "B) Executar la fórmula i, en cas que generi un error (#N/D, #¡DIV/0!, etc.), substituir-lo pel valor alternatiu especificat en lloc de mostrar l'error.",
+      "C) Imprimir un informe d'errors del llibre.",
+      "D) Bloquejar el full si hi ha un error."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=SI.ERROR (IFERROR) captura qualsevol error que retorni la fórmula i mostra un missatge personalitzat (ex: 0 o 'No disponible') en lloc del codi d'error del sistema."
+  },
+  {
+    "id": 90,
+    "categoria": "ofimatica",
+    "subcategoria": "Processador de textos - Paràgraf",
+    "pregunta": "A Microsoft Word en versió en castellà/català, quina combinació de tecles centra el paràgraf seleccionat?",
+    "opcions": [
+      "A) Ctrl + C",
+      "B) Ctrl + T",
+      "C) Ctrl + E",
+      "D) Ctrl + J"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Ctrl + T és la drecera per centrar el text a Word. Ctrl + C copia, Ctrl + E selecciona tot el text i Ctrl + J justifica."
+  },
+  {
+    "id": 91,
+    "categoria": "ofimatica",
+    "subcategoria": "Processador de textos - Estructura",
+    "pregunta": "Com es genera de forma automàtica una Taula de Continguts (índex) estructurada a Word o Writer?",
+    "opcions": [
+      "A) Escrivint els números de pàgina manualment al final.",
+      "B) Aplicant els estils de títol predefinits (Títol 1, Títol 2, etc.) als encapçalaments del document.",
+      "C) Inserint una nota a peu de pàgina a cada capítol.",
+      "D) Canviant la font a lletra negreta."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Les taules de continguts automàtiques es basen en la jerarquia dels estils de paràgraf de títol (Heading 1, 2, 3)."
+  },
+  {
+    "id": 92,
+    "categoria": "ofimatica",
+    "subcategoria": "Dreceres de teclat de Windows",
+    "pregunta": "Quina combinació de tecles obre el diàleg 'Executar' (Run) a Windows per obrir una comanda o aplicació?",
+    "opcions": [
+      "A) Win + E",
+      "B) Win + R",
+      "C) Win + S",
+      "D) Win + I"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Win + R obre la finestra Executar. Win + E obre l'Explorador d'arxius, Win + S la cerca i Win + I la configuració."
+  },
+  {
+    "id": 93,
+    "categoria": "ofimatica",
+    "subcategoria": "Signatura i administració electrònica",
+    "pregunta": "Quin format d'arxiu és el més habitual per exportar i instal·lar un certificat digital de persona física o empleat públic que conté la clau privada protegida per contrasenya?",
+    "opcions": [
+      "A) .pdf",
+      "B) .p12 o .pfx",
+      "C) .txt",
+      "D) .zip"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Els formats PKCS#12 (.p12 o .pfx) són els estàndards segurs que empaqueten el certificat juntament amb la clau privada xifrada."
+  },
+  {
+    "id": 94,
+    "categoria": "ofimatica",
+    "subcategoria": "Xarxes i sistemes",
+    "pregunta": "En l'entorn de servidors i desenvolupament local, quina és l'adreça IP estàndard de bucle local coneguda com 'localhost'?",
+    "opcions": [
+      "A) 192.168.1.1",
+      "B) 127.0.0.1",
+      "C) 10.0.0.1",
+      "D) 255.255.255.0"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "127.0.0.1 és l'adreça IPv4 reservada de bucle invertit (loopback) per connectar-se al propi equip local (localhost)."
+  },
+  {
+    "id": 95,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Funcions avançades",
+    "pregunta": "Quina funció permet comptar quantes cel·les compleixen múltiples criteris independents a diferents columnes?",
+    "opcions": [
+      "A) =CONTAR.SI",
+      "B) =CONTAR.SI.CONJUNTO",
+      "C) =CONTAR.MULTIPLE",
+      "D) =SUMAR.SI.CONJUNTO"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=CONTAR.SI.CONJUNTO (en anglès =COUNTIFS) avalua múltiples rangs i criteris simultàniament."
+  },
+  {
+    "id": 96,
+    "categoria": "angles",
+    "subcategoria": "Serveis municipals",
+    "pregunta": "What is the English term for an office where residents can receive information, register paperwork and carry out municipal procedures?",
+    "opcions": [
+      "A) Citizen Advice Bureau (or Citizen Service Office)",
+      "B) Judicial Court",
+      "C) Trade Union Hall",
+      "D) Police Station"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Citizen Service Office' o 'Citizen Advice Bureau' és l'equivalent de l'Oficina d'Atenció Ciutadana (OAC)."
+  },
+  {
+    "id": 97,
+    "categoria": "angles",
+    "subcategoria": "Processos selectius",
+    "pregunta": "The announcement states: 'Only eligible candidates will be called for the aptitude test.' What does 'eligible' mean?",
+    "opcions": [
+      "A) Que han estat elegits per votació.",
+      "B) Que compleixen els requisits legals per ser admesos.",
+      "C) Que tenen un recurs d'alçada pendent.",
+      "D) Que han demanat l'exempció de la taxa."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Eligible' vol dir que reuneix les condicions o requisits establerts a les bases per a poder participar."
+  },
+  {
+    "id": 98,
+    "categoria": "angles",
+    "subcategoria": "Falsos amics",
+    "pregunta": "What is the precise meaning of 'records' in the phrase 'The City Council maintains public records of all municipal resolutions'?",
+    "opcions": [
+      "A) Marques esportives d'alt rendiment.",
+      "B) Expedients, registres o arxius oficials.",
+      "C) Discs musicals de vinil.",
+      "D) Records personals de la memòria."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Records' és un terme administratiu que significa registres, actes, arxius o expedients oficials."
+  },
+  {
+    "id": 99,
+    "categoria": "angles",
+    "subcategoria": "Atenció ciutadana",
+    "pregunta": "Complete the polite sentence: 'Please provide your email address so that we can _______ you when the final list is published.'",
+    "opcions": [
+      "A) notify",
+      "B) blame",
+      "C) dismiss",
+      "D) ignore"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'To notify' (notificar / informar oficialment) és el verb adequat per avisar un aspirant o ciutadà."
+  },
+  {
+    "id": 100,
+    "categoria": "angles",
+    "subcategoria": "Reglament d'exàmens",
+    "pregunta": "Select the correct negative modal for strict prohibition: 'Candidates _______ use mobile phones during the exam.'",
+    "opcions": [
+      "A) might not",
+      "B) must not",
+      "C) need not",
+      "D) would not"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Must not' expressa prohibició taxativa i categòrica a les normes d'examen."
+  },
+  {
+    "id": 101,
+    "categoria": "angles",
+    "subcategoria": "Preposicions de lloc",
+    "pregunta": "Choose the correct preposition: 'The headquarters of Barcelona City Council is situated _______ Sant Jaume Square.'",
+    "opcions": [
+      "A) in",
+      "B) on",
+      "C) at",
+      "D) by"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Per a places i zones urbanes delimitades s'utilitza habitualment 'in' (in Sant Jaume Square / in the Gothic Quarter) o 'on' en contexts viaris."
+  },
+  {
+    "id": 102,
+    "categoria": "angles",
+    "subcategoria": "Connectors formals",
+    "pregunta": "Complete the official regulation: 'Applications received after 14:00 h will not be accepted, _______ the justification provided.'",
+    "opcions": [
+      "A) regardless of",
+      "B) because of",
+      "C) instead of",
+      "D) in order to"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Regardless of' significa 'independentment de' o 'sense perjudici de', expressant que la justificació no alterarà la norma."
+  },
+  {
+    "id": 103,
+    "categoria": "angles",
+    "subcategoria": "Recursos Humans",
+    "pregunta": "In a municipal employment contract, what does the term 'allowance' refer to?",
+    "opcions": [
+      "A) Un complement salarial o plus retributiu.",
+      "B) Una sanció d'inhabilitació.",
+      "C) Una renúncia al lloc de treball.",
+      "D) El període de prova."
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Allowance' és un complement, dietes o assignació monetària addicional al sou base."
+  },
+  {
+    "id": 104,
+    "categoria": "angles",
+    "subcategoria": "Correspondència formal",
+    "pregunta": "When writing a formal letter to an administrative body starting with 'Dear Sir/Madam' (name unknown), which closing formula is standard in British English?",
+    "opcions": [
+      "A) Cheers",
+      "B) Yours faithfully",
+      "C) Yours sincerely",
+      "D) Best wishes"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Si s'inicia amb 'Dear Sir/Madam' (destinatari desconegut pel nom), es tanca formalment amb 'Yours faithfully'. Si se'n coneix el cognom ('Dear Mr. Smith'), es fa servir 'Yours sincerely'."
+  },
+  {
+    "id": 105,
+    "categoria": "angles",
+    "subcategoria": "Temps verbals",
+    "pregunta": "Choose the correct form: 'The selection board _______ the candidate files since early this morning.'",
+    "opcions": [
+      "A) is reviewing",
+      "B) has been reviewing",
+      "C) reviewed",
+      "D) will review"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Amb 'since' i una acció que continua en el present, s'empra el Present Perfect Continuous: 'has been reviewing'."
   }
 ]

@@ -1,0 +1,20 @@
+/* TEAM */
+Desenvolupador i Disseny: xarop.com
+Lloc web: https://xarop.com
+Ubicació: Barcelona, Catalunya
+
+/* PROJECT */
+Nom: BcnOps 2026 — Simulador d'Exàmens i Eina de Preparació
+Objectiu: Suport als aspirants a les Borses de Treball de l'Ajuntament de Barcelona (Expedient 31/2026)
+Llicència: Codi obert per a finalitats formatives i cíviques
+
+/* THANKS */
+Comunitat d'aspirants a la funció pública municipal de Barcelona.
+Fonts obertes de processos selectius de l'Ajuntament de Barcelona i la Generalitat de Catalunya.
+
+/* SITE */
+Llenguatges: HTML5 semàntic, CSS3 amb variables natives, JavaScript pur (ES6+ Vanilla)
+Estat: SPA estàtica, Zero dependències externes, 100% Mobile-First
+Allotjament: GitHub Pages
+Inspiració de disseny: Guia de comunicació i identitat corporativa de l'Ajuntament de Barcelona
+Data darrera actualització: Octubre 2026

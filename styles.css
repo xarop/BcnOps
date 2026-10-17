@@ -1,42 +1,45 @@
 /* ============================================================
-   BcnOps 2026 — UI/UX Mobile-First Sense Distraccions
-   Enfocat a la pràctica de testos en mòbil (Ajuntament de BCN 31/2026)
+   BcnOps 2026 — Sistema Visual Institucional Mobile-First
+   Inspirat en la identitat gràfica de l'Ajuntament de Barcelona
+   Desenvolupat per xarop.com (https://xarop.com)
    ============================================================ */
 
 :root {
+  --bcn-red: #d6001c;
+  --bcn-red-hover: #b00017;
+  --bcn-red-light: #fef2f2;
+  --bcn-red-border: #fecaca;
+
+  --bcn-blue: #0f2d7a;
+  --bcn-blue-light: #eff6ff;
+  --bcn-blue-border: #bfdbfe;
+  
   --primary: #1a56db;
   --primary-hover: #1e429f;
-  --primary-light: #eff6ff;
-  --primary-border: #bfdbfe;
-  --primary-dark: #0f2d7a;
-  --bcn-red: #d90429;
-  --bcn-red-light: #fef2f2;
-  --accent: #0284c7;
-  --success: #10b981;
-  --success-bg: #ecfdf5;
-  --success-border: #a7f3d0;
-  --danger: #ef4444;
+  
+  --text-main: #111827;
+  --text-muted: #4b5563;
+  --text-light: #9ca3af;
+  
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+
+  --success: #15803d;
+  --success-bg: #f0fdf4;
+  --danger: #b91c1c;
   --danger-bg: #fef2f2;
-  --danger-border: #fecaca;
-  --warning: #f59e0b;
+  --warning: #b45309;
   --warning-bg: #fffbeb;
 
-  --bg: #f8fafc;
-  --card-bg: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
-  --border-color: #e2e8f0;
-
   --header-height: 54px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-full: 9999px;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -50,7 +53,7 @@
 
 html, body {
   min-height: 100vh;
-  background-color: var(--bg);
+  background-color: var(--bg-main);
   color: var(--text-main);
   font-family: var(--font-family);
   font-size: 16px;
@@ -64,7 +67,7 @@ body {
 }
 
 /* ============================================================
-   Header Minimalista Mobile (App Bar Neta)
+   App Bar Superior Compacta (54px)
    ============================================================ */
 
 .app-bar {
@@ -72,7 +75,7 @@ body {
   top: 0;
   z-index: 80;
   height: var(--header-height);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -85,34 +88,40 @@ body {
 .brand-badge {
   display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
+  gap: 8px;
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--bcn-blue);
+}
+
+.brand-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--bcn-red);
 }
 
 .brand-title {
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--primary-dark);
+  color: var(--bcn-blue);
 }
 
 .brand-tag {
-  background: var(--bcn-red-light);
-  color: var(--bcn-red);
+  background: var(--bcn-red);
+  color: #ffffff;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   padding: 2px 6px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.03em;
 }
 
-/* Cronòmetre de la capçalera */
+/* Cronòmetre */
 .header-timer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #f1f5f9;
+  background: #f3f4f6;
   border: 1px solid var(--border-color);
   padding: 4px 10px;
   border-radius: var(--radius-full);
@@ -121,14 +130,20 @@ body {
   font-weight: 700;
   color: var(--text-main);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
+}
+
+.header-timer svg {
+  width: 15px;
+  height: 15px;
+  color: var(--bcn-blue);
 }
 
 .header-timer:hover {
-  background: #e2e8f0;
+  background: #e5e7eb;
 }
 
-/* Botó Menú Hamburguesa */
+/* Botó Hamburguesa */
 .btn-hamburger {
   background: transparent;
   border: none;
@@ -144,7 +159,7 @@ body {
 }
 
 .btn-hamburger:hover {
-  background: #f1f5f9;
+  background: #f3f4f6;
 }
 
 .btn-hamburger svg {
@@ -153,13 +168,13 @@ body {
 }
 
 /* ============================================================
-   Menú Hamburguesa Lliscant (Side Drawer)
+   Menú Lateral Lliscant (Side Drawer)
    ============================================================ */
 
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(17, 24, 39, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 200;
@@ -178,7 +193,7 @@ body {
   top: 0;
   right: 0;
   width: 86%;
-  max-width: 340px;
+  max-width: 350px;
   height: 100%;
   background: #ffffff;
   z-index: 201;
@@ -194,7 +209,7 @@ body {
 }
 
 .drawer-header {
-  padding: 18px 18px 14px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
@@ -202,9 +217,9 @@ body {
 }
 
 .drawer-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: var(--bcn-blue);
 }
 
 .btn-drawer-close {
@@ -221,7 +236,7 @@ body {
 }
 
 .btn-drawer-close:hover {
-  background: #f1f5f9;
+  background: #f3f4f6;
   color: var(--text-main);
 }
 
@@ -235,16 +250,23 @@ body {
 }
 
 .drawer-official-box {
-  background: linear-gradient(135deg, #b80320 0%, #d90429 100%);
+  background: var(--bcn-red);
   color: #ffffff;
   padding: 14px;
   border-radius: var(--radius-md);
   font-size: 0.86rem;
 }
 
+.drawer-official-box strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
 .drawer-official-box p {
   opacity: 0.95;
   margin-bottom: 10px;
+  font-size: 0.82rem;
 }
 
 .drawer-official-btn {
@@ -253,11 +275,11 @@ body {
   justify-content: center;
   gap: 6px;
   background: #ffffff;
-  color: #b80320;
+  color: var(--bcn-red);
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: none;
 }
 
@@ -285,21 +307,21 @@ body {
 }
 
 .drawer-nav-item svg {
-  width: 20px;
-  height: 20px;
-  color: var(--primary);
+  width: 18px;
+  height: 18px;
+  color: var(--bcn-blue);
   flex-shrink: 0;
 }
 
 .drawer-nav-item:hover, .drawer-nav-item.active {
-  background: var(--primary-light);
-  color: var(--primary-dark);
+  background: var(--bcn-blue-light);
+  color: var(--bcn-blue);
 }
 
 .drawer-footer {
   padding: 14px 18px;
   border-top: 1px solid var(--border-color);
-  background: #f8fafc;
+  background: #f9fafb;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -314,7 +336,7 @@ body {
   max-width: 680px;
   width: 100%;
   margin: 0 auto;
-  padding: 14px 14px 90px; /* marge inferior per a la Bottom Bar */
+  padding: 14px 14px 90px;
 }
 
 .app-view {
@@ -332,18 +354,18 @@ body {
 }
 
 /* ============================================================
-   VISTA 1: EL SIMULADOR DE TEST (PROTAGONISTA ABSOLUT)
+   Controls del Simulador
    ============================================================ */
 
-/* Segmented Control de Blocs (Compacte Mòbil) */
+/* Segmented Control de Blocs */
 .category-segmented {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  background: #e2e8f0;
+  background: #e5e7eb;
   padding: 4px;
   border-radius: var(--radius-md);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .segment-btn {
@@ -365,11 +387,68 @@ body {
 
 .segment-btn.active {
   background: #ffffff;
-  color: var(--primary);
+  color: var(--bcn-blue);
   box-shadow: var(--shadow-sm);
 }
 
-/* Fila de control de pregunta: Número + Selector ràpid + Tag */
+/* Barra de Modes d'Examen (Simulacre Oficial vs Banc complet) */
+.exam-mode-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+}
+
+.mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.mode-select-input {
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--bcn-blue);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bcn-blue-light);
+  color: var(--bcn-blue);
+  border: 1px solid var(--bcn-blue-border);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-shuffle svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-shuffle:hover {
+  background: #dbeafe;
+}
+
+/* Fila de Pregunta: Categoria i Selector de Graella */
 .quiz-top-bar {
   display: flex;
   align-items: center;
@@ -385,41 +464,46 @@ body {
   border: 1px solid var(--border-color);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-main);
   cursor: pointer;
 }
 
+.btn-jump-sheet svg {
+  width: 14px;
+  height: 14px;
+}
+
 .btn-jump-sheet:hover {
-  background: #f1f5f9;
+  background: #f3f4f6;
 }
 
 .category-pill {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   padding: 3px 8px;
   border-radius: var(--radius-full);
 }
 
-.cat-aptitudinal { background: #ede9fe; color: #6d28d9; }
-.cat-ofimatica { background: #d1fae5; color: #065f46; }
+.cat-aptitudinal { background: #f3e8ff; color: #6b21a8; }
+.cat-ofimatica { background: #dcfce7; color: #166534; }
 .cat-angles { background: #fef3c7; color: #92400e; }
 
-/* Barra de progrés prima (Duolingo-style) */
+/* Barra de progrés de línia prima */
 .quiz-progress-track {
   width: 100%;
-  height: 5px;
-  background: #e2e8f0;
+  height: 4px;
+  background: #e5e7eb;
   border-radius: var(--radius-full);
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .quiz-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  background: var(--bcn-red);
   width: 0%;
   transition: width 0.25s ease;
 }
@@ -435,9 +519,9 @@ body {
 }
 
 .question-text {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--text-main);
   margin-bottom: 20px;
 }
@@ -454,7 +538,7 @@ body {
   min-height: 52px;
   padding: 14px 16px;
   font-family: inherit;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   line-height: 1.4;
   text-align: left;
   border-radius: var(--radius-md);
@@ -470,20 +554,19 @@ body {
 }
 
 .option-item:hover {
-  border-color: var(--primary-border);
-  background: #f8fafc;
+  border-color: var(--bcn-blue-border);
+  background: #f9fafb;
 }
 
 .option-item.selected {
-  border-color: var(--primary);
-  background: var(--primary-light);
-  color: var(--primary-dark);
+  border-color: var(--bcn-blue);
+  background: var(--bcn-blue-light);
+  color: var(--bcn-blue);
   font-weight: 700;
-  box-shadow: 0 0 0 1px var(--primary);
 }
 
 /* ============================================================
-   Barra d'Accions Inferior Fixa (Bottom Thumb Bar)
+   Barra d'Accions Inferior Fixa (Thumb Action Bar)
    ============================================================ */
 
 .bottom-action-bar {
@@ -525,24 +608,29 @@ body {
   transition: all 0.15s ease;
 }
 
+.btn-action svg {
+  width: 16px;
+  height: 16px;
+}
+
 .btn-action-primary {
-  background: var(--primary);
+  background: var(--bcn-blue);
   color: #ffffff;
   flex: 1;
 }
 
 .btn-action-primary:hover {
-  background: var(--primary-hover);
+  background: #0b225c;
 }
 
 .btn-action-secondary {
-  background: #f1f5f9;
+  background: #f3f4f6;
   color: var(--text-main);
   border: 1px solid var(--border-color);
 }
 
 .btn-action-secondary:hover {
-  background: #e2e8f0;
+  background: #e5e7eb;
 }
 
 .btn-action-danger {
@@ -551,7 +639,7 @@ body {
 }
 
 .btn-action-danger:hover {
-  background: #b80320;
+  background: var(--bcn-red-hover);
 }
 
 .btn-action-icon {
@@ -561,13 +649,13 @@ body {
 }
 
 /* ============================================================
-   Bottom Sheet de salts de preguntes (Modal Graella Mòbil)
+   Modal Bottom Sheet (Graella de preguntes)
    ============================================================ */
 
 .sheet-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(17, 24, 39, 0.5);
   backdrop-filter: blur(2px);
   z-index: 150;
   opacity: 0;
@@ -588,7 +676,7 @@ body {
   max-height: 75vh;
   background: #ffffff;
   z-index: 151;
-  border-radius: 20px 20px 0 0;
+  border-radius: 16px 16px 0 0;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
   transform: translateY(100%);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -632,15 +720,15 @@ body {
 }
 
 .sheet-q-btn.current {
-  border-color: var(--primary);
-  background: var(--primary-light);
-  color: var(--primary-dark);
+  border-color: var(--bcn-blue);
+  background: var(--bcn-blue-light);
+  color: var(--bcn-blue);
 }
 
 .sheet-q-btn.answered {
   background: #dbeafe;
   border-color: #93c5fd;
-  color: var(--primary-dark);
+  color: var(--bcn-blue);
 }
 
 /* ============================================================
@@ -659,7 +747,7 @@ body {
 .score-huge {
   font-size: 3.2rem;
   font-weight: 900;
-  color: var(--primary);
+  color: var(--bcn-blue);
   line-height: 1;
   margin: 10px 0;
 }
@@ -684,7 +772,7 @@ body {
 }
 
 .stat-cell {
-  background: #f8fafc;
+  background: #f9fafb;
   padding: 10px 4px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
@@ -706,7 +794,7 @@ body {
 .review-card-item.is-blank { border-left: 5px solid var(--warning); }
 
 .review-expl-box {
-  background: #f8fafc;
+  background: #f9fafb;
   border: 1px solid var(--border-color);
   padding: 10px 12px;
   border-radius: var(--radius-sm);
@@ -715,7 +803,7 @@ body {
 }
 
 /* ============================================================
-   Targetes Generals (Pla, Seus, Recursos)
+   Targetes Generals
    ============================================================ */
 
 .section-card {
@@ -729,11 +817,19 @@ body {
 .section-title {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: var(--bcn-blue);
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Input de cerca de seus */
+.section-title svg {
+  width: 20px;
+  height: 20px;
+  color: var(--bcn-red);
+}
+
 .search-input-field {
   width: 100%;
   padding: 12px 14px;
@@ -745,14 +841,14 @@ body {
 }
 
 .venue-item-box {
-  background: #f8fafc;
+  background: #f9fafb;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 14px;
   margin-bottom: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .venue-item-title {
@@ -775,11 +871,11 @@ body {
 }
 
 .plan-day-header {
-  background: #f8fafc;
+  background: #f9fafb;
   padding: 10px 14px;
   font-size: 0.92rem;
   font-weight: 800;
-  color: var(--primary-dark);
+  color: var(--bcn-blue);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -790,7 +886,7 @@ body {
   padding: 10px 14px;
   font-size: 0.9rem;
   cursor: pointer;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f3f4f6;
 }
 
 .plan-task-row:last-child {
@@ -801,7 +897,7 @@ body {
   width: 18px;
   height: 18px;
   margin-top: 2px;
-  accent-color: var(--primary);
+  accent-color: var(--bcn-blue);
 }
 
 .plan-task-row.done span {
@@ -811,7 +907,7 @@ body {
 
 /* Recursos */
 .resource-box {
-  background: #f8fafc;
+  background: #f9fafb;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 14px;
@@ -819,4 +915,36 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+/* ============================================================
+   Peu de pàgina i Copyright xarop.com
+   ============================================================ */
+
+.app-global-footer {
+  border-top: 1px solid var(--border-color);
+  background: #ffffff;
+  padding: 24px 16px;
+  margin-top: 30px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-container a {
+  color: var(--bcn-red);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-container a:hover {
+  text-decoration: underline;
 }

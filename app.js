@@ -1,10 +1,10 @@
 /**
  * BcnOps 2026 — Aplicació Web Mobile-First
- * Dissenyada per a la màxima usabilitat en mòbil sense distraccions
- * Convocatòria Borses Ajuntament de Barcelona (Exp. 31/2026)
+ * Inspirada en la identitat visual de l'Ajuntament de Barcelona
+ * Desenvolupat per xarop.com (https://xarop.com)
  */
 
-// Seus oficials amb adreces i Google Maps
+// Seus oficials d'examen
 const SEUS_DADES = [
   {
     id: "upf-ciutadella",
@@ -103,7 +103,7 @@ const TASQUES_PLAN = [
     dia: "Divendres, 23 d'octubre",
     titol: "Simulacre final i preparació de material",
     tasques: [
-      { id: "t7_1", text: "Simulacre general de 75 preguntes amb cronòmetre estricte." },
+      { id: "t7_1", text: "Simulacre general cronometrat amb barreja aleatòria de preguntes." },
       { id: "t7_2", text: "Revisar el mòdul d'errors de les preguntes fallades amb les explicacions." },
       { id: "t7_3", text: "Preparar material: DNI original vigent, llapis 2 (HB), goma i maquineta." },
       { id: "t7_4", text: "Descansar i recordar: Obertura d'aules a les 09:30 h; tancament a les 10:00 h." }
@@ -111,11 +111,12 @@ const TASQUES_PLAN = [
   }
 ];
 
-// Estat global de l'aplicació
+// Estat global
 const state = {
   questions: [],
   filteredQuestions: [],
   currentCategory: "tots",
+  examMode: "simulacre30", // 'simulacre30', 'rapida15', 'bancComplet'
   currentIndex: 0,
   userAnswers: {},
   timerSeconds: 0,
@@ -139,12 +140,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   initSimulator();
   initShareButton();
 
-  // Engeguem directament a la vista del Simulador
   navigateTo("view-simulador");
 });
 
 // ============================================================
-// Navegació per Vistes i Menú Hamburguesa
+// Navegació de Vistes i Menú
 // ============================================================
 
 function initDrawer() {
@@ -179,18 +179,15 @@ function initDrawer() {
 window.navigateTo = function(viewId) {
   state.currentView = viewId;
 
-  // Actualitzar vistes
   document.querySelectorAll(".app-view").forEach(v => v.classList.remove("active"));
   const targetView = document.getElementById(viewId);
   if (targetView) targetView.classList.add("active");
 
-  // Barra d'accions inferior: només és visible al Simulador actiu
   const bottomBar = document.getElementById("bottom-bar");
   if (bottomBar) {
     bottomBar.style.display = (viewId === "view-simulador" && !state.isFinished) ? "block" : "none";
   }
 
-  // Actualitzar botons actius al drawer
   document.querySelectorAll(".drawer-nav-item").forEach(item => {
     const fnStr = item.getAttribute("onclick") || "";
     if (fnStr.includes(viewId)) {
@@ -200,14 +197,12 @@ window.navigateTo = function(viewId) {
     }
   });
 
-  // Tancar el drawer si era obert
   if (window.closeDrawer) window.closeDrawer();
-
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 // ============================================================
-// Bottom Sheet per a la Graella de Salts de Preguntes
+// Bottom Sheet de Salts de Preguntes
 // ============================================================
 
 function initBottomSheet() {
@@ -281,11 +276,12 @@ function initVenues() {
 
     container.innerHTML = filtered.map((s, index) => `
       <div class="venue-item-box">
-        <div class="venue-item-title">#${index + 1} ${escapeHtml(s.nom)}</div>
-        <div class="venue-item-addr">📍 ${escapeHtml(s.adreca)}</div>
+        <div class="venue-item-title">${escapeHtml(s.nom)}</div>
+        <div class="venue-item-addr">${escapeHtml(s.adreca)}</div>
         <div style="font-size: 0.8rem; color: var(--text-muted);">${escapeHtml(s.desc)}</div>
         <a href="${s.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-action btn-action-primary" style="text-decoration: none; padding: 6px 12px; font-size: 0.82rem; min-height: 36px; align-self: flex-start; margin-top: 4px;">
-          🗺️ Obrir ruta a Google Maps ↗
+          <span>Obrir ruta a Google Maps</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6h-2v6H5V5z"/></svg>
         </a>
       </div>
     `).join("");
@@ -301,21 +297,41 @@ function initVenues() {
 }
 
 // ============================================================
-// Secció 2: Simulador de Test (Mobile-First)
+// Secció 2: Simulador de Test & Motor Aleatori (Random Engine)
 // ============================================================
 
 function initSimulator() {
   updateFilterCounts();
 
+  // Selector de categories
   const segmentButtons = document.querySelectorAll(".segment-btn[data-cat]");
   segmentButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       segmentButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-      setCategoryFilter(btn.getAttribute("data-cat"));
+      state.currentCategory = btn.getAttribute("data-cat");
+      generateExamQuestions();
     });
   });
 
+  // Selector de Mode d'Examen
+  const modeSelect = document.getElementById("exam-mode-select");
+  if (modeSelect) {
+    modeSelect.addEventListener("change", (e) => {
+      state.examMode = e.target.value;
+      generateExamQuestions();
+    });
+  }
+
+  // Botó de Barrejar / Nou Simulacre
+  const btnShuffle = document.getElementById("btn-shuffle-exam");
+  if (btnShuffle) {
+    btnShuffle.addEventListener("click", () => {
+      generateExamQuestions();
+    });
+  }
+
+  // Controls de navegació inferior
   document.getElementById("btn-prev").addEventListener("click", () => navigateQuestion(-1));
   document.getElementById("btn-next").addEventListener("click", () => navigateQuestion(1));
   document.getElementById("btn-clear-choice").addEventListener("click", clearCurrentChoice);
@@ -327,7 +343,7 @@ function initSimulator() {
     timerBtn.addEventListener("click", toggleTimer);
   }
 
-  setCategoryFilter("tots");
+  generateExamQuestions();
 }
 
 function updateFilterCounts() {
@@ -349,22 +365,61 @@ function updateFilterCounts() {
   if (pAng) pAng.textContent = `Anglès (${counts.angles})`;
 }
 
-function setCategoryFilter(cat) {
-  state.currentCategory = cat;
-  if (cat === "tots") {
-    state.filteredQuestions = [...state.questions];
+/**
+ * Algorisme de barreja de Fisher-Yates
+ */
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+/**
+ * Generador d'Exàmens Aleatoris segons el mode
+ */
+function generateExamQuestions() {
+  let pool = [];
+
+  if (state.currentCategory === "tots") {
+    if (state.examMode === "simulacre30") {
+      // 10 preguntes aleatòries de cada bloc (30 en total)
+      const apt = shuffleArray(state.questions.filter(q => q.categoria === "aptitudinal")).slice(0, 10);
+      const ofi = shuffleArray(state.questions.filter(q => q.categoria === "ofimatica")).slice(0, 10);
+      const ang = shuffleArray(state.questions.filter(q => q.categoria === "angles")).slice(0, 10);
+      pool = shuffleArray([...apt, ...ofi, ...ang]);
+    } else if (state.examMode === "rapida15") {
+      // 5 preguntes aleatòries de cada bloc (15 en total)
+      const apt = shuffleArray(state.questions.filter(q => q.categoria === "aptitudinal")).slice(0, 5);
+      const ofi = shuffleArray(state.questions.filter(q => q.categoria === "ofimatica")).slice(0, 5);
+      const ang = shuffleArray(state.questions.filter(q => q.categoria === "angles")).slice(0, 5);
+      pool = shuffleArray([...apt, ...ofi, ...ang]);
+    } else {
+      // Banc complet barrejat
+      pool = shuffleArray(state.questions);
+    }
   } else {
-    state.filteredQuestions = state.questions.filter(q => q.categoria === cat);
+    const byCategory = state.questions.filter(q => q.categoria === state.currentCategory);
+    if (state.examMode === "simulacre30") {
+      pool = shuffleArray(byCategory).slice(0, 30);
+    } else if (state.examMode === "rapida15") {
+      pool = shuffleArray(byCategory).slice(0, 15);
+    } else {
+      pool = shuffleArray(byCategory);
+    }
   }
 
+  state.filteredQuestions = pool;
   state.currentIndex = 0;
   state.userAnswers = {};
   state.isFinished = false;
   resetTimer();
   startTimer();
 
-  // Tornar a mostrar el simulador i la Bottom Bar
-  document.getElementById("bottom-bar").style.display = "block";
+  const bottomBar = document.getElementById("bottom-bar");
+  if (bottomBar) bottomBar.style.display = "block";
   navigateTo("view-simulador");
 
   renderQuestionNav();
@@ -401,15 +456,12 @@ function renderCurrentQuestion() {
   const q = state.filteredQuestions[state.currentIndex];
   const total = state.filteredQuestions.length;
 
-  // Actualitzar botó indicador
   document.getElementById("q-counter-label").textContent = `${state.currentIndex + 1} / ${total}`;
 
-  // Barra de progrés prima
   const progressPercent = Math.round(((state.currentIndex + 1) / total) * 100);
   const progressBar = document.getElementById("quiz-progress-bar");
   if (progressBar) progressBar.style.width = `${progressPercent}%`;
 
-  // Tag de Categoria
   const catTag = document.getElementById("q-category-tag");
   let catClass = "cat-aptitudinal";
   let catNom = "Aptitudinal";
@@ -423,10 +475,8 @@ function renderCurrentQuestion() {
   catTag.className = `category-pill ${catClass}`;
   catTag.textContent = `${catNom} • ${q.subcategoria}`;
 
-  // Enunciat de la pregunta
   document.getElementById("q-prompt-text").textContent = q.pregunta;
 
-  // Opcions de resposta
   const optionsContainer = document.getElementById("q-options-container");
   const selectedIndex = state.userAnswers[q.id];
 
@@ -439,11 +489,10 @@ function renderCurrentQuestion() {
     `;
   }).join("");
 
-  // Estat dels botons de navegació
   document.getElementById("btn-prev").disabled = state.currentIndex === 0;
   const isLast = state.currentIndex === total - 1;
   const nextBtn = document.getElementById("btn-next");
-  nextBtn.textContent = isLast ? "Repassar respostes" : "Següent →";
+  nextBtn.querySelector("span").textContent = isLast ? "Repassar respostes" : "Següent";
 }
 
 window.selectAnswer = function(questionId, optionIndex) {
@@ -525,7 +574,7 @@ function confirmFinishQuiz() {
 
   if (answeredCount < total) {
     const unAnswered = total - answeredCount;
-    const confirmMsg = `Has contestat ${answeredCount} de ${total} preguntes (${unAnswered} en blanc).\nRecorda: a les proves oficials els errors resten (-0,33) però les respostes en blanc no resten.\n\nVols finalitzar el test ara?`;
+    const confirmMsg = `Has contestat ${answeredCount} de ${total} preguntes (${unAnswered} en blanc).\nRecorda: a les proves oficials els errors resten (-0,33) però les respostes en blanc no resten.\n\nVols finalitzar l'examen ara?`;
     if (!confirm(confirmMsg)) return;
   }
 
@@ -552,22 +601,17 @@ function finishQuiz() {
     }
   });
 
-  // Fórmula oficial: Encerts - (Errors / 3)
   const penalitzacio = errors / 3;
   let puntuacioNeta = encerts - penalitzacio;
   if (puntuacioNeta < 0) puntuacioNeta = 0;
 
-  // Nota sobre 10
   const notaSobre10 = (puntuacioNeta / total) * 10;
   const isPass = notaSobre10 >= 5.0;
 
-  // Desar millor nota
   saveBestScore(state.currentCategory, notaSobre10, puntuacioNeta, total);
 
-  // Amagar Bottom Bar del test
   document.getElementById("bottom-bar").style.display = "none";
 
-  // Mostrar resultats
   displayResults({
     total,
     encerts,
@@ -586,7 +630,7 @@ function displayResults(data) {
   document.getElementById("res-score-number").textContent = `${data.notaSobre10.toFixed(2)} / 10`;
   const badgeEl = document.getElementById("res-status-badge");
   badgeEl.className = `result-badge ${data.isPass ? "pass" : "fail"}`;
-  badgeEl.textContent = data.isPass ? "🎉 APTE / SUPERAT" : "⚠️ NO APTE / MILLORABLE";
+  badgeEl.textContent = data.isPass ? "Apte / Superat" : "No apte";
 
   document.getElementById("stat-encerts").textContent = data.encerts;
   document.getElementById("stat-errors").textContent = data.errors;
@@ -640,16 +684,16 @@ function renderReviewList(filter = "all") {
     const isBlank = userChoice === undefined;
 
     let statusClass = "is-wrong";
-    let badgeText = "❌ Incorrecta (-0,33)";
+    let badgeText = "Incorrecta (-0,33)";
     let badgeColor = "var(--danger)";
 
     if (isCorrect) {
       statusClass = "is-correct";
-      badgeText = "✅ Encert (+1,00)";
+      badgeText = "Encert (+1,00)";
       badgeColor = "var(--success)";
     } else if (isBlank) {
       statusClass = "is-blank";
-      badgeText = "⚪ En blanc (0,00)";
+      badgeText = "En blanc (0,00)";
       badgeColor = "var(--warning)";
     }
 
@@ -659,7 +703,7 @@ function renderReviewList(filter = "all") {
     return `
       <div class="review-card-item ${statusClass}">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span style="font-weight: 800; font-size: 0.85rem; color: var(--primary);">#${q.id} • ${escapeHtml(q.subcategoria)}</span>
+          <span style="font-weight: 800; font-size: 0.85rem; color: var(--bcn-blue);">#${q.id} • ${escapeHtml(q.subcategoria)}</span>
           <span style="font-size: 0.75rem; font-weight: 800; color: ${badgeColor};">${badgeText}</span>
         </div>
         <p style="font-weight: 700; margin-bottom: 8px; font-size: 0.95rem;">${escapeHtml(q.pregunta)}</p>
@@ -668,7 +712,7 @@ function renderReviewList(filter = "all") {
           <div><strong>Resposta correcta:</strong> <span style="color: var(--success); font-weight: 600;">${correctChoiceText}</span></div>
         </div>
         <div class="review-expl-box">
-          <strong>💡 Raonament:</strong> ${escapeHtml(q.explicacio)}
+          <strong>Raonament oficial:</strong> ${escapeHtml(q.explicacio)}
         </div>
       </div>
     `;
@@ -676,7 +720,7 @@ function renderReviewList(filter = "all") {
 }
 
 function restartQuiz() {
-  setCategoryFilter(state.currentCategory);
+  generateExamQuestions();
 }
 
 // ============================================================
@@ -810,8 +854,8 @@ function initShareButton() {
 
   shareBtn.addEventListener("click", async () => {
     const shareData = {
-      title: "BcnOps 2026 — Simulador de Test Mòbil (Ajuntament de Barcelona)",
-      text: "Prepara les borses de treball 2026 de l'Ajuntament de Barcelona amb aquest simulador mòbil de 75 preguntes!",
+      title: "BcnOps 2026 — Simulador d'Exàmens Ajuntament de Barcelona",
+      text: "Prepara les borses de treball 2026 de l'Ajuntament de Barcelona amb aquest simulador interactiu de 105 preguntes desenvolupat per xarop.com!",
       url: window.location.href
     };
 
@@ -1891,6 +1935,426 @@ function getFallbackQuestions() {
     ],
     "respostaCorrecta": 2,
     "explicacio": "'To file an appeal' significa interposar un recurs administratiu o d'alçada contra una resolució o acte del tribunal."
+  },
+  {
+    "id": 76,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques",
+    "pregunta": "Quin és el número que continua la successió geomètrica? 4, 12, 36, 108, ...",
+    "opcions": [
+      "A) 216",
+      "B) 324",
+      "C) 432",
+      "D) 318"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Cada terme es multiplica per la raó constant 3: 4×3=12, 12×3=36, 36×3=108, 108×3=324."
+  },
+  {
+    "id": 77,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques decreixents",
+    "pregunta": "Identifica el terme que segueix a la sèrie decreixent: 100, 96, 87, 71, ...",
+    "opcions": [
+      "A) 46",
+      "B) 50",
+      "C) 52",
+      "D) 55"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Les restes corresponen als quadrats de nombres consecutius: 100 - 4 (2²) = 96; 96 - 9 (3²) = 87; 87 - 16 (4²) = 71; 71 - 25 (5²) = 46."
+  },
+  {
+    "id": 78,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries de lletres alternades",
+    "pregunta": "Quina lletra continua la sèrie alternada d'extrems de l'alfabet? A, Z, B, Y, C, X, ...",
+    "opcions": [
+      "A) W",
+      "B) D",
+      "C) V",
+      "D) E"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Hi ha dues successions alternades: les posicions senars avancen des del principi de l'alfabet (A, B, C, D...), mentre que les parells retrocedeixen des del final (Z, Y, X...). El terme següent és el quart de les senars: D."
+  },
+  {
+    "id": 79,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogies de matèria i producte",
+    "pregunta": "Completa l'analogia d'origen i elaboració: RAÏM és a VI com ORDI és a...",
+    "opcions": [
+      "A) PA",
+      "B) CERVESA",
+      "C) OLI",
+      "D) FARINA"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El raïm és la matèria primera essencial que es fermenta per obtenir vi, tal com l'ordi és el cereal principal per a l'elaboració de la cervesa."
+  },
+  {
+    "id": 80,
+    "categoria": "aptitudinal",
+    "subcategoria": "Vocabulari procedimental",
+    "pregunta": "En l'àmbit del procediment administratiu, què significa el terme 'INCOAR'?",
+    "opcions": [
+      "A) Dictar sentència ferma.",
+      "B) Iniciar oficialment un procediment o expedient administratiu mitjançant acord de l'òrgan competent.",
+      "C) Arxivar definitivament les actuacions.",
+      "D) Notificar la sanció a la persona infractora."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Incoar' és l'acte formal pel qual s'inicia la tramitació d'un expedient administratiu o disciplinari."
+  },
+  {
+    "id": 81,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sinònims i antònims administratius",
+    "pregunta": "Quin és l'antònim de 'DENEGACIÓ' d'una sol·licitud en una resolució administrativa?",
+    "opcions": [
+      "A) Desestimació",
+      "B) Caducitat",
+      "C) Estimació",
+      "D) Preclusió"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Denegar és rebutjar o no concedir allò demanat; el seu antònim en una resolució és l'estimació (estimar la sol·licitud o recurs)."
+  },
+  {
+    "id": 82,
+    "categoria": "aptitudinal",
+    "subcategoria": "Raonament lògic deductiu",
+    "pregunta": "Premissa major: Tots els documents vàlids tenen signatura digital. Premissa menor: Aquest justificant no té signatura digital. Quina conclusió és necessàriament vertadera?",
+    "opcions": [
+      "A) Aquest justificant és un esborrany.",
+      "B) Aquest justificant no és vàlid.",
+      "C) Tots els justificants són electrònics.",
+      "D) La persona signant no té certificat."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Per la regla de negació del conseqüent (Modus Tollens): si tot document vàlid té signatura i aquest no en té, aleshores aquest justificant no és vàlid."
+  },
+  {
+    "id": 83,
+    "categoria": "aptitudinal",
+    "subcategoria": "Problemes de rendiment i temps",
+    "pregunta": "Dues impressores idèntiques imprimeixen un lot d'expedients en 3 hores treballant simultàniament. Quant trigaria una sola impressora a imprimir exactament el mateix volum de feina?",
+    "opcions": [
+      "A) 1,5 hores",
+      "B) 4,5 hores",
+      "C) 6 hores",
+      "D) 8 hores"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "La relació és inversament proporcional: a la meitat de màquines (1 en lloc de 2), es requereix el doble de temps: 3 hores × 2 = 6 hores."
+  },
+  {
+    "id": 84,
+    "categoria": "aptitudinal",
+    "subcategoria": "Càlcul fiscal i percentatges",
+    "pregunta": "Una comanda de material municipal té una base imposable de 800 €. Si s'hi aplica el tipus general del 21% d'IVA, quin és l'import total de la factura?",
+    "opcions": [
+      "A) 948 €",
+      "B) 968 €",
+      "C) 980 €",
+      "D) 1.012 €"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "L'IVA correspon a: 800 × 0,21 = 168 €. L'import total és: 800 + 168 = 968 €."
+  },
+  {
+    "id": 85,
+    "categoria": "aptitudinal",
+    "subcategoria": "Matrius lògiques 3x3",
+    "pregunta": "En una matriu numèrica 3x3: Fila 1 = [7, 5, 8]; Fila 2 = [4, 9, 7]; Fila 3 = [6, 8, ?]. Quin nombre falta perquè totes les files sumin 20?",
+    "opcions": [
+      "A) 5",
+      "B) 6",
+      "C) 7",
+      "D) 8"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Totes les files sumen 20: 7+5+8=20; 4+9+7=20; a la tercera fila: 6 + 8 + x = 20 => x = 20 - 14 = 6."
+  },
+  {
+    "id": 86,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Recompte",
+    "pregunta": "A Excel o LibreOffice Calc en castellà, quina funció permet comptar exclusivament quantes cel·les d'un rang estan buides?",
+    "opcions": [
+      "A) =CONTAR.VACIAS(rang)",
+      "B) =CONTAR.BLANCO(rang)",
+      "C) =CONTAR.NULOS(rang)",
+      "D) =ESBLANCO(rang)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=CONTAR.BLANCO (en anglès =COUNTBLANK) compta el nombre de cel·les buides d'un rang determinat."
+  },
+  {
+    "id": 87,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Text",
+    "pregunta": "Quina funció o operador s'utilitza a Excel per combinar cadenes de text provinents de diverses cel·les en una sola cel·la?",
+    "opcions": [
+      "A) =SUMA(text1; text2)",
+      "B) =CONCATENAR(text1; text2) o operador &",
+      "C) =FUSIONAR(text1; text2)",
+      "D) =AGRUPAR(text1; text2)"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La funció =CONCATENAR (o =CONCAT / =UNIRCADENAS en versions noves) i l'operador ampersand (&) permeten unir cadenes de text."
+  },
+  {
+    "id": 88,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Dreceres",
+    "pregunta": "Mentre edites una fórmula a la barra de fórmules d'Excel, quina tecla de funció commuta automàticament el tipus de referència (relativa -> absoluta -> mixta)?",
+    "opcions": [
+      "A) F2",
+      "B) F4",
+      "C) F8",
+      "D) F12"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "F4 alterna ciclicament entre A1 -> $A$1 -> A$1 -> $A1 mentre el cursor és sobre la coordenada de la cel·la."
+  },
+  {
+    "id": 89,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Control d'errors",
+    "pregunta": "Què permet fer la funció =SI.ERROR(fórmula; valor_si_error) a un full de càlcul?",
+    "opcions": [
+      "A) Esborrar les cel·les que contenen errors.",
+      "B) Executar la fórmula i, en cas que generi un error (#N/D, #¡DIV/0!, etc.), substituir-lo pel valor alternatiu especificat en lloc de mostrar l'error.",
+      "C) Imprimir un informe d'errors del llibre.",
+      "D) Bloquejar el full si hi ha un error."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=SI.ERROR (IFERROR) captura qualsevol error que retorni la fórmula i mostra un missatge personalitzat (ex: 0 o 'No disponible') en lloc del codi d'error del sistema."
+  },
+  {
+    "id": 90,
+    "categoria": "ofimatica",
+    "subcategoria": "Processador de textos - Paràgraf",
+    "pregunta": "A Microsoft Word en versió en castellà/català, quina combinació de tecles centra el paràgraf seleccionat?",
+    "opcions": [
+      "A) Ctrl + C",
+      "B) Ctrl + T",
+      "C) Ctrl + E",
+      "D) Ctrl + J"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Ctrl + T és la drecera per centrar el text a Word. Ctrl + C copia, Ctrl + E selecciona tot el text i Ctrl + J justifica."
+  },
+  {
+    "id": 91,
+    "categoria": "ofimatica",
+    "subcategoria": "Processador de textos - Estructura",
+    "pregunta": "Com es genera de forma automàtica una Taula de Continguts (índex) estructurada a Word o Writer?",
+    "opcions": [
+      "A) Escrivint els números de pàgina manualment al final.",
+      "B) Aplicant els estils de títol predefinits (Títol 1, Títol 2, etc.) als encapçalaments del document.",
+      "C) Inserint una nota a peu de pàgina a cada capítol.",
+      "D) Canviant la font a lletra negreta."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Les taules de continguts automàtiques es basen en la jerarquia dels estils de paràgraf de títol (Heading 1, 2, 3)."
+  },
+  {
+    "id": 92,
+    "categoria": "ofimatica",
+    "subcategoria": "Dreceres de teclat de Windows",
+    "pregunta": "Quina combinació de tecles obre el diàleg 'Executar' (Run) a Windows per obrir una comanda o aplicació?",
+    "opcions": [
+      "A) Win + E",
+      "B) Win + R",
+      "C) Win + S",
+      "D) Win + I"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Win + R obre la finestra Executar. Win + E obre l'Explorador d'arxius, Win + S la cerca i Win + I la configuració."
+  },
+  {
+    "id": 93,
+    "categoria": "ofimatica",
+    "subcategoria": "Signatura i administració electrònica",
+    "pregunta": "Quin format d'arxiu és el més habitual per exportar i instal·lar un certificat digital de persona física o empleat públic que conté la clau privada protegida per contrasenya?",
+    "opcions": [
+      "A) .pdf",
+      "B) .p12 o .pfx",
+      "C) .txt",
+      "D) .zip"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Els formats PKCS#12 (.p12 o .pfx) són els estàndards segurs que empaqueten el certificat juntament amb la clau privada xifrada."
+  },
+  {
+    "id": 94,
+    "categoria": "ofimatica",
+    "subcategoria": "Xarxes i sistemes",
+    "pregunta": "En l'entorn de servidors i desenvolupament local, quina és l'adreça IP estàndard de bucle local coneguda com 'localhost'?",
+    "opcions": [
+      "A) 192.168.1.1",
+      "B) 127.0.0.1",
+      "C) 10.0.0.1",
+      "D) 255.255.255.0"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "127.0.0.1 és l'adreça IPv4 reservada de bucle invertit (loopback) per connectar-se al propi equip local (localhost)."
+  },
+  {
+    "id": 95,
+    "categoria": "ofimatica",
+    "subcategoria": "Fulls de càlcul - Funcions avançades",
+    "pregunta": "Quina funció permet comptar quantes cel·les compleixen múltiples criteris independents a diferents columnes?",
+    "opcions": [
+      "A) =CONTAR.SI",
+      "B) =CONTAR.SI.CONJUNTO",
+      "C) =CONTAR.MULTIPLE",
+      "D) =SUMAR.SI.CONJUNTO"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "=CONTAR.SI.CONJUNTO (en anglès =COUNTIFS) avalua múltiples rangs i criteris simultàniament."
+  },
+  {
+    "id": 96,
+    "categoria": "angles",
+    "subcategoria": "Serveis municipals",
+    "pregunta": "What is the English term for an office where residents can receive information, register paperwork and carry out municipal procedures?",
+    "opcions": [
+      "A) Citizen Advice Bureau (or Citizen Service Office)",
+      "B) Judicial Court",
+      "C) Trade Union Hall",
+      "D) Police Station"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Citizen Service Office' o 'Citizen Advice Bureau' és l'equivalent de l'Oficina d'Atenció Ciutadana (OAC)."
+  },
+  {
+    "id": 97,
+    "categoria": "angles",
+    "subcategoria": "Processos selectius",
+    "pregunta": "The announcement states: 'Only eligible candidates will be called for the aptitude test.' What does 'eligible' mean?",
+    "opcions": [
+      "A) Que han estat elegits per votació.",
+      "B) Que compleixen els requisits legals per ser admesos.",
+      "C) Que tenen un recurs d'alçada pendent.",
+      "D) Que han demanat l'exempció de la taxa."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Eligible' vol dir que reuneix les condicions o requisits establerts a les bases per a poder participar."
+  },
+  {
+    "id": 98,
+    "categoria": "angles",
+    "subcategoria": "Falsos amics",
+    "pregunta": "What is the precise meaning of 'records' in the phrase 'The City Council maintains public records of all municipal resolutions'?",
+    "opcions": [
+      "A) Marques esportives d'alt rendiment.",
+      "B) Expedients, registres o arxius oficials.",
+      "C) Discs musicals de vinil.",
+      "D) Records personals de la memòria."
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Records' és un terme administratiu que significa registres, actes, arxius o expedients oficials."
+  },
+  {
+    "id": 99,
+    "categoria": "angles",
+    "subcategoria": "Atenció ciutadana",
+    "pregunta": "Complete the polite sentence: 'Please provide your email address so that we can _______ you when the final list is published.'",
+    "opcions": [
+      "A) notify",
+      "B) blame",
+      "C) dismiss",
+      "D) ignore"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'To notify' (notificar / informar oficialment) és el verb adequat per avisar un aspirant o ciutadà."
+  },
+  {
+    "id": 100,
+    "categoria": "angles",
+    "subcategoria": "Reglament d'exàmens",
+    "pregunta": "Select the correct negative modal for strict prohibition: 'Candidates _______ use mobile phones during the exam.'",
+    "opcions": [
+      "A) might not",
+      "B) must not",
+      "C) need not",
+      "D) would not"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "'Must not' expressa prohibició taxativa i categòrica a les normes d'examen."
+  },
+  {
+    "id": 101,
+    "categoria": "angles",
+    "subcategoria": "Preposicions de lloc",
+    "pregunta": "Choose the correct preposition: 'The headquarters of Barcelona City Council is situated _______ Sant Jaume Square.'",
+    "opcions": [
+      "A) in",
+      "B) on",
+      "C) at",
+      "D) by"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Per a places i zones urbanes delimitades s'utilitza habitualment 'in' (in Sant Jaume Square / in the Gothic Quarter) o 'on' en contexts viaris."
+  },
+  {
+    "id": 102,
+    "categoria": "angles",
+    "subcategoria": "Connectors formals",
+    "pregunta": "Complete the official regulation: 'Applications received after 14:00 h will not be accepted, _______ the justification provided.'",
+    "opcions": [
+      "A) regardless of",
+      "B) because of",
+      "C) instead of",
+      "D) in order to"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Regardless of' significa 'independentment de' o 'sense perjudici de', expressant que la justificació no alterarà la norma."
+  },
+  {
+    "id": 103,
+    "categoria": "angles",
+    "subcategoria": "Recursos Humans",
+    "pregunta": "In a municipal employment contract, what does the term 'allowance' refer to?",
+    "opcions": [
+      "A) Un complement salarial o plus retributiu.",
+      "B) Una sanció d'inhabilitació.",
+      "C) Una renúncia al lloc de treball.",
+      "D) El període de prova."
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Allowance' és un complement, dietes o assignació monetària addicional al sou base."
+  },
+  {
+    "id": 104,
+    "categoria": "angles",
+    "subcategoria": "Correspondència formal",
+    "pregunta": "When writing a formal letter to an administrative body starting with 'Dear Sir/Madam' (name unknown), which closing formula is standard in British English?",
+    "opcions": [
+      "A) Cheers",
+      "B) Yours faithfully",
+      "C) Yours sincerely",
+      "D) Best wishes"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Si s'inicia amb 'Dear Sir/Madam' (destinatari desconegut pel nom), es tanca formalment amb 'Yours faithfully'. Si se'n coneix el cognom ('Dear Mr. Smith'), es fa servir 'Yours sincerely'."
+  },
+  {
+    "id": 105,
+    "categoria": "angles",
+    "subcategoria": "Temps verbals",
+    "pregunta": "Choose the correct form: 'The selection board _______ the candidate files since early this morning.'",
+    "opcions": [
+      "A) is reviewing",
+      "B) has been reviewing",
+      "C) reviewed",
+      "D) will review"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Amb 'since' i una acció que continua en el present, s'empra el Present Perfect Continuous: 'has been reviewing'."
   }
 ];
 }
