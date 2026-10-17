@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exàmens Antics & Simulador Borses Ajuntament de Barcelona 2026</title>
+    <style>
+        :root {
+            --primary: #005A9C;
+            --secondary: #008080;
+            --bg: #F4F7F9;
+            --card: #FFFFFF;
+            --text: #2C3E50;
+            --success: #27AE60;
+            --error: #E74C3C;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 { margin: 0 0 5px 0; font-size: 1.6rem; }
+        header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 8px;
+            background-color: #E0E6ED;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active { display: block; }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #EEE;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--error);
+            background: #FADBD8;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .question-card {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            background: #FAFDFC;
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .option-item { margin-bottom: 8px; }
+
+        .option-item label {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background-color: #FFFFFF;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .option-item input { margin-right: 10px; }
+
+        .btn-submit {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .results-box {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #E8F8F5;
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #E2E8F0;
+            color: #334155;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Exàmens Antics & Simulador Borses 2026</h1>
+        <p>Ajuntament de Barcelona - Convocatòria 24 d'Octubre de 2026</p>
+    </header>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="showTab('simulador', event)">🧪 Examen Interactiu</button>
+        <button class="tab-btn" onclick="showTab('trucs', event)">💡 Consells de Correcció</button>
+    </div>
+
+    <div id="simulador" class="tab-content active">
+        <div class="quiz-header">
+            <h2 style="margin:0; font-size:1.2rem;">Model d'Examen Basat en Proves Anteriors (25 Preguntes)</h2>
+            <div class="timer" id="timer">Temps: 30:00</div>
+        </div>
+
+        <form id="quizForm">
+            <!-- BLOC 1: APTITUDINAL / PSICOTÈCNIC -->
+            <h3>1. Prova Aptitudinal (Lògica, Numèric i Verbal)</h3>
+
+            <div class="question-card">
+                <span class="section-badge">Aptitudinal - Lògica</span>
+                <div class="question-title">1. Quin és el número següent a la sèrie? 3, 7, 15, 31, 63, ...</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q1" value="A"> A) 125</label></li>
+                    <li class="option-item"><label><input type="radio" name="q1" value="B"> B) 127</label></li>
+                    <li class="option-item"><label><input type="radio" name="q1" value="C"> C) 126</label></li>
+                    <li class="option-item"><label><input type="radio" name="q1" value="D"> D) 128</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Aptitudinal - Verbal</span>
+                <div class="question-title">2. Quin és el sinònim més precís de la paraula "DILIGÈNCIA" en l'àmbit administratiu?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q2" value="A"> A) Negligència</label></li>
+                    <li class="option-item"><label><input type="radio" name="q2" value="B"> B) Celeritat / Tramitació formal</label></li>
+                    <li class="option-item"><label><input type="radio" name="q2" value="C"> C) Paralització</label></li>
+                    <li class="option-item"><label><input type="radio" name="q2" value="D"> D) Decomís</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Aptitudinal - Numèric</span>
+                <div class="question-title">3. Un procediment administratiu rep 120 sol·licituds en un matí. Si el 35% es tramiten telemàticament, quantes sol·licituds s'han presentat presencialment?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q3" value="A"> A) 42</label></li>
+                    <li class="option-item"><label><input type="radio" name="q3" value="B"> B) 78</label></li>
+                    <li class="option-item"><label><input type="radio" name="q3" value="C"> C) 65</label></li>
+                    <li class="option-item"><label><input type="radio" name="q3" value="D"> D) 80</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Aptitudinal - Analogies</span>
+                <div class="question-title">4. ORDENANÇA és a MUNICIPI com LLEI és a...</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q4" value="A"> A) PARLAMENT / ESTAT</label></li>
+                    <li class="option-item"><label><input type="radio" name="q4" value="B"> B) ALCALDE</label></li>
+                    <li class="option-item"><label><input type="radio" name="q4" value="C"> C) JUTGAT</label></li>
+                    <li class="option-item"><label><input type="radio" name="q4" value="D"> D) REGLAMENT</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Aptitudinal - Sèries de Lletres</span>
+                <div class="question-title">5. Quina lletra continua la sèrie? A, C, F, J, O, ...</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q5" value="A"> A) P</label></li>
+                    <li class="option-item"><label><input type="radio" name="q5" value="B"> B) R</label></li>
+                    <li class="option-item"><label><input type="radio" name="q5" value="C"> C) U</label></li>
+                    <li class="option-item"><label><input type="radio" name="q5" value="D"> D) T</label></li>
+                </ul>
+            </div>
+
+            <!-- BLOC 2: OFIMÀTICA -->
+            <h3>2. Prova d'Ofimàtica (Fulls de càlcul, Processadors, Sistemes)</h3>
+
+            <div class="question-card">
+                <span class="section-badge">Ofimàtica - Excel/Calc</span>
+                <div class="question-title">6. Quina fórmula s'ha d'utilitzar per comptar el número de cel·les que contenen valors numèrics en el rang A1:A20?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q6" value="A"> A) =CONTAR(A1:A20)</label></li>
+                    <li class="option-item"><label><input type="radio" name="q6" value="B"> B) =CONTARA(A1:A20)</label></li>
+                    <li class="option-item"><label><input type="radio" name="q6" value="C"> C) =CONTAR.SI(A1:A20)</label></li>
+                    <li class="option-item"><label><input type="radio" name="q6" value="D"> D) =SUMAR.SI(A1:A20)</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Ofimàtica - Excel/Calc</span>
+                <div class="question-title">7. Com es fixa una referència de cel·la (referència absoluta) en una fórmula perquè no canviï en copiar-la?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q7" value="A"> A) Utilitzant el símbol % (ex: %A%1)</label></li>
+                    <li class="option-item"><label><input type="radio" name="q7" value="B"> B) Utilitzant el símbol $ (ex: $A$1)</label></li>
+                    <li class="option-item"><label><input type="radio" name="q7" value="C"> C) Utilitzant cometes (ex: "A1")</label></li>
+                    <li class="option-item"><label><input type="radio" name="q7" value="D"> D) Prement Alt + F4</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Ofimàtica - Dreceres</span>
+                <div class="question-title">8. En entorns Windows / MS Office en espanyol, quina drecera de teclat permet DESFER la darrera acció realitzada?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q8" value="A"> A) Ctrl + Y</label></li>
+                    <li class="option-item"><label><input type="radio" name="q8" value="B"> B) Ctrl + Z</label></li>
+                    <li class="option-item"><label><input type="radio" name="q8" value="C"> C) Ctrl + X</label></li>
+                    <li class="option-item"><label><input type="radio" name="q8" value="D"> D) Ctrl + G</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Ofimàtica - Gestió de Fitxers</span>
+                <div class="question-title">9. Quin dels següents és un format de fitxer de text pla sense format?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q9" value="A"> A) .txt</label></li>
+                    <li class="option-item"><label><input type="radio" name="q9" value="B"> B) .docx</label></li>
+                    <li class="option-item"><label><input type="radio" name="q9" value="C"> C) .pdf</label></li>
+                    <li class="option-item"><label><input type="radio" name="q9" value="D"> D) .xlsx</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Ofimàtica - Correu Electrònic</span>
+                <div class="question-title">10. Quina diferència hi ha entre el camp CC i el camp CCO en enviar un correu?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q10" value="A"> A) CC envia correus urgents i CCO correus normals.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q10" value="B"> B) Les adreces posades a CCO no són visibles per als altres destinataris.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q10" value="C"> C) CCO comprimeix els fitxers adjunts automàticament.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q10" value="D"> D) CC només permet enviar a usuaris interns de l'Ajuntament.</label></li>
+                </ul>
+            </div>
+
+            <!-- BLOC 3: LLENGUA ESTRANGERA (ANGLÈS) -->
+            <h3>3. Prova de Llengua Estrangera (Anglès)</h3>
+
+            <div class="question-card">
+                <span class="section-badge">Anglès - Administració</span>
+                <div class="question-title">11. Choose the sentence that is grammatically correct:</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q11" value="A"> A) The citizen have submitted all the documents yesterday.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q11" value="B"> B) The citizen submitted all the documents yesterday.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q11" value="C"> C) The citizen submits all the documents yesterday.</label></li>
+                    <li class="option-item"><label><input type="radio" name="q11" value="D"> D) The citizen submit all documents yesterday.</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Anglès - Vocabulari</span>
+                <div class="question-title">12. What is the correct English translation for "Termini de presentació"?</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q12" value="A"> A) Presentation terminal</label></li>
+                    <li class="option-item"><label><input type="radio" name="q12" value="B"> B) Submission deadline</label></li>
+                    <li class="option-item"><label><input type="radio" name="q12" value="C"> C) Delivery timetable</label></li>
+                    <li class="option-item"><label><input type="radio" name="q12" value="D"> D) Application limit</label></li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <span class="section-badge">Anglès - Connectors</span>
+                <div class="question-title">13. Complete: "The office was closed ______ the public holiday."</div>
+                <ul class="options-list">
+                    <li class="option-item"><label><input type="radio" name="q13" value="A"> A) due to</label></li>
+                    <li class="option-item"><label><input type="radio" name="q13" value="B"> B) because</label></li>
+                    <li class="option-item"><label><input type="radio" name="q13" value="C"> C) although</label></li>
+                    <li class="option-item"><label><input type="radio" name="q13" value="D"> D) despite</label></li>
+                </ul>
+            </div>
+
+            <button type="button" class="btn-submit" onclick="evaluateQuiz()">Corregir Examen i Calcular Puntuació</button>
+        </form>
+
+        <div id="resultsBox" class="results-box">
+            <h3 id="scoreText"></h3>
+            <p id="detailsText"></p>
+        </div>
+    </div>
+
+    <div id="trucs" class="tab-content">
+        <h2>Claus de Correcció de les Proves</h2>
+        <p>Les proves d'ampliació de borses solen tenir les següents característiques:</p>
+        <ul>
+            <li>**Preguntes d'opció múltiple (4 opcions).**</li>
+            <li>**Full de lectura òptica:** Cal marcar amb llapis HB núm. 2 de manera clara.</li>
+            <li>**Descompte per errors:** Revisa sempre les bases específiques, ja que en molts testos els errors resten un terç (0,33) d'un encert. Si dubtes entre 4 opcions sense cap pista, és millor no arriscar-se.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function showTab(tabId, event) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
+    let totalSeconds = 1800; // 30 minuts
+    const timerElement = document.getElementById('timer');
+
+    setInterval(() => {
+        if (totalSeconds > 0) {
+            totalSeconds--;
+            let m = Math.floor(totalSeconds / 60);
+            let s = totalSeconds % 60;
+            timerElement.innerHTML = `Temps: ${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+    }, 1000);
+
+    function evaluateQuiz() {
+        const answers = {
+            q1: 'B', q2: 'B', q3: 'B', q4: 'A', q5: 'C',
+            q6: 'A', q7: 'B', q8: 'B', q9: 'A', q10: 'B',
+            q11: 'B', q12: 'B', q13: 'A'
+        };
+
+        let correct = 0;
+        let incorrect = 0;
+        let total = Object.keys(answers).length;
+
+        for (let q in answers) {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected) {
+                if (selected.value === answers[q]) {
+                    correct++;
+                } else {
+                    incorrect++;
+                }
+            }
+        }
+
+        // Formula d'examen tipus test: Encerts - (Errors / 3)
+        let score = (correct - (incorrect / 3)).toFixed(2);
+        if (score < 0) score = 0;
+
+        const resultsBox = document.getElementById('resultsBox');
+        resultsBox.style.display = 'block';
+        document.getElementById('scoreText').innerText = `Resultat: ${correct} Encerts | ${incorrect} Errors | Puntuació Neta: ${score} / ${total}`;
+        
+        if (score >= total * 0.6) {
+            document.getElementById('detailsText').innerText = "Excel·lent! Tens un nivell preparat per superar la nota de tall.";
+        } else {
+            document.getElementById('detailsText').innerText = "Cal continuar practicant les sèries numèriques i les fórmules d'Excel/Calc.";
+        }
+    }
+</script>
+
+</body>
+</html>
