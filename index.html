@@ -154,6 +154,24 @@
         </button>
       </div>
 
+      <!-- Toggle: Mostrar botó "Veure resposta" -->
+      <div class="hint-toggle-bar" id="hint-toggle-bar">
+        <label class="toggle-label" for="toggle-hint">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+          <span>Veure resposta</span>
+        </label>
+        <button
+          class="toggle-switch"
+          id="toggle-hint"
+          role="switch"
+          aria-checked="false"
+          aria-label="Activar botó de veure resposta"
+          onclick="toggleHintMode()"
+        >
+          <span class="toggle-thumb"></span>
+        </button>
+      </div>
+
       <!-- Fila superior de la pregunta: Tag + Selector Ràpid Bottom Sheet + Stats Exprés -->
       <div class="quiz-top-bar">
         <span id="q-category-tag" class="category-pill cat-aptitudinal">Aptitudinal</span>
@@ -177,6 +195,15 @@
         
         <div class="options-list" id="q-options-container" role="radiogroup" aria-label="Opcions de resposta">
           <!-- Es generen dinàmicament a app.js -->
+        </div>
+
+        <!-- Botó "Veure resposta" (controlat pel toggle) -->
+        <div id="hint-btn-container" style="display: none; margin-top: 4px;">
+          <button class="btn-hint-reveal" id="btn-hint-reveal" onclick="revealHint()">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+            <span>Veure resposta</span>
+          </button>
+          <div id="hint-reveal-panel" class="hint-reveal-panel" style="display: none;" aria-live="polite"></div>
         </div>
 
         <!-- Caixa de Feedback Didàctic Immediat (Mode Exprés) -->

@@ -125,7 +125,8 @@ const state = {
   isFinished: false,
   currentView: "view-simulador",
   expressHits: 0,
-  expressMisses: 0
+  expressMisses: 0,
+  hintMode: false  // Toggle "Veure resposta"
 };
 
 // ============================================================
