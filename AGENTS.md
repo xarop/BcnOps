@@ -86,9 +86,20 @@ L'aplicació permet generar exàmens a l'atzar amb un subconjunt equilibrat de p
 
 - **Mode Simulacre Oficial:** Selecciona aleatòriament una quantitat fixa de preguntes de cada bloc (per exemple: 10 d'Aptitudinal + 10 d'Ofimàtica + 10 d'Anglès = 30 preguntes reals de simulacre).
 - **Mode Pràctica Ràpida:** 15 preguntes aleatòries barrejades.
-- **Mode Entrenament Complet:** Totes les preguntes del banc carregades en ordre o barrejades.
+- **Mode Entrenament Complet:** Totes les preguntes del banc carregades en ordre o barrejades (actualment 141 preguntes: 47 Aptencial, 47 Ofimàtica, 47 Anglès).
 
 Aquest comportament permet que cada intent de l'aspirant sigui diferent, afavorint la retenció i evitant l'efecte memòria d'ordre.
+
+---
+
+## 6. Estadístiques d'ús internes (*localStorage*)
+
+L'aplicació incorpora un comptador d'accés intern, sense serveis externs ni Google Analytics:
+
+- **Emmagatzematge:** `localStorage` (clau `bcnops_2026_visit_stats`), només al navegador de l'usuari.
+- **Dades enregistrades:** nombre de visites, primera visita, darrer accés (data i hora) i dies actius diferents.
+- **Visualització:** targeta d'estadístiques al menú hamburguesa (drawer), sota la millor puntuació.
+- **Limitació:** és analítica local per navegador/dispositiu; no compta usuaris globals i es reinicia si s'esborra el `localStorage`.
 
 ---
 

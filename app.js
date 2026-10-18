@@ -139,6 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initVenues();
   initStudyPlan();
   loadBestScores();
+  initVisitStats();
   await loadQuestions();
   initSimulator();
   initShareButton();
@@ -944,7 +945,8 @@ function restartQuiz() {
 
 const STORAGE_KEYS = {
   BEST_SCORES: "bcnops_2026_best_scores",
-  STUDY_PLAN: "bcnops_2026_study_plan"
+  STUDY_PLAN: "bcnops_2026_study_plan",
+  VISIT_STATS: "bcnops_2026_visit_stats"
 };
 
 function saveBestScore(category, score10, rawScore, total) {
@@ -976,6 +978,44 @@ function loadBestScores() {
     }
   } catch (e) {
     console.error("Error carregant de localStorage:", e);
+  }
+}
+
+// ============================================================
+// Estadístiques d'ús internes (localStorage, sense serveis externs)
+// ============================================================
+
+function initVisitStats() {
+  try {
+    const now = new Date();
+    const stored = localStorage.getItem(STORAGE_KEYS.VISIT_STATS);
+    const stats = stored ? JSON.parse(stored) : {
+      visits: 0,
+      firstVisit: null,
+      lastVisit: null,
+      daysActive: []
+    };
+
+    stats.visits += 1;
+    stats.lastVisit = now.toISOString();
+    if (!stats.firstVisit) stats.firstVisit = now.toISOString();
+
+    const today = now.toISOString().slice(0, 10);
+    if (!stats.daysActive.includes(today)) stats.daysActive.push(today);
+
+    localStorage.setItem(STORAGE_KEYS.VISIT_STATS, JSON.stringify(stats));
+
+    const elCount = document.getElementById("drawer-visit-count");
+    const elLast = document.getElementById("drawer-last-visit");
+    const elDays = document.getElementById("drawer-days-active");
+    if (elCount) elCount.textContent = `${stats.visits} visita${stats.visits !== 1 ? "s" : ""}`;
+    if (elLast) {
+      const d = new Date(stats.lastVisit);
+      elLast.textContent = `Darrer accés: ${d.toLocaleDateString("ca-ES")} ${d.toLocaleTimeString("ca-ES", { hour: "2-digit", minute: "2-digit" })}`;
+    }
+    if (elDays) elDays.textContent = `Dies actius: ${stats.daysActive.length}`;
+  } catch (e) {
+    console.warn("No s'han pogut guardar estadístiques de visita:", e);
   }
 }
 

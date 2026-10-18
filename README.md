@@ -48,7 +48,7 @@
 2. **Motor de Simulacres Aleatoris (*Random Exam Engine*):**
    - **Mode Simulacre Oficial:** 30 preguntes aleatòries (10 Aptitudinal, 10 Ofimàtica, 10 Anglès).
    - **Mode Pràctica Ràpida:** 15 preguntes aleatòries barrejades.
-   - **Mode Banc Complet:** 105 preguntes (35 per bloc).
+   - **Mode Banc Complet:** 141 preguntes (47 per bloc).
    - **Algorisme de Fisher-Yates:** Garanteix un ordre imprevisible a cada nou intent.
 3. **Fórmula Oficial de Correcció:**
    $$\text{Puntuació Neta} = \text{Encerts} - \frac{\text{Errors}}{3}$$
@@ -67,6 +67,12 @@
 - [AGENTS.md](file:///Users/xarop/Local%20Sites/BcnOps/AGENTS.md) — Manual tècnic per a agents d'IA i desenvolupadors per fer evolucionar el banc de preguntes en futures edicions.
 - [humans.txt](file:///Users/xarop/Local%20Sites/BcnOps/humans.txt) — Crèdits, equip i tecnologies del projecte.
 
+--- 
+
+## 📊 Estadístiques d'ús (analítica interna)
+
+L'aplicació registra a `localStorage` (aquest navegador, sense serveis externs) el nombre de visites, el primer i darrer accés, i els dies actius. Les dades es mostren a una targeta al menú hamburguesa, sota la millor puntuació.
+
 ---
 
 ## 📁 Estructura del Repositori
@@ -76,7 +82,7 @@
 ├── index.html       # Estructura semàntica, App Bar, Drawer i Bottom Sheet
 ├── styles.css       # Sistema de disseny corporatiu BCN, Mobile-First
 ├── app.js           # Lògica SPA, cronòmetre, motor aleatori i localStorage
-├── questions.json   # Banc de 105 preguntes estructurades en JSON
+├── questions.json   # Banc de 141 preguntes estructurades en JSON
 ├── DESIGN.md        # Guia d'estil i identitat visual municipal
 ├── AGENTS.md        # Manual per a agents d'IA i manteniment futur
 ├── humans.txt       # Crèdits i autoria de xarop.com
