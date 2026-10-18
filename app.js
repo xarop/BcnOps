@@ -130,6 +130,24 @@ const state = {
 };
 
 // ============================================================
+// Analítica — Google Tag Manager (esdeveniments personalitzats)
+// ============================================================
+
+/**
+ * Envia un esdeveniment al dataLayer de Google Tag Manager de manera segura.
+ * No fa res si GTM no s'ha carregat (per exemple, offline).
+ */
+function trackEvent(eventName, params) {
+  try {
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push(Object.assign({ event: eventName }, params || {}));
+    }
+  } catch (e) {
+    // silenciós: l'analítica mai ha de trencar l'aplicació
+  }
+}
+
+// ============================================================
 // Inicialització
 // ============================================================
 
@@ -455,6 +473,12 @@ function generateExamQuestions() {
 
   renderQuestionNav();
   renderCurrentQuestion();
+
+  trackEvent("exam_start", {
+    categoria: state.currentCategory,
+    mode: state.examMode,
+    preguntes: state.filteredQuestions.length
+  });
 }
 
 function updateExpressScoreDisplay() {
@@ -825,6 +849,17 @@ function finishQuiz() {
   const isPass = notaSobre10 >= 5.0;
 
   saveBestScore(state.currentCategory, notaSobre10, puntuacioNeta, total);
+
+  trackEvent("exam_finish", {
+    categoria: state.currentCategory,
+    mode: state.examMode,
+    preguntes: total,
+    encerts,
+    errors,
+    en_blanc: enBlanc,
+    nota: Number(notaSobre10.toFixed(2)),
+    aprovat: isPass
+  });
 
   document.getElementById("bottom-bar").style.display = "none";
 
