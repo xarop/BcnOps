@@ -1070,7 +1070,7 @@ function initShareButton() {
   shareBtn.addEventListener("click", async () => {
     const shareData = {
       title: "BcnOps 2026 — Simulador d'Exàmens Ajuntament de Barcelona",
-      text: "Prepara les borses de treball 2026 de l'Ajuntament de Barcelona amb aquest simulador interactiu de 105 preguntes desenvolupat per xarop.com!",
+      text: "Prepara les borses de treball 2026 de l'Ajuntament de Barcelona amb aquest simulador interactiu de 141 preguntes desenvolupat per xarop.com!",
       url: window.location.href
     };
 
@@ -2570,6 +2570,512 @@ function getFallbackQuestions() {
     ],
     "respostaCorrecta": 1,
     "explicacio": "Amb 'since' i una acció que continua en el present, s'empra el Present Perfect Continuous: 'has been reviewing'."
+  }
+,
+{
+    "id": 106,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques geomètriques",
+    "pregunta": "Quin és el número següent? 5, 15, 45, 135, ...",
+    "opcions": [
+      "A) 270",
+      "B) 405",
+      "C) 315",
+      "D) 540"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Cada terme es multiplica per 3: 5×3=15, 15×3=45, 45×3=135, 135×3=405. Progressió geomètrica raó 3."
+  },
+  {
+    "id": 107,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries numèriques quadrats",
+    "pregunta": "Quin nombre falta? 1, 4, 9, 16, 25, ...",
+    "opcions": [
+      "A) 30",
+      "B) 36",
+      "C) 40",
+      "D) 49"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Quadrats consecutius: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36."
+  },
+  {
+    "id": 108,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries de lletres",
+    "pregunta": "Quina lletra segueix? D, G, J, M, P, ...",
+    "opcions": [
+      "A) R",
+      "B) S",
+      "C) T",
+      "D) U"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "Avança de 3 en 3 a l'alfabet: D→G→J→M→P→S."
+  },
+  {
+    "id": 109,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèries alfanumèriques",
+    "pregunta": "Terme següent: 2B, 5E, 9H, 14K, ...",
+    "opcions": [
+      "A) 20N",
+      "B) 19N",
+      "C) 20M",
+      "D) 19O"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Nombres +3,+4,+5,+6 (14+6=20); lletres de 3 en 3 (K→N). Resultat 20N."
+  },
+  {
+    "id": 110,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogies verbals",
+    "pregunta": "COMPTABLE és a LIBRE DE COMPTES com ARXIUÀRIE és a...",
+    "opcions": [
+      "A) ARXIU",
+      "B) OFICINA",
+      "C) CAJA",
+      "D) DESPATCH"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Professional i el seu document/espai principal: comptable–llibre de comptes, arxiuari–arxiu."
+  },
+  {
+    "id": 111,
+    "categoria": "aptitudinal",
+    "subcategoria": "Percentatges i càlcul mental",
+    "pregunta": "Pressupost de 40.000 € a 46.000 €. Increment percentual?",
+    "opcions": [
+      "A) 12 %",
+      "B) 15 %",
+      "C) 18 %",
+      "D) 20 %"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "(46.000-40.000)/40.000 = 6.000/40.000 = 0,15 = 15 %."
+  },
+  {
+    "id": 112,
+    "categoria": "aptitudinal",
+    "subcategoria": "Càlcul mental",
+    "pregunta": "Metà de 37,5 multiplicat per 8?",
+    "opcions": [
+      "A) 125",
+      "B) 150",
+      "C) 300",
+      "D) 75"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "37,5×8=300; la meitat és 150."
+  },
+  {
+    "id": 113,
+    "categoria": "aptitudinal",
+    "subcategoria": "Lògica deductiva",
+    "pregunta": "Tots els empleats municipals tenen targeta i Marta és empleada. Es conclou que...",
+    "opcions": [
+      "A) Marta té targeta",
+      "B) Marta no té targeta",
+      "C) Marta és directora",
+      "D) Marta treballa fora"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Sil·logisme: totes A són B; Marta és A; per tant Marta és B."
+  },
+  {
+    "id": 114,
+    "categoria": "aptitudinal",
+    "subcategoria": "Sèrie numèrica combinada",
+    "pregunta": "2, 5, 11, 23, 47, ...",
+    "opcions": [
+      "A) 95",
+      "B) 90",
+      "C) 89",
+      "D) 96"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Patró x2+1: ...47×2+1=95."
+  },
+  {
+    "id": 115,
+    "categoria": "aptitudinal",
+    "subcategoria": "Lletres en diminució",
+    "pregunta": "Quina lletra segueix? Z, W, T, Q, N, ...",
+    "opcions": [
+      "A) K",
+      "B) L",
+      "C) M",
+      "D) J"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Retrocessió de 3: ...N(14)-3=K(11)."
+  },
+  {
+    "id": 116,
+    "categoria": "aptitudinal",
+    "subcategoria": "Càlcul de ritme",
+    "pregunta": "6 expedients en 18 minuts. Temps per 20 expedients?",
+    "opcions": [
+      "A) 30 min",
+      "B) 45 min",
+      "C) 60 min",
+      "D) 72 min"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "18/6=3 minuts/expedient; 20×3=60 minuts."
+  },
+  {
+    "id": 117,
+    "categoria": "aptitudinal",
+    "subcategoria": "Analogia de funció",
+    "pregunta": "TECLAT és a ORDINADOR com PLUMA és a...",
+    "opcions": [
+      "A) PAPER",
+      "B) ESCRITORIO",
+      "C) TINTA",
+      "D) MESA"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Instrument/suport: teclat–ordinador, pluma–paper."
+  },
+  {
+    "id": 118,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – entorn i cel·les",
+    "pregunta": "Quina tecla porta el cursor a la cel·la A1 des de qualsevol posició?",
+    "opcions": [
+      "A) Ctrl + Inici",
+      "B) Ctrl + Final",
+      "C) Alt + A1",
+      "D) Shift + A1"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Ctrl + Inici porta el cursor a A1."
+  },
+  {
+    "id": 119,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – referències absolutes",
+    "pregunta": "Quina fórmula copiada de C1 a D1 apunta sempre a A1?",
+    "opcions": [
+      "A) =A1",
+      "B) =$A$1",
+      "C) =A$1",
+      "D) =$A1"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "$A$1 és absoluta en columna i fila."
+  },
+  {
+    "id": 120,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – funcions bàsiques",
+    "pregunta": "Quina funció suma cel·les d'un rang que compleixen una condició?",
+    "opcions": [
+      "A) PROMEDIO",
+      "B) CONTAR",
+      "C) SUMAR.SI",
+      "D) MAX"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "SUMAR.SI (SUMIF) suma segons un criteri."
+  },
+  {
+    "id": 121,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – comptar no buides",
+    "pregunta": "Quina funció compta cel·les no buides (incloent text)?",
+    "opcions": [
+      "A) CONTAR",
+      "B) CONTARA",
+      "C) SUMA",
+      "D) HOY"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "CONTARA compta no buides; CONTAR només numèrics."
+  },
+  {
+    "id": 122,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – percentatge marge",
+    "pregunta": "Cost 80 (B2) i preu 100 (C2). Marge sobre preu de venda?",
+    "opcions": [
+      "A) =(C2-B2)/C2",
+      "B) =(C2-B2)/B2",
+      "C) =B2/C2",
+      "D) =C2-B2"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "(100-80)/100 = 20 % sobre el preu de venda."
+  },
+  {
+    "id": 123,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – representació gràfica",
+    "pregunta": "Evolució del pressupest mensual al llarg de l'any. Quin gràfic?",
+    "opcions": [
+      "A) De barres",
+      "B) De sectors",
+      "C) De línia",
+      "D) De dispersió"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Gràfic de línia per tendències temporals."
+  }
+,
+{
+    "id": 124,
+    "categoria": "ofimatica",
+    "subcategoria": "Excel – impressió i pàgina",
+    "pregunta": "Quina opció imprimeix un full ajustat a una sola pàgina d'ample?",
+    "opcions": [
+      "A) Ajustar a pàgina",
+      "B) Mida de full",
+      "C) Marges personalitzats",
+      "D) Orientació"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Escala o ajuste a pàgina imprimeix el full en una sola pàgina d'ample."
+  },
+  {
+    "id": 125,
+    "categoria": "ofimatica",
+    "subcategoria": "Word – desar document",
+    "pregunta": "Quina comanda guarda un document amb nou nom o ubicació?",
+    "opcions": [
+      "A) Ctrl + G",
+      "B) Ctrl + S",
+      "C) Ctrl + Shift + S",
+      "D) Ctrl + O"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Ctrl + Shift + S és Desar com. Ctrl + S guarda sobre l'arxiu existent."
+  },
+  {
+    "id": 126,
+    "categoria": "ofimatica",
+    "subcategoria": "Word – alineació",
+    "pregunta": "Quina opció alinea un paràgraf als dos marges (justificat)?",
+    "opcions": [
+      "A) Esquerra",
+      "B) Centrat",
+      "C) Justificat",
+      "D) Dreta"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "Justificat distribuï el text per tocar els marges esquerra i dreta."
+  },
+  {
+    "id": 127,
+    "categoria": "ofimatica",
+    "subcategoria": "Word – inserir taula",
+    "pregunta": "Per inserir una taula es utilitza el menú...",
+    "opcions": [
+      "A) Inserir > Taula",
+      "B) Format > Taula",
+      "C) Eines > Taula",
+      "D) Vista > Taula"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Les taules s'insereixen des d'Inserir > Taula."
+  },
+  {
+    "id": 128,
+    "categoria": "ofimatica",
+    "subcategoria": "Word – envoltura imatge",
+    "pregunta": "Quina opció fa que el text flueixi al voltant d'una imatge?",
+    "opcions": [
+      "A) Encadernació",
+      "B) Ajustar al text",
+      "C) Rubricat",
+      "D) Subíndex"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "L'envoltura de text determina la distribució al voltant de la imatge."
+  },
+  {
+    "id": 129,
+    "categoria": "ofimatica",
+    "subcategoria": "Word – revisió ortogràfica",
+    "pregunta": "Quina opció activa la revisió ortogràfica i gramatical?",
+    "opcions": [
+      "A) Revisar > Ortografia",
+      "B) Insertar > Camp",
+      "C) Vista > Esquema",
+      "D) Diseny > Colors"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Des de Revisar > Ortografia i gramàtica s'revisa el document."
+  },
+  {
+    "id": 130,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari administratiu / cita prèvia",
+    "pregunta": "What does 'appointment' mean in a citizen service office (OAC)?",
+    "opcions": [
+      "A) Cita prèvia",
+      "B) Multa",
+      "C) Passaport",
+      "D) Denúncia"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Appointment' significa cita prèvia, requisit a les Oficines d'Atenció Ciutadana (OAC)."
+  },
+  {
+    "id": 131,
+    "categoria": "angles",
+    "subcategoria": "Canals de comunicació",
+    "pregunta": "Through which channel can citizens NOT submit procedures to Barcelona City Council?",
+    "opcions": [
+      "A) Internet",
+      "B) Telephone",
+      "C) In person",
+      "D) Newsstand"
+    ],
+    "respostaCorrecta": 3,
+    "explicacio": "Els canals per tràmits són Internet, telèfon (010) i presencial. El quiosc de premsa no."
+  },
+  {
+    "id": 132,
+    "categoria": "angles",
+    "subcategoria": "Telèfons municipals",
+    "pregunta": "Which number is used for general information, procedures, suggestions and complaints?",
+    "opcions": [
+      "A) 010",
+      "B) 112",
+      "C) 012",
+      "D) 911"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "El 010 és informació general, tràmits, suggeriments i reclamacions. El 112 és emergències."
+  },
+  {
+    "id": 133,
+    "categoria": "angles",
+    "subcategoria": "Telèfons municipals",
+    "pregunta": "Through which number can one enquire about PAS, qualifications, school admissions or job pools?",
+    "opcions": [
+      "A) 010",
+      "B) 112",
+      "C) 012",
+      "D) 061"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "El 012 serveix per consultes de PAS, titulacions, admissió, funció pública i bolses."
+  },
+  {
+    "id": 134,
+    "categoria": "angles",
+    "subcategoria": "Què és OAC",
+    "pregunta": "What does the acronym 'OAC' stand for in municipal citizen service?",
+    "opcions": [
+      "A) Office of Client Attention",
+      "B) Citizen Guidance Office",
+      "C) Citizen Attention Office",
+      "D) Citizen Help Office"
+    ],
+    "respostaCorrecta": 2,
+    "explicacio": "OAC = Oficina d'Atenció Ciutadana, servei d'informació i tràmits a la ciutadania."
+  },
+  {
+    "id": 135,
+    "categoria": "angles",
+    "subcategoria": "Carpeta professional",
+    "pregunta": "What does the 'professional folder' allow professionals to do?",
+    "opcions": [
+      "A) Access personal data of all citizens",
+      "B) Consult clients' data, submit electronic procedures and track requests",
+      "C) Publish news on social media",
+      "D) Pay private services"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La carpeta professional permet consultar dades de clients, fer tràmits telemàtics i seguir peticions."
+  },
+  {
+    "id": 136,
+    "categoria": "angles",
+    "subcategoria": "Mobile ID / identitat digital",
+    "pregunta": "How is the Mobile ID (mobile digital identity) mainly processed?",
+    "opcions": [
+      "A) Over the Internet",
+      "B) By telephone",
+      "C) Through a service kiosk",
+      "D) In person"
+    ],
+    "respostaCorrecta": 3,
+    "explicacio": "La Mobile ID es gestiona principalment de forma presencial per verificar la identitat."
+  },
+  {
+    "id": 137,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari: civil servant",
+    "pregunta": "What is a 'civil servant' in the municipal context?",
+    "opcions": [
+      "A) Funcionari/a de l'Ajuntament",
+      "B) Empresari",
+      "C) Client",
+      "D) Proveïdor"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Civil servant' és el funcionari/a de l'Administració municipal."
+  },
+  {
+    "id": 138,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari: bylaw / ordenança",
+    "pregunta": "What is a municipal 'bylaw' (ordenança)?",
+    "opcions": [
+      "A) Una norma o reglament aprovat pel municipi",
+      "B) Un contracte privat",
+      "C) Un sou",
+      "D) Una taxa"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "Una bylaw o ordenança és una norma aprovada pel municipi al seu àmbit."
+  },
+  {
+    "id": 139,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari: taxa / fee",
+    "pregunta": "What is a municipal 'fee' (taxa)?",
+    "opcions": [
+      "A) Un sou",
+      "B) Un pagament per un servei o tramit municipal",
+      "C) Una multa",
+      "D) Una subvenció"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "La taxa és un tribut per un servei o tramit municipal."
+  },
+  {
+    "id": 140,
+    "categoria": "angles",
+    "subcategoria": "Vocabulari: deadline",
+    "pregunta": "What is a 'deadline' in a call for applications?",
+    "opcions": [
+      "A) Límite de temps / termini per presentar la sol·licitud",
+      "B) Entrevista",
+      "C) Publicació de llista",
+      "D) Pagar la taxa"
+    ],
+    "respostaCorrecta": 0,
+    "explicacio": "'Deadline' és el termini límit per presentar la sol·licitud."
+  },
+  {
+    "id": 141,
+    "categoria": "angles",
+    "subcategoria": "Telèfons d'emerència",
+    "pregunta": "Which number is the emergency telephone number?",
+    "opcions": [
+      "A) 010",
+      "B) 112",
+      "C) 012",
+      "D) 061"
+    ],
+    "respostaCorrecta": 1,
+    "explicacio": "El 112 és el número d'emerències. El 010 és informació general."
   }
 ];
 }
